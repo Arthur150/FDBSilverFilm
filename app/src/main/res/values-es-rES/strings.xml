@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FDB SilverFilm</string>
-    <string name="Focal">Focal</string>
     <string name="NR">No rellenado(s)</string>
     <string name="Opening">Abertura :</string>
     <string name="LayingTime">Tiempo de instalación :</string>
