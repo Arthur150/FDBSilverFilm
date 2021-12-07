@@ -129,7 +129,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mode_label" />
+        app:layout_constraintTop_toBottomOf="@+id/lens_label" />
 
     <TextView
         android:id="@+id/date_value_label"
@@ -142,7 +142,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/date_label"
-        app:layout_constraintTop_toBottomOf="@+id/mode_value_label" />
+        app:layout_constraintTop_toBottomOf="@+id/lens_value_label" />
 
     <TextView
         android:id="@+id/coordinates_label"
@@ -168,4 +168,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/coordinates_label"
         app:layout_constraintTop_toBottomOf="@+id/date_value_label" />
+
+    <TextView
+        android:id="@+id/lens_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/Lens"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mode_label" />
+
+    <TextView
+        android:id="@+id/lens_value_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/NR"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lens_label"
+        app:layout_constraintTop_toBottomOf="@+id/mode_value_label" />
 </androidx.constraintlayout.widget.ConstraintLayout>

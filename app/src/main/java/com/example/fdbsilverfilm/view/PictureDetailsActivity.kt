@@ -17,23 +17,20 @@ class PictureDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_picture_details)
         vm = PictureDetailsViewModel(intent.getSerializableExtra(PICTURE_EXTRA_TAG) as Picture)
 
-        val title = findViewById<TextView>(R.id.picture_details_title).let {
-            it.text = if (vm?.picture?.title.isNullOrEmpty()) getString(R.string.NR) else vm?.picture?.title
+        // [ title, focal, opening, laying time, mode, lens, date, coordinates ]
+        val textViews = ArrayList<TextView>()
+        textViews.add(findViewById(R.id.picture_details_title))
+        textViews.add(findViewById(R.id.focal_value_label))
+        textViews.add(findViewById(R.id.opening_value_label))
+        textViews.add(findViewById(R.id.laying_time_value_label))
+        textViews.add(findViewById(R.id.mode_value_label))
+        textViews.add(findViewById(R.id.lens_value_label))
+        textViews.add(findViewById(R.id.date_value_label))
+        textViews.add(findViewById(R.id.coordinates_value_label))
+
+        for (i in 0 until textViews.size){
+            textViews[i].text = if (vm?.data?.get(i).isNullOrEmpty()) getString(R.string.NR) else vm?.data?.get(i)
         }
 
-        val focal = findViewById<TextView>(R.id.focal_value_label).let {
-
-            it.text = if (vm?.picture?.meta?.focal != 0.0f) getString(R.string.NR) else vm?.picture?.meta?.focal.toString()
-        }
-
-        val opening = findViewById<TextView>(R.id.opening_value_label).let {
-
-            it.text = if (vm?.picture?.meta?.opening != 0.0f) getString(R.string.NR) else vm?.picture?.meta?.opening.toString()
-        }
-
-        val time = findViewById<TextView>(R.id.laying_time_value_label).let {
-
-            it.text = if (vm?.picture?.meta?.time != 0.0) getString(R.string.NR) else vm?.picture?.meta?.time.toString()
-        }
     }
 }
