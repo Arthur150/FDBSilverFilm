@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">FDB SilverFilm</string>
+    <string name="create_a_film">Create a film</string>
+    <string name="iso">ISO</string>
+    <string name="number_of_poses">Number of poses</string>
+    <string name="brand">Brand</string>
+    <string name="film_type">Film type</string>
+    <string name="name">Name</string>
+    <string name="color">Color</string>
+    <string name="black_and_white">Black and white</string>
+    <string name="save">Save</string>
+
+    <string-array name="film_types">
+        <item>@string/color</item>
+        <item>@string/black_and_white</item>
+    </string-array>
 </resources>

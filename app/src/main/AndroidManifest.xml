@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FDBSilverFilm">
         <activity
+            android:name=".view.AddFilmActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
