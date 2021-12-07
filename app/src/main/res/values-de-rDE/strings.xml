@@ -3,5 +3,10 @@
     <string name="app_name">FDB SilverFilm</string>
     <string name="Focal">Fokal</string>
     <string name="NR">Nicht ausgefüllt</string>
-    <string name="Opening">Öffnung</string>
+    <string name="Opening">Öffnung :</string>
+    <string name="LayingTime">Installationszeit :</string>
+    <string name="Mode">Mode :</string>
+    <string name="Date">Datum :</string>
+    <string name="Focal">Fokal :</string>
+    <string name="Coordinates">Koordinaten :</string>
 </resources>

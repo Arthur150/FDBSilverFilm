@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">FDB SilverFilm</string>
-    <string name="Focal">Focal</string>
     <string name="NR">Not filled in</string>
-    <string name="Opening">Opening</string>
+    <string name="Opening">Opening :</string>
+    <string name="LayingTime">Laying time :</string>
+    <string name="Mode">Mode :</string>
+    <string name="Date">Date :</string>
+    <string name="Focal">Focal :</string>
+    <string name="Coordinates">Coordinates :</string>
 </resources>
