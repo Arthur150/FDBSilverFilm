@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FDB SilverFilm</string>
+    <string name="Focal">Focal</string>
+    <string name="NR">Non renseigné(es)</string>
+    <string name="Opening">Ouverture :</string>
+    <string name="LayingTime">Temps de pose :</string>
+    <string name="Mode">Mode :</string>
+    <string name="Date">Date :</string>
+    <string name="Focal">Focal :</string>
+    <string name="Coordinates">Coordonnées :</string>
+    <string name="Lens">Objectif :</string>
+</resources>
