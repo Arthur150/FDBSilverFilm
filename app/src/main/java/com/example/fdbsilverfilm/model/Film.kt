@@ -7,19 +7,24 @@ import java.io.Serializable
 
 @Entity(tableName = "Films")
 data class Film(
-    @PrimaryKey(autoGenerate = false)
-    val id : Int,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int?,
 
     @ColumnInfo(name = "name")
-    val name : String,
+    val name: String,
+
     @ColumnInfo(name = "brand")
-    val brand : String,
+    val brand: String,
+
     @ColumnInfo(name = "iso")
-    val iso : Int,
+    val iso: Int,
+
     @ColumnInfo(name = "type")
-    val type : String,
+    val type: String,
+
     @ColumnInfo(name = "nbrPoses")
-    val ndPoses : Int,
-    @ColumnInfo(name = "pictures")
-    val pictures : ArrayList<Picture> = ArrayList()
+    val ndPoses: Int,
+
+    @ColumnInfo(name = "picture")
+    val pictures: ArrayList<Picture> = ArrayList()
 ) : Serializable

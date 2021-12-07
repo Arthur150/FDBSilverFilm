@@ -10,9 +10,13 @@ import com.example.fdbsilverfilm.model.Film
 @Dao
 interface SilverFilmDAO {
 
+    //Film
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addAllFilms(film: Film)
+    fun addFilm(film: Film)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addAllFilm(film: List<Film>)
 
     @Query("SELECT * FROM Films")
-    fun getAllFilm(): LiveData<List<Film>>
+    fun getAllFilm(): List<Film>
 }

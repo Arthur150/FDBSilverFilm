@@ -1,11 +1,13 @@
 package com.example.fdbsilverfilm.repository
 
-import androidx.lifecycle.LiveData
 import com.example.fdbsilverfilm.database.SilverFilmDAO
 import com.example.fdbsilverfilm.model.Film
 
 class SilverFilmRepository(private val silverFilmDAO: SilverFilmDAO) {
-    suspend fun insertFilm(film: Film) = silverFilmDAO.addAllFilms(film)
+    fun insertAllFilm(film: List<Film>) = silverFilmDAO.addAllFilm(film)
+    fun insertFilm(film: Film) = silverFilmDAO.addFilm(film)
 
-    fun getAllFilm(): LiveData<List<Film>> = silverFilmDAO.getAllFilm()
+    // passer en live data
+    fun getAllFilm(): List<Film> = silverFilmDAO.getAllFilm()
 }
+

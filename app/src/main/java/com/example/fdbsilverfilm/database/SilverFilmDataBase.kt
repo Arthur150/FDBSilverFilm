@@ -4,13 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.fdbsilverfilm.model.Picture
+import androidx.room.TypeConverters
+import com.example.fdbsilverfilm.model.Film
 
 @Database(
-    entities = [Picture::class],
-    version = 1
+    entities = [Film::class],
+    version = 1,
+    exportSchema = false
 )
 
+@TypeConverters(Converters::class)
 abstract class SilverFilmDataBase : RoomDatabase() {
 
     abstract fun silverFilmDAO(): SilverFilmDAO
@@ -26,7 +29,7 @@ abstract class SilverFilmDataBase : RoomDatabase() {
                     context.applicationContext,
                     SilverFilmDataBase::class.java,
                     "silverFilm_DataBase"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 // return instance
                 instance
