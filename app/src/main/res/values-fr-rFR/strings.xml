@@ -9,4 +9,13 @@
     <string name="Focal">Focal :</string>
     <string name="Coordinates">Coordonnées :</string>
     <string name="Lens">Objectif :</string>
+    <string name="save">Sauvegarder</string>
+    <string name="color">Couleur</string>
+    <string name="black_and_white">Noir et blanc</string>
+    <string name="name">Nom</string>
+    <string name="film_type">Type de pellicule</string>
+    <string name="brand">Marque</string>
+    <string name="number_of_poses">Nombre de poses</string>
+    <string name="create_a_film">Créer une pellicule</string>
+    <string name="MyFilm">Ma pellicule</string>
 </resources>

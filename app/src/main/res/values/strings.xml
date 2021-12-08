@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FDB SilverFilm</string>
     <string name="create_a_film">Create a film</string>
-    <string name="iso">ISO</string>
+    <string name="iso" translatable="false">ISO</string>
     <string name="number_of_poses">Number of poses</string>
     <string name="brand">Brand</string>
     <string name="film_type">Film type</string>
@@ -29,4 +29,5 @@
     <string name="not_implemented_yet">Not implemented yet</string>
     <string name="slut">Slut</string>
     <string name="add_button">Add button</string>
+    <string name="MyFilm">My film</string>
 </resources>

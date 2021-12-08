@@ -13,6 +13,9 @@
             android:name=".view.FilmListActivity"
             android:exported="false" />
         <activity
+            android:name=".view.PicturesListActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.AddFilmActivity"
             android:exported="false" />
         <activity
