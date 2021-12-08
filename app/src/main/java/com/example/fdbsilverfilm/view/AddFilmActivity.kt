@@ -55,7 +55,7 @@ class AddFilmActivity : AppCompatActivity() {
 
                     Log.d("addFilm", "onCreate: ${vm.film}")
                 } else {
-                    Toast.makeText(this, "Connard", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.checkForm), Toast.LENGTH_SHORT).show()
                 }
             }
     }

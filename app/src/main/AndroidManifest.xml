@@ -12,11 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FDBSilverFilm">
-        <activity
-            android:name=".view.FilmListActivity"
+      <activity
+            android:name=".view.AddPictureActivity"
             android:exported="false" />
         <activity
             android:name=".view.PicturesListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.FilmListActivity"
             android:exported="false" />
         <activity
             android:name=".view.AddFilmActivity"
