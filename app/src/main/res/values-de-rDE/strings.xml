@@ -9,4 +9,13 @@
     <string name="Focal">Fokal :</string>
     <string name="Coordinates">Koordinaten :</string>
     <string name="Lens">Linse :</string>
+    <string name="create_a_film">Einen Film erstellen</string>
+    <string name="number_of_poses">Anzahl der Posen</string>
+    <string name="brand">Marke</string>
+    <string name="film_type">Filmtypen</string>
+    <string name="name">Name</string>
+    <string name="color">Farbe</string>
+    <string name="black_and_white">Schwarz und weiß</string>
+    <string name="save">Registrieren</string>
+    <string name="MyFilm">Mein Film</string>
 </resources>
