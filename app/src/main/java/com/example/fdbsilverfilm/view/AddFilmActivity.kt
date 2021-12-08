@@ -6,8 +6,10 @@ import android.util.Log
 import android.widget.*
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.model.Film
+import com.example.fdbsilverfilm.viewmodel.FilmAddViewModel
 
 class AddFilmActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_film)
@@ -20,6 +22,8 @@ class AddFilmActivity : AppCompatActivity() {
         val name = findViewById<EditText>(R.id.addFilmName)
         val button = findViewById<Button>(R.id.addFilmSaveButton)
 
+        val vm = FilmAddViewModel(intent.getSerializableExtra("filmToEdit") as Film)
+
         ArrayAdapter.createFromResource(
             this,
             R.array.film_types,
@@ -27,25 +31,30 @@ class AddFilmActivity : AppCompatActivity() {
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
+
+            spinner.setSelection(adapter.getPosition(vm.film.type))
+            iso.setText(vm.film.iso.toString())
+            nbPoses.setText(vm.film.nbPoses.toString())
+            brand.setText(vm.film.brand)
+            name.setText(vm.film.name.toString())
         }
 
-        button.setOnClickListener {
+            button.setOnClickListener {
 
-            if (!brand.text.isEmpty() && !iso.text.isEmpty() && !nbPoses.text.isEmpty()) {
-                val film = Film(
-                    1,
-                    name.text.toString(),
-                    brand.text.toString(),
-                    iso.text.toString().toInt(),
-                    spinner.selectedItem.toString(),
-                    nbPoses.text.toString().toInt()
-                )
+                if (brand.text.isNotEmpty() && iso.text.isNotEmpty() && nbPoses.text.isNotEmpty()) {
 
-                Log.d("addFilm", "onCreate: $film")
-            } else {
-                Toast.makeText(this, "Connard", Toast.LENGTH_SHORT).show()
+                    vm.setFilm(
+                        iso.text.toString().toInt(),
+                        nbPoses.text.toString().toInt(),
+                        brand.text.toString(),
+                        spinner.selectedItem.toString(),
+                        name.text.toString()
+                    )
+
+                    Log.d("addFilm", "onCreate: ${vm.film}")
+                } else {
+                    Toast.makeText(this, "Connard", Toast.LENGTH_SHORT).show()
+                }
             }
-        }
-
     }
 }
