@@ -10,6 +10,8 @@ import com.example.fdbsilverfilm.model.Picture
 class FilmListViewModel : ViewModel() {
     private val films: MutableLiveData<List<Film>> = MutableLiveData<List<Film>>()
 
+    private val filmsNotFull: MutableLiveData<List<Film>> = MutableLiveData<List<Film>>()
+
     private val filmList: ArrayList<Film> = ArrayList()
 
     init {
@@ -19,6 +21,11 @@ class FilmListViewModel : ViewModel() {
 
     fun getFilms(): LiveData<List<Film>> {
         return films
+    }
+
+    fun getFilmsNotFull(): LiveData<List<Film>> {
+        //TODO
+        return filmsNotFull
     }
 
     fun loadFilms(){
@@ -34,7 +41,7 @@ class FilmListViewModel : ViewModel() {
         filmList.add(Film(null,"Romaric la pute","kodak",400,"Color",20))
         filmList.add(Film(null,"Romaric la pute","kodak",400,"Color",20,pictures))
         filmList.add(Film(null,"Romaric la pute","kodak",400,"Color",20))
-        filmList.add(Film(null,"Romaric la pute","kodak",400,"Color",20,pictures))
+        filmList.add(Film(null,"Romaric la pute","kodak",400,"Color",5,pictures))
         filmList.add(Film(null,"Romaric la pute","kodak",400,"Color",20))
 
         val tempList = List(5) {
