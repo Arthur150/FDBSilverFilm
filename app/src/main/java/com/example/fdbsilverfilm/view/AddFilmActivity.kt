@@ -34,7 +34,7 @@ class AddFilmActivity : AppCompatActivity() {
 
             spinner.setSelection(adapter.getPosition(vm.film.type))
             iso.setText(vm.film.iso.toString())
-            nbPoses.setText(vm.film.nbPoses.toString())
+            nbPoses.setText(vm.film.ndPoses.toString())
             brand.setText(vm.film.brand)
             name.setText(vm.film.name.toString())
         }

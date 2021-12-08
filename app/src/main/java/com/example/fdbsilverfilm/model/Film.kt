@@ -8,22 +8,22 @@ import java.io.Serializable
 @Entity(tableName = "Films")
 data class Film(
     @PrimaryKey(autoGenerate = true)
-    val id: Int? = null,
+    val id: Int?,
 
     @ColumnInfo(name = "name")
-    val name: String? = null,
+    var name: String? = null,
 
     @ColumnInfo(name = "brand")
-    val brand: String? = null,
+    var brand: String? = null,
 
     @ColumnInfo(name = "iso")
-    val iso: Int? = null,
+    var iso: Int? = null,
 
     @ColumnInfo(name = "type")
-    val type: String? = null,
+    var type: String? = null,
 
     @ColumnInfo(name = "nbrPoses")
-    val ndPoses: Int? = null,
+    var ndPoses: Int? = null,
 
     @ColumnInfo(name = "picture")
     val pictures: ArrayList<Picture> = ArrayList()
