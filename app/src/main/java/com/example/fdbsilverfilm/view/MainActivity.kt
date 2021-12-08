@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.model.Film
 
