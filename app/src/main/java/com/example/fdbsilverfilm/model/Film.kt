@@ -3,11 +3,11 @@ package com.example.fdbsilverfilm.model
 import java.io.Serializable
 
 data class Film(
-    val id : Int? = null,
-    var name : String? = null,
-    var brand : String? = null,
-    var iso : Int? = null,
-    var type : String? = null,
-    var nbPoses : Int? = null,
+    val id : Int?,
+    var name : String = "",
+    var brand : String,
+    var iso : Int,
+    var type : String,
+    var nbPoses : Int,
     val pictures : ArrayList<Picture> = ArrayList()
 ) : Serializable

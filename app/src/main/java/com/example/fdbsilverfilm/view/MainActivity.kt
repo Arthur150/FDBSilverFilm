@@ -12,8 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val intent = Intent(this,AddFilmActivity::class.java)
-        intent.putExtra("filmToEdit", Film(0,"dqdqdq","dqsdqsdqsd",5,"Black and white",25))
+        val intent = Intent(this,FilmListActivity::class.java)
         startActivity(intent)
 
     }
