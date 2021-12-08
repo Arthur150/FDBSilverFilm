@@ -9,7 +9,7 @@ import com.google.gson.Gson
 object SharedPreferencesManager {
     private const val CURRENT_META = "current_meta"
 
-    fun saveCurrentMeta(context: Context, picture: Picture){
+    fun saveCurrentMeta(context: Context, picture: Picture) {
         val gson = Gson()
         val sharedPreferences: SharedPreferences = context.getSharedPreferences(CURRENT_META, 0)
         val editor = sharedPreferences.edit()

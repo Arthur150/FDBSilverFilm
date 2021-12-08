@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.fdbsilverfilm.model.Film
 
+
 @Database(
     entities = [Film::class],
     version = 1,
@@ -14,20 +15,20 @@ import com.example.fdbsilverfilm.model.Film
 )
 
 @TypeConverters(Converters::class)
-abstract class SilverFilmDataBase : RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun silverFilmDAO(): SilverFilmDAO
+    abstract fun silverFilmDAO(): DatabaseDAO
 
     companion object {
         @Volatile
-        private var INSTANCE: SilverFilmDataBase? = null
+        private var INSTANCE: AppDatabase? = null
 
-        fun getDatabase(context: Context): SilverFilmDataBase {
+        fun getDatabase(context: Context): AppDatabase {
 
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    SilverFilmDataBase::class.java,
+                    AppDatabase::class.java,
                     "silverFilm_DataBase"
                 ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
