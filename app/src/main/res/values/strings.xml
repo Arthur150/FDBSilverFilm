@@ -38,6 +38,7 @@
     <string name="mode_picture_a">A - Priority to Opening</string>
     <string name="mode_picture_s">S - Speed priority</string>
     <string name="mode_picture_m">M - Manual mode</string>
+    <string name="checkForm">Please fill in all fields</string>
 
     <string-array name="picture_mode">
         <item>@string/mode_picture_p</item>

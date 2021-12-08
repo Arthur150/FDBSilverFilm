@@ -1,12 +1,13 @@
 package com.example.fdbsilverfilm.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
+import android.util.Log
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.example.fdbsilverfilm.R
+import com.example.fdbsilverfilm.model.Film
+import com.example.fdbsilverfilm.model.Meta
+import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
 
 class AddPictureActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +25,10 @@ class AddPictureActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.addPictureButton)
 
 
+        val vm = PictureAddViewModel()
+
+        val film = intent.getSerializableExtra("filmToEdit") as Film
+
 
         ArrayAdapter.createFromResource(
             this,
@@ -32,6 +37,26 @@ class AddPictureActivity : AppCompatActivity() {
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             modeSpinner.adapter = adapter
+        }
+
+
+        button.setOnClickListener {
+            if (focal.text.isNotEmpty() && lens.text.isNotEmpty() && opening.text.isNotEmpty() && time.text.isNotEmpty() && title.text.isNotEmpty()) {
+
+                vm.addPicture(
+                    film = film,
+                    pictureName = title.text.toString(),
+                    meta = Meta(
+                        focal = focal.text.toString().toFloat(),
+                        opening = opening.text.toString().toFloat(),
+                        time = time.text.toString().toDouble(),
+                        mode = modeSpinner.selectedItem.toString(),
+                        lens = lens.text.toString()
+                    )
+                )
+            } else {
+                Toast.makeText(this, getString(R.string.checkForm), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

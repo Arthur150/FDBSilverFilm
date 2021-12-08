@@ -14,7 +14,8 @@
         android:layout_marginTop="48dp"
         android:gravity="center"
         android:text="@string/create_a_picture"
-        android:textSize="20sp"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,45 +23,13 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="360dp"
+        android:id="@+id/constraintLayout3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:padding="10dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addPictureTextView">
-
-        <TextView
-            android:id="@+id/addPictureTitleLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title_of_your_picture"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/addPictureTitle"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addPictureTitleLabel" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        android:layout_width="0dp"
-        android:layout_height="280dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
 
         <TextView
@@ -72,7 +41,7 @@
             android:labelFor="@id/addPictureFocal"
             android:text="@string/Focal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/addPictureTitle" />
 
         <EditText
             android:id="@+id/addPictureFocal"
@@ -89,13 +58,13 @@
             android:id="@+id/addPictureOpeningLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="32dp"
             android:layout_marginEnd="92dp"
             android:labelFor="@id/addPictureOpening"
             android:text="@string/Opening"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/addPictureFocal"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/addPictureLabelFocal" />
 
         <EditText
             android:id="@+id/addPictureOpening"
@@ -150,10 +119,11 @@
 
         <Spinner
             android:id="@+id/addPictureMode"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/addPictureLens"
             app:layout_constraintStart_toStartOf="@+id/addPictureModeLabel"
             app:layout_constraintTop_toBottomOf="@+id/addPictureModeLabel" />
 
@@ -165,6 +135,28 @@
             android:text="@string/Mode"
             app:layout_constraintStart_toStartOf="@+id/addPictureTime"
             app:layout_constraintTop_toBottomOf="@+id/addPictureTime" />
+
+        <TextView
+            android:id="@+id/addPictureTitleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/title_of_your_picture"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/addPictureTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@+id/addPictureOpening"
+            app:layout_constraintStart_toStartOf="@+id/addPictureTitleLabel"
+            app:layout_constraintTop_toBottomOf="@+id/addPictureTitleLabel" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
