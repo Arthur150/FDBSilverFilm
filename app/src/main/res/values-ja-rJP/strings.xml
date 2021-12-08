@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FDBシルバーフィルム</string>
+    <string name="NR">入力されていません</string>
+    <string name="Opening">オープニング :</string>
+    <string name="LayingTime">インストール時間 :</string>
+    <string name="Mode">ファッション :</string>
+    <string name="Date">日付 :</string>
+    <string name="Focal">焦点 :</string>
+    <string name="Coordinates">座標 :</string>
+    <string name="Lens">レンズ :</string>
+</resources>
