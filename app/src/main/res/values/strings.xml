@@ -22,5 +22,12 @@
     <string name="Focal">Focal :</string>
     <string name="Coordinates">Coordinates :</string>
     <string name="Lens">Lens :</string>
+    <string name="number_of_poses2">Number of poses :</string>
+    <string name="number_of_pictures2">Number of pictures :</string>
+    <string name="iso2">ISO :</string>
+    <string name="film_image">film image</string>
+    <string name="not_implemented_yet">Not implemented yet</string>
+    <string name="slut">Slut</string>
+    <string name="add_button">Add button</string>
     <string name="MyFilm">My film</string>
 </resources>

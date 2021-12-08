@@ -11,20 +11,20 @@ data class Film(
     val id: Int?,
 
     @ColumnInfo(name = "name")
-    var name: String? = null,
+    var name : String = "",
 
     @ColumnInfo(name = "brand")
-    var brand: String? = null,
+    var brand : String,
 
     @ColumnInfo(name = "iso")
-    var iso: Int? = null,
+    var iso : Int,
 
     @ColumnInfo(name = "type")
-    var type: String? = null,
+    var type : String,
 
     @ColumnInfo(name = "nbrPoses")
-    var ndPoses: Int? = null,
+    var nbPoses : Int,
 
-    @ColumnInfo(name = "picture")
+    @ColumnInfo(name = "pictures")
     val pictures: ArrayList<Picture> = ArrayList()
 ):Serializable
