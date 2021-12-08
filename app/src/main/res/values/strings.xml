@@ -31,4 +31,18 @@
     <string name="camera_configuration">Camera configuration</string>
     <string name="focal">Focal</string>
     <string name="opening">Opening</string>
+    <string name="add_picture">Add picture</string>
+
+
+    <string name="mode_picture_p">P - Programme </string>
+    <string name="mode_picture_a">A - Priority to Opening</string>
+    <string name="mode_picture_s">S - Speed priority</string>
+    <string name="mode_picture_m">M - Manual mode</string>
+
+    <string-array name="picture_mode">
+        <item>@string/mode_picture_p</item>
+        <item>@string/mode_picture_a</item>
+        <item>@string/mode_picture_s</item>
+        <item>@string/mode_picture_m</item>
+    </string-array>
 </resources>
