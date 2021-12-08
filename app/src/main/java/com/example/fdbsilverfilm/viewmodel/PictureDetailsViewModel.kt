@@ -1,8 +1,9 @@
 package com.example.fdbsilverfilm.viewmodel
 
+import androidx.lifecycle.ViewModel
 import com.example.fdbsilverfilm.model.Picture
 
-class PictureDetailsViewModel(var picture: Picture) {
+class PictureDetailsViewModel(var picture: Picture) : ViewModel() {
 
     var data : List<String>
 
