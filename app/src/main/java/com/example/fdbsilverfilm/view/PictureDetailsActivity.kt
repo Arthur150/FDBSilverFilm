@@ -4,10 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import com.example.fdbsilverfilm.R
+import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Picture
 import com.example.fdbsilverfilm.viewmodel.PictureDetailsViewModel
-
-const val PICTURE_EXTRA_TAG = "picture"
 
 class PictureDetailsActivity : AppCompatActivity() {
     var vm : PictureDetailsViewModel? = null;
@@ -15,7 +14,7 @@ class PictureDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_picture_details)
-        vm = PictureDetailsViewModel(intent.getSerializableExtra(PICTURE_EXTRA_TAG) as Picture)
+        vm = PictureDetailsViewModel(intent.getSerializableExtra(Globals.PICTURE_EXTRA_TAG) as Picture)
 
         // [ title, focal, opening, laying time, mode, lens, date, coordinates ]
         val textViews = ArrayList<TextView>()

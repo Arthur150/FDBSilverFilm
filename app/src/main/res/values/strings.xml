@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FDB SilverFilm</string>
     <string name="create_a_film">Create a film</string>
-    <string name="iso">ISO</string>
+    <string name="iso" translatable="false">ISO</string>
     <string name="number_of_poses">Number of poses</string>
     <string name="brand">Brand</string>
     <string name="film_type">Film type</string>
@@ -22,7 +22,6 @@
     <string name="Focal">Focal :</string>
     <string name="Coordinates">Coordinates :</string>
     <string name="Lens">Lens :</string>
-
     <string name="create_a_picture">Create a picture</string>
     <string name="title_of_your_picture">Title of your picture</string>
     <string name="lens">Lens</string>
@@ -46,4 +45,13 @@
         <item>@string/mode_picture_s</item>
         <item>@string/mode_picture_m</item>
     </string-array>
+
+    <string name="number_of_poses2">Number of poses :</string>
+    <string name="number_of_pictures2">Number of pictures :</string>
+    <string name="iso2">ISO :</string>
+    <string name="film_image">film image</string>
+    <string name="not_implemented_yet">Not implemented yet</string>
+    <string name="slut">Slut</string>
+    <string name="add_button">Add button</string>
+    <string name="MyFilm">My film</string>
 </resources>

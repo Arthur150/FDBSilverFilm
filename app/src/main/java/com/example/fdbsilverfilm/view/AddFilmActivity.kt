@@ -22,7 +22,7 @@ class AddFilmActivity : AppCompatActivity() {
         val name = findViewById<EditText>(R.id.addFilmName)
         val button = findViewById<Button>(R.id.addFilmSaveButton)
 
-        val vm = FilmAddViewModel(intent.getSerializableExtra("filmToEdit") as Film)
+        val vm = FilmAddViewModel(intent.getSerializableExtra("filmToEdit") as Film?)
 
         ArrayAdapter.createFromResource(
             this,
@@ -32,11 +32,13 @@ class AddFilmActivity : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
 
-            spinner.setSelection(adapter.getPosition(vm.film.type))
-            iso.setText(vm.film.iso.toString())
-            nbPoses.setText(vm.film.ndPoses.toString())
-            brand.setText(vm.film.brand)
-            name.setText(vm.film.name.toString())
+            if(vm.film != null) {
+                spinner.setSelection(adapter.getPosition(vm.film?.type))
+                iso.setText(vm.film?.iso.toString())
+                nbPoses.setText(vm.film?.nbPoses.toString())
+                brand.setText(vm.film?.brand)
+                name.setText(vm.film?.name.toString())
+            }
         }
 
             button.setOnClickListener {
