@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/secondary_variant_grey"
     tools:context=".view.AddPictureActivity">
 
 
@@ -11,22 +12,28 @@
         android:id="@+id/addPictureTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="@string/create_a_picture"
+        android:text="@string/take_a_picture"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.16000003" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addPictureTextView">
@@ -40,6 +47,7 @@
             android:layout_marginTop="16dp"
             android:labelFor="@id/addPictureFocal"
             android:text="@string/Focal"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addPictureTitle" />
 
@@ -62,6 +70,7 @@
             android:layout_marginEnd="92dp"
             android:labelFor="@id/addPictureOpening"
             android:text="@string/Opening"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/addPictureFocal"
             app:layout_constraintTop_toTopOf="@+id/addPictureLabelFocal" />
@@ -83,6 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/LayingTime"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/addPictureFocal"
             app:layout_constraintTop_toBottomOf="@+id/addPictureFocal" />
 
@@ -103,6 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/Lens"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/addPictureOpening"
             app:layout_constraintTop_toBottomOf="@+id/addPictureOpening" />
 
@@ -122,7 +133,9 @@
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:minHeight="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/addPictureLens"
             app:layout_constraintStart_toStartOf="@+id/addPictureModeLabel"
             app:layout_constraintTop_toBottomOf="@+id/addPictureModeLabel" />
@@ -133,6 +146,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/Mode"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/addPictureTime"
             app:layout_constraintTop_toBottomOf="@+id/addPictureTime" />
 
@@ -143,6 +157,7 @@
             android:layout_marginStart="28dp"
             android:layout_marginTop="16dp"
             android:text="@string/title_of_your_picture"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -165,7 +180,9 @@
         android:id="@+id/addPictureButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
