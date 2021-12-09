@@ -1,12 +1,17 @@
 package com.example.fdbsilverfilm.view
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.location.Criteria
+import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.manager.PermissionsManager
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
@@ -16,11 +21,12 @@ import com.example.fdbsilverfilm.model.Meta
 import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
 
 class AddPictureActivity : AppCompatActivity() {
+    private var location : Location? = null
+
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_picture)
-
 
         val focal = findViewById<EditText>(R.id.addPictureFocal)
         val lens = findViewById<EditText>(R.id.addPictureLens)
@@ -56,22 +62,25 @@ class AddPictureActivity : AppCompatActivity() {
             }
         }
 
+        val requestPermissionLauncher =
+            registerForActivityResult(
+                ActivityResultContracts.RequestPermission()
+            ) { isGranted: Boolean ->
+                if (isGranted) {
+                    loadCoordinates()
+                } else {
+                    finish()
+                }
+            }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_DENIED) {
+            requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
+        }
 
         vm.getFilm().observe(this, { film ->
             button.isEnabled = true
             button.setOnClickListener {
                 if (focal.text.isNotEmpty() && lens.text.isNotEmpty() && opening.text.isNotEmpty() && time.text.isNotEmpty() && title.text.isNotEmpty()) {
-                    if (!PermissionsManager.checkPermissions(this)) {
-                        PermissionsManager.requestPermissions(this)
-                    }
-
-                    val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
-                    val location = locationManager?.getLastKnownLocation(
-                        locationManager.getBestProvider(
-                            Criteria(),
-                            true
-                        )!!
-                    )
 
                     val meta = Meta(
                         focal = focal.text.toString().toFloat(),
@@ -92,6 +101,7 @@ class AddPictureActivity : AppCompatActivity() {
 
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
+                    finish()
 
                 } else {
                     Toast.makeText(this, getString(R.string.checkForm), Toast.LENGTH_SHORT).show()
@@ -99,4 +109,16 @@ class AddPictureActivity : AppCompatActivity() {
             }
         })
     }
+
+    @SuppressLint("MissingPermission")
+    private fun loadCoordinates(){
+        val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
+        location = locationManager?.getLastKnownLocation(
+            locationManager.getBestProvider(
+                Criteria(),
+                true
+            )!!
+        )
+    }
+
 }

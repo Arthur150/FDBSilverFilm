@@ -15,7 +15,6 @@ class AddFilmActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_film)
 
-
         val iso = findViewById<EditText>(R.id.addFilmIso)
         val nbPoses = findViewById<EditText>(R.id.addFilmNbPoses)
         val brand = findViewById<EditText>(R.id.addFilmBrand)
@@ -59,9 +58,11 @@ class AddFilmActivity : AppCompatActivity() {
                     if (intent.getBooleanExtra("createFirst",false)){
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
+                        finish()
                     } else {
                         val intent = Intent(this, FilmListActivity::class.java)
                         startActivity(intent)
+                        finish()
                     }
 
                 } else {

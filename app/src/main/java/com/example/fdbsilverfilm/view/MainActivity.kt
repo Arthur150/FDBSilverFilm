@@ -49,4 +49,9 @@ class MainActivity : AppCompatActivity() {
         fragmentManager.replace(R.id.fragmentContainerView, fragment)
         fragmentManager.commit()
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.finish()
+    }
 }

@@ -24,4 +24,9 @@ class PicturesListActivity : AppCompatActivity() {
         recyclerView.adapter = PicturesListAdapter(vm?.data, this)
 
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.finish()
+    }
 }
