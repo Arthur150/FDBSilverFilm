@@ -1,5 +1,6 @@
 package com.example.fdbsilverfilm.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -52,6 +53,9 @@ class AddFilmActivity : AppCompatActivity() {
                         spinner.selectedItem.toString(),
                         name.text.toString()
                     )
+
+                    val intent = Intent(this,FilmListActivity::class.java)
+                    startActivity(intent)
 
                     Log.d("addFilm", "onCreate: ${vm.film}")
                 } else {
