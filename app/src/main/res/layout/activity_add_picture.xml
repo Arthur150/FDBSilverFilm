@@ -82,14 +82,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/time_opening"
+            android:text="@string/LayingTime"
             app:layout_constraintStart_toStartOf="@+id/addPictureFocal"
             app:layout_constraintTop_toBottomOf="@+id/addPictureFocal" />
 
         <EditText
             android:id="@+id/addPictureTime"
             android:layout_width="125dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="number"
@@ -109,7 +109,7 @@
         <EditText
             android:id="@+id/addPictureLens"
             android:layout_width="125dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="number"
@@ -120,7 +120,7 @@
         <Spinner
             android:id="@+id/addPictureMode"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="@+id/addPictureLens"
@@ -166,7 +166,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/add_picture"
+        android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />

@@ -9,7 +9,7 @@
     <string name="Focal">Fokal :</string>
     <string name="Coordinates">Koordinaten :</string>
     <string name="Lens">Linse :</string>
-    <string name="create_a_film">Einen Film erstellen</string>
+    <string name="create_a_film">Anzahl der Posen :</string>
     <string name="number_of_poses">Anzahl der Posen</string>
     <string name="brand">Marke</string>
     <string name="film_type">Filmtypen</string>
@@ -18,4 +18,16 @@
     <string name="black_and_white">Schwarz und weiß</string>
     <string name="save">Registrieren</string>
     <string name="MyFilm">Mein Film</string>
+    <string name="slut">Schlampe</string>
+    <string name="not_implemented_yet">Noch nicht umgesetzt</string>
+    <string name="create_a_picture">Machen Sie ein Foto</string>
+    <string name="title_of_your_picture">Titel des Fotos</string>
+    <string name="camera_configuration">Konfiguration der Kamera</string>
+    <string name="mode_picture_p">P - Programm</string>
+    <string name="mode_picture_a">A - Vorrang für die Eröffnung</string>
+    <string name="mode_picture_s">S - Geschwindigkeitspriorität</string>
+    <string name="mode_picture_m">M - Manueller Modus</string>
+    <string name="checkForm">Bitte füllen Sie alle Felder aus</string>
+    <string name="number_of_poses2">Anzahl der Posen :</string>
+    <string name="number_of_pictures2">Anzahl der Bilder :</string>
 </resources>
