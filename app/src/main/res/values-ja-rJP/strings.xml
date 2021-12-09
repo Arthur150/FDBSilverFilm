@@ -20,7 +20,7 @@
     <string name="MyFilm">私の映画</string>
     <string name="slut">ビッチ</string>
     <string name="not_implemented_yet">未実装</string>
-    <string name="create_a_picture">写真を撮る</string>
+    <string name="take_a_picture">写真を撮る</string>
     <string name="title_of_your_picture">写真のタイトル</string>
     <string name="camera_configuration">カメラの設定</string>
     <string name="mode_picture_p">P - プログラム</string>
@@ -30,4 +30,12 @@
     <string name="checkForm">すべての項目を入力してください。</string>
     <string name="number_of_poses2">ポーズ数 :</string>
     <string name="number_of_pictures2">写真の数。:</string>
+    <string name="select_a_film">作品を選ぶ</string>
+    <string name="no_film_selected">フィルムが選択されていない</string>
+    <string name="no_existing_film">既存のフィルムがない</string>
+    <string name="please_create_a_new_film">新しいフィルムを作成してください</string>
+    <string name="change_film">ペリキュールの交換</string>
+    <string name="brand2">ブランド :</string>
+    <string name="remaining_poses">残りのポーズ</string>
+    <string name="Loading">ローディング...</string>
 </resources>

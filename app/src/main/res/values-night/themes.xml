@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.FDBSilverFilm" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorSecondary">@color/primary_grey</item>
-        <item name="colorSecondaryVariant">@color/primary_variant_grey</item>
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorPrimary">@color/primary_grey</item>
+        <item name="colorPrimaryVariant">@color/primary_variant_grey</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorPrimary">@color/secondary_grey</item>
-        <item name="colorPrimaryVariant">@color/secondary_variant_grey</item>
-        <item name="colorOnPrimary">@color/primary_grey</item>
+        <item name="colorSecondary">@color/secondary_grey</item>
+        <item name="colorSecondaryVariant">@color/secondary_variant_grey</item>
+        <item name="colorOnSecondary">@color/primary_grey</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

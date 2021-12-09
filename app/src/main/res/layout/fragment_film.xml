@@ -5,120 +5,142 @@
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.FilmFragment" >
+    android:background="@color/secondary_variant_grey"
+    tools:context=".view.FilmFragment">
+
+    <TextView
+        android:id="@+id/filmFragmentFilmBrandLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/brand2"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/filmFragmentImage"
+        app:layout_constraintTop_toBottomOf="@+id/filmFragmentFilmName" />
+
+    <TextView
+        android:id="@+id/filmFragmentFilmBrand"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/filmFragmentFilmBrandLabel"
+        app:layout_constraintTop_toBottomOf="@+id/filmFragmentFilmName" />
+
+    <TextView
+        android:id="@+id/filmFragmentFilmName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="@string/NR"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19" />
 
     <ImageView
         android:id="@+id/filmFragmentImage"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
         android:contentDescription="@string/film_image"
         android:src="@mipmap/ic_launcher"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/filmFragmentFilmName"
+        app:srcCompat="@drawable/ic_film_roll_svgrepo_com"
+        app:tint="@color/primary_grey"
+        tools:srcCompat="@drawable/ic_film_roll_svgrepo_com" />
 
     <Button
         android:id="@+id/filmFragmentTakePictureButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/take_a_picture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/filmFragmentFilmCountPictureLabel" />
 
     <Button
         android:id="@+id/filmFragmentChangeFilmButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/secondary_variant_grey"
+        android:paddingLeft="16dp"
+        android:paddingTop="0dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="0dp"
         android:text="@string/change_film"
+        android:textColor="@color/primary_grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/filmFragmentImage" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="275dp"
-        android:layout_height="207dp"
-        android:layout_marginTop="36dp"
+    <TextView
+        android:id="@+id/filmFragmentFilmCountPictureLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/remaining_poses"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filmFragmentChangeFilmButton">
+        app:layout_constraintTop_toBottomOf="@+id/filmFragmentChangeFilmButton" />
 
-        <TextView
-            android:id="@+id/filmFragmentFilmName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:text="@string/no_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/filmFragmentCountPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/zero"
+        android:textAlignment="textEnd"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/filmFragmentFilmCountPictureLabel"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filmFragmentChangeFilmButton" />
 
-        <TextView
-            android:id="@+id/filmFragmentFilmISO"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.087"
-            app:layout_constraintStart_toEndOf="@+id/filmFragmentFilmISOLabel"
-            app:layout_constraintTop_toBottomOf="@+id/filmFragmentFilmName" />
+    <TextView
+        android:id="@+id/filmFragmentFilmISO"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/filmFragmentFilmISOLabel"
+        app:layout_constraintTop_toBottomOf="@+id/filmFragmentFilmBrand" />
 
-        <TextView
-            android:id="@+id/filmFragmentFilmISOLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/iso2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/filmFragmentFilmName" />
+    <TextView
+        android:id="@+id/filmFragmentFilmISOLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/iso2"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/filmFragmentImage"
+        app:layout_constraintTop_toBottomOf="@+id/filmFragmentFilmBrandLabel" />
 
-        <TextView
-            android:id="@+id/filmFragmentFilmBrandLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/brand2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/filmFragmentFilmISOLabel" />
-
-        <TextView
-            android:id="@+id/filmFragmentFilmBrand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.007"
-            app:layout_constraintStart_toEndOf="@+id/filmFragmentFilmBrandLabel"
-            app:layout_constraintTop_toBottomOf="@+id/filmFragmentFilmISO" />
-
-        <TextView
-            android:id="@+id/filmFragmentFilmCountPictureLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/number_of_pictures2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/filmFragmentFilmBrandLabel" />
-
-        <TextView
-            android:id="@+id/filmFragmentCountPicture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.144"
-            app:layout_constraintStart_toEndOf="@+id/filmFragmentFilmCountPictureLabel"
-            app:layout_constraintTop_toBottomOf="@+id/filmFragmentFilmBrand" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
