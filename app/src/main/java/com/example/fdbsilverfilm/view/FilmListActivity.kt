@@ -44,7 +44,5 @@ class FilmListActivity : AppCompatActivity() {
             })
         }
 
-        model.loadFilms()
-
     }
 }

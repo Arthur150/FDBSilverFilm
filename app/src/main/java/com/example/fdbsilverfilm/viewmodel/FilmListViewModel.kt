@@ -24,30 +24,41 @@ class FilmListViewModel : ViewModel() {
     }
 
     fun getFilmsNotFull(): LiveData<List<Film>> {
-        //TODO
         return filmsNotFull
     }
 
-    fun loadFilms(){
+    fun loadFilms() {
         //TODO import films from database
 
         val pictures = ArrayList<Picture>()
-        pictures.add(Picture(0,0,"test","test", Meta(10f,5f,5.0,"test","test")))
-        pictures.add(Picture(0,0,"test","test", Meta(10f,5f,5.0,"test","test")))
-        pictures.add(Picture(0,0,"test","test", Meta(10f,5f,5.0,"test","test")))
-        pictures.add(Picture(0,0,"test","test", Meta(10f,5f,5.0,"test","test")))
-        pictures.add(Picture(0,0,"test","test", Meta(10f,5f,5.0,"test","test")))
+        pictures.add(Picture(0, 0, "test", "test", Meta(10f, 5f, 5.0, "test", "test")))
+        pictures.add(Picture(0, 0, "test", "test", Meta(10f, 5f, 5.0, "test", "test")))
+        pictures.add(Picture(0, 0, "test", "test", Meta(10f, 5f, 5.0, "test", "test")))
+        pictures.add(Picture(0, 0, "test", "test", Meta(10f, 5f, 5.0, "test", "test")))
+        pictures.add(Picture(0, 0, "test", "test", Meta(10f, 5f, 5.0, "test", "test")))
 
-        filmList.add(Film(null,"Romaric la pute","kodak",400,"Color",20))
-        filmList.add(Film(null,"Romaric la pute","kodak",400,"Color",20,pictures))
-        filmList.add(Film(null,"Romaric la pute","kodak",400,"Color",20))
-        filmList.add(Film(null,"Romaric la pute","kodak",400,"Color",5,pictures))
-        filmList.add(Film(null,"Romaric la pute","kodak",400,"Color",20))
+        filmList.add(Film(null, "Romaric la pute1", "kodak", 400, "Color", 20))
+        filmList.add(Film(null, "Romaric la pute2", "kodak", 400, "Color", 20, pictures))
+        filmList.add(Film(null, "Romaric la pute3", "kodak", 400, "Color", 20))
+        filmList.add(Film(null, "Romaric la pute4", "kodak", 400, "Color", 5, pictures))
+        filmList.add(Film(null, "Romaric la pute5", "kodak", 400, "Color", 20))
 
-        val tempList = List(5) {
+        var tempList = List(filmList.size) {
             filmList[it]
         }
 
         films.postValue(tempList)
+
+        val tempNotFull = ArrayList<Film>()
+        filmList.forEach { film ->
+            if (film.pictures.count() < film.nbPoses){
+                tempNotFull.add(film)
+            }
+        }
+        tempList = List(tempNotFull.size){
+            tempNotFull[it]
+        }
+
+        filmsNotFull.postValue(tempList)
     }
 }
