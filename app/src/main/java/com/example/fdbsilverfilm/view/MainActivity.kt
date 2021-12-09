@@ -24,7 +24,14 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("main", "onCreate: ${SharedPreferencesManager.loadCurrentFilm(this)}")
 
-        showFragment(NoFilmListFragment())
+        if (SharedPreferencesManager.loadCurrentFilm(this) != -1) {
+            showFragment(FilmFragment())
+        } else {
+            //TODO
+            showFragment(FilmFragment())
+
+        }
+
 
     }
 
