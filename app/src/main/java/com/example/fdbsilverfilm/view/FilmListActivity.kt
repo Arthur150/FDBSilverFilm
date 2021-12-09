@@ -22,6 +22,8 @@ class FilmListActivity : AppCompatActivity() {
 
         val filter = intent.getIntExtra("filter", Globals.ALL_FILTER)
 
+        model.loadFilms()
+
         val addButton = findViewById<FloatingActionButton>(R.id.filmListAddButton)
         addButton.setOnClickListener {
             val intent = Intent(this, AddFilmActivity::class.java)
