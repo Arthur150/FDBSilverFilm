@@ -1,22 +1,15 @@
 package com.example.fdbsilverfilm.view
 
-import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.widget.ProgressBar
-import androidx.fragment.app.Fragment
-
-import com.example.fdbsilverfilm.R
-import com.example.fdbsilverfilm.database.AppDatabase
-import com.example.fdbsilverfilm.manager.SharedPreferencesManager
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.manager.DatabaseManager
-import com.example.fdbsilverfilm.model.Film
-import com.example.fdbsilverfilm.repository.DatabaseRepository
+import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.viewmodel.MainActivityViewModel
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,14 +19,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val loading = findViewById<ProgressBar>(R.id.mainActivityLoading)
+        val textLoading = findViewById<TextView>(R.id.mainActivityLoadingTextView)
         loading.visibility = ProgressBar.VISIBLE
+        textLoading.visibility = TextView.VISIBLE
 
         DatabaseManager.initDatabase(this)
 
         val model = MainActivityViewModel()
-        model.getFilms().observe(this, {
-            if (it.count() > 0) {
-                if (SharedPreferencesManager.loadCurrentFilm(this) != -1) {
+
+        model.loadFilms()
+
+        model.getFilms().observe(this, { films ->
+            if (films.count() > 0) {
+                if (SharedPreferencesManager.loadCurrentFilm(this) == -1) {
                     showFragment(NoFilmFragment())
                 } else {
                     showFragment(FilmFragment())
@@ -42,13 +40,8 @@ class MainActivity : AppCompatActivity() {
                 showFragment(NoFilmListFragment())
             }
             loading.visibility = ProgressBar.GONE
+            textLoading.visibility = TextView.GONE
         })
-
-        Log.d("main", "onCreate: ${SharedPreferencesManager.loadCurrentFilm(this)}")
-
-        model.loadFilms()
-
-
     }
 
     private fun showFragment(fragment: Fragment) {

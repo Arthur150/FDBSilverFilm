@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.example.fdbsilverfilm.R
+import com.example.fdbsilverfilm.model.Globals
 
 class NoFilmListFragment : Fragment() {
 
@@ -18,6 +19,7 @@ class NoFilmListFragment : Fragment() {
         val button = view.findViewById<Button>(R.id.noFilmListFragmentButton)
         button.setOnClickListener {
             val intent = Intent(requireContext(),AddFilmActivity::class.java)
+            intent.putExtra("createFirst", Globals.CREATE_FIRST)
             startActivity(intent)
         }
 

@@ -33,22 +33,27 @@ class FilmFragment : Fragment() {
         val changeFilmButton = view.findViewById<Button>(R.id.filmFragmentChangeFilmButton)
 
         model.getFilm().observe(viewLifecycleOwner, { film ->
-            nameTextView.text = film.name
-            isoTextView.text = film.iso.toString()
-            brandTextView.text = film.brand
-            pictureCountTextView.text = "${film.pictures.count()}/${film.nbPoses}"
-            if (film.pictures.count() < film.nbPoses) {
-                takePictureButton.isEnabled = true
-            } else {
-                takePictureButton.isEnabled = false
-                AlertDialog.Builder(requireContext()).setTitle(R.string.can_not_take_picture_alert).create()
+            if (film != null) {
+                nameTextView.text = film.name
+                isoTextView.text = film.iso.toString()
+                brandTextView.text = film.brand
+                pictureCountTextView.text = "${film.pictures.count()}/${film.nbPoses}"
+                if (film.pictures.count() < film.nbPoses) {
+                    takePictureButton.isEnabled = true
+                } else {
+                    takePictureButton.isEnabled = false
+                    AlertDialog.Builder(requireContext()).setTitle(R.string.can_not_take_picture_alert).create()
+                }
             }
+
         })
 
         takePictureButton.setOnClickListener {
-            val intent = Intent(requireContext(), AddPictureActivity::class.java)
-            intent.putExtra(Globals.FILM_EXTRA_TAG, model.getFilm().value)
-            startActivity(intent)
+            model.getFilmValue()?.let {
+                val intent = Intent(requireContext(), AddPictureActivity::class.java)
+                intent.putExtra(Globals.FILM_EXTRA_TAG, it.id)
+                startActivity(intent)
+            }
         }
 
         changeFilmButton.setOnClickListener {

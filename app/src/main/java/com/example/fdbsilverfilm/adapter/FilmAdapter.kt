@@ -12,6 +12,7 @@ import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Film
 import com.example.fdbsilverfilm.view.FilmListActivity
+import com.example.fdbsilverfilm.view.MainActivity
 
 class FilmAdapter(
     private val context: Context,
@@ -39,14 +40,8 @@ class FilmAdapter(
                 SharedPreferencesManager.saveCurrentFilm(context, it)
             }
 
-            val intent = Intent(context, FilmListActivity::class.java)
+            val intent = Intent(context, MainActivity::class.java)
             context.startActivity(intent)
-
-            Toast.makeText(
-                context,
-                "${context.getString(R.string.not_implemented_yet)}  ${context.getString(R.string.slut)}",
-                Toast.LENGTH_SHORT
-            ).show()
         }
     }
 

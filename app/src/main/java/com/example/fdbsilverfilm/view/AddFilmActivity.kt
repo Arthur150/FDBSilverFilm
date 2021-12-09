@@ -23,7 +23,7 @@ class AddFilmActivity : AppCompatActivity() {
         val name = findViewById<EditText>(R.id.addFilmName)
         val button = findViewById<Button>(R.id.addFilmSaveButton)
 
-        val vm = FilmAddViewModel(intent.getSerializableExtra("filmToEdit") as Film?)
+        val vm = FilmAddViewModel(this,intent.getSerializableExtra("filmToEdit") as Film?)
 
         ArrayAdapter.createFromResource(
             this,
@@ -54,10 +54,16 @@ class AddFilmActivity : AppCompatActivity() {
                         name.text.toString()
                     )
 
-                    val intent = Intent(this,FilmListActivity::class.java)
-                    startActivity(intent)
-
                     Log.d("addFilm", "onCreate: ${vm.film}")
+
+                    if (intent.getBooleanExtra("createFirst",false)){
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        val intent = Intent(this, FilmListActivity::class.java)
+                        startActivity(intent)
+                    }
+
                 } else {
                     Toast.makeText(this, getString(R.string.checkForm), Toast.LENGTH_SHORT).show()
                 }
