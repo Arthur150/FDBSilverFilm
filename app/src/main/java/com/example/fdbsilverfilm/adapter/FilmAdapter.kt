@@ -1,6 +1,7 @@
 package com.example.fdbsilverfilm.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fdbsilverfilm.R
+import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Film
+import com.example.fdbsilverfilm.view.FilmListActivity
 
 class FilmAdapter(
     private val context: Context,
@@ -32,7 +35,12 @@ class FilmAdapter(
         holder.countPictures.text = "${films[position].pictures.count()}/${films[position].nbPoses}"
 
         holder.itemView.setOnClickListener {
-            //TODO quand tu clique ça fait un truc
+            films[position].id?.let {
+                SharedPreferencesManager.saveCurrentFilm(context, it)
+            }
+
+            val intent = Intent(context, FilmListActivity::class.java)
+            context.startActivity(intent)
 
             Toast.makeText(
                 context,
@@ -44,7 +52,7 @@ class FilmAdapter(
 
     override fun getItemCount() = films.size
 
-    fun updateValue(list: List<Film>){
+    fun updateValue(list: List<Film>) {
         films = list
         notifyDataSetChanged()
     }

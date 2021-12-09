@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.viewmodel.FilmViewModel
@@ -21,6 +22,7 @@ class FilmFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_film, container, false)
         val model = FilmViewModel(requireContext())
+        model.loadFilm()
 
         val nameTextView = view.findViewById<TextView>(R.id.filmFragmentFilmName)
         val isoTextView = view.findViewById<TextView>(R.id.filmFragmentFilmISO)
@@ -28,15 +30,29 @@ class FilmFragment : Fragment() {
         val pictureCountTextView = view.findViewById<TextView>(R.id.filmFragmentCountPicture)
 
         val takePictureButton = view.findViewById<Button>(R.id.filmFragmentTakePictureButton)
+        val changeFilmButton = view.findViewById<Button>(R.id.filmFragmentChangeFilmButton)
+
+        model.getFilm().observe(viewLifecycleOwner, { film ->
+            nameTextView.text = film.name
+            isoTextView.text = film.iso.toString()
+            brandTextView.text = film.brand
+            pictureCountTextView.text = "${film.pictures.count()}/${film.nbPoses}"
+            if (film.pictures.count() < film.nbPoses) {
+                takePictureButton.isEnabled = true
+            } else {
+                takePictureButton.isEnabled = false
+                AlertDialog.Builder(requireContext()).setTitle(R.string.can_not_take_picture_alert).create()
+            }
+        })
+
         takePictureButton.setOnClickListener {
-            //TODO go to addPicture
-            Toast.makeText(requireContext(),R.string.not_implemented_yet,Toast.LENGTH_SHORT).show()
+            val intent = Intent(requireContext(), AddPictureActivity::class.java)
+            startActivity(intent)
         }
 
-        val changeFilmButton = view.findViewById<Button>(R.id.filmFragmentChangeFilmButton)
         changeFilmButton.setOnClickListener {
-            val intent = Intent(requireContext(),FilmListActivity::class.java)
-            intent.putExtra("filter",Globals.NOT_FULL_FILTER)
+            val intent = Intent(requireContext(), FilmListActivity::class.java)
+            intent.putExtra("filter", Globals.NOT_FULL_FILTER)
             startActivity(intent)
         }
 
