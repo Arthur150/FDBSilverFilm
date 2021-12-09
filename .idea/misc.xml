@@ -3,18 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_add_film.xml" value="0.25405405405405407" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3351449275362319" />
+        <entry key="../../../Library/Android/sdk/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.42916666666666664" />
+        <entry key="..\:/.Perso/Dev/PTUT/FDBSilverFilm/app/src/main/res/layout/activity_add_film.xml" value="0.67" />
+        <entry key="..\:/.Perso/Dev/PTUT/FDBSilverFilm/app/src/main/res/layout/activity_add_picture.xml" value="0.75" />
+        <entry key="..\:/.Perso/Dev/PTUT/FDBSilverFilm/app/src/main/res/layout/activity_film_list.xml" value="0.17864583333333334" />
+        <entry key="..\:/.Perso/Dev/PTUT/FDBSilverFilm/app/src/main/res/layout/activity_main.xml" value="0.17864583333333334" />
+        <entry key="..\:/.Perso/Dev/PTUT/FDBSilverFilm/app/src/main/res/layout/activity_picture_details.xml" value="0.17864583333333334" />
+        <entry key="..\:/.Perso/Dev/PTUT/FDBSilverFilm/app/src/main/res/layout/activity_pictures_list.xml" value="0.17864583333333334" />
+        <entry key="..\:/.Perso/Dev/PTUT/FDBSilverFilm/app/src/main/res/layout/film_item.xml" value="0.5" />
+        <entry key="..\:/.Perso/Dev/PTUT/FDBSilverFilm/app/src/main/res/layout/picture_item.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/activity_add_film.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_add_picture.xml" value="0.5" />
       </map>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
-        <entry key="..\:/.Perso/Dev/PTUT/FDBSilverFilm/app/src/main/res/layout/activity_main.xml" value="0.17864583333333334" />
-        <entry key="..\:/.Perso/Dev/PTUT/FDBSilverFilm/app/src/main/res/layout/activity_picture_details.xml" value="0.33" />
-      </map>
-    </option>
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

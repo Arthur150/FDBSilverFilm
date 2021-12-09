@@ -18,4 +18,16 @@
     <string name="black_and_white">ブラック＆ホワイト</string>
     <string name="save">登録</string>
     <string name="MyFilm">私の映画</string>
+    <string name="slut">ビッチ</string>
+    <string name="not_implemented_yet">未実装</string>
+    <string name="create_a_picture">写真を撮る</string>
+    <string name="title_of_your_picture">写真のタイトル</string>
+    <string name="camera_configuration">カメラの設定</string>
+    <string name="mode_picture_p">P - プログラム</string>
+    <string name="mode_picture_a">A - オープニングへの優先順位</string>
+    <string name="mode_picture_s">S - 速度優先</string>
+    <string name="mode_picture_m">M - マニュアルモード</string>
+    <string name="checkForm">すべての項目を入力してください。</string>
+    <string name="number_of_poses2">ポーズ数 :</string>
+    <string name="number_of_pictures2">写真の数。:</string>
 </resources>

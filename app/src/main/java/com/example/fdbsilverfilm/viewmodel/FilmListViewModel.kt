@@ -1,5 +1,6 @@
 package com.example.fdbsilverfilm.viewmodel
 
+import android.location.Location
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -31,11 +32,6 @@ class FilmListViewModel : ViewModel() {
         //TODO import films from database
 
         val pictures = ArrayList<Picture>()
-        pictures.add(Picture(0, 0, "test", "test", Meta(10f, 5f, 5.0, "test", "test")))
-        pictures.add(Picture(0, 0, "test", "test", Meta(10f, 5f, 5.0, "test", "test")))
-        pictures.add(Picture(0, 0, "test", "test", Meta(10f, 5f, 5.0, "test", "test")))
-        pictures.add(Picture(0, 0, "test", "test", Meta(10f, 5f, 5.0, "test", "test")))
-        pictures.add(Picture(0, 0, "test", "test", Meta(10f, 5f, 5.0, "test", "test")))
 
         filmList.add(Film(null, "Romaric la pute1", "kodak", 400, "Color", 20))
         filmList.add(Film(null, "Romaric la pute2", "kodak", 400, "Color", 20, pictures))
