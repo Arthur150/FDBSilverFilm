@@ -1,21 +1,18 @@
 package com.example.fdbsilverfilm.view
 
-import android.Manifest
 import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.content.pm.PackageManager
-import android.location.Location
+import android.location.Criteria
+import android.location.LocationManager
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.manager.PermissionsManager
+import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Film
+import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Meta
 import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
-import com.google.android.gms.location.LocationServices
 
 class AddPictureActivity : AppCompatActivity() {
     @SuppressLint("MissingPermission")
@@ -36,7 +33,7 @@ class AddPictureActivity : AppCompatActivity() {
 
         val vm = PictureAddViewModel()
 
-        val film = intent.getSerializableExtra("filmToEdit") as Film
+        val film = intent.getSerializableExtra(Globals.FILM_EXTRA_TAG) as Film
 
 
         ArrayAdapter.createFromResource(
@@ -46,31 +43,53 @@ class AddPictureActivity : AppCompatActivity() {
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             modeSpinner.adapter = adapter
+
+
+            val metaSharedPreferences = SharedPreferencesManager.loadCurrentMeta(this)
+
+            if (metaSharedPreferences != null) {
+                focal.setText(metaSharedPreferences.focal.toString())
+                lens.setText(metaSharedPreferences.lens)
+                opening.setText(metaSharedPreferences.opening.toString())
+                time.setText(metaSharedPreferences.time.toString())
+
+                modeSpinner.setSelection(adapter.getPosition(metaSharedPreferences.mode))
+            }
         }
 
 
         button.setOnClickListener {
             if (focal.text.isNotEmpty() && lens.text.isNotEmpty() && opening.text.isNotEmpty() && time.text.isNotEmpty() && title.text.isNotEmpty()) {
-                if (!PermissionsManager.checkPermissions(this)){
+                if (!PermissionsManager.checkPermissions(this)) {
                     PermissionsManager.requestPermissions(this)
                 }
-                lateinit var location : Location
-                val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-                fusedLocationClient.lastLocation.addOnSuccessListener { location = it }
 
+                val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
+                val location = locationManager?.getLastKnownLocation(
+                    locationManager.getBestProvider(
+                        Criteria(),
+                        true
+                    )!!
+                )
+
+                val meta = Meta(
+                    focal = focal.text.toString().toFloat(),
+                    opening = opening.text.toString().toFloat(),
+                    time = time.text.toString().toDouble(),
+                    mode = modeSpinner.selectedItem.toString(),
+                    lens = lens.text.toString(),
+                    coordinates = location
+                )
 
                 vm.addPicture(
                     film = film,
                     pictureName = title.text.toString(),
-                    meta = Meta(
-                        focal = focal.text.toString().toFloat(),
-                        opening = opening.text.toString().toFloat(),
-                        time = time.text.toString().toDouble(),
-                        mode = modeSpinner.selectedItem.toString(),
-                        lens = lens.text.toString(),
-                        coordinates = location
-                    )
+                    meta = meta
                 )
+
+                //Save the last config Meta
+                SharedPreferencesManager.saveCurrentMeta(this, meta)
+
             } else {
                 Toast.makeText(this, getString(R.string.checkForm), Toast.LENGTH_SHORT).show()
             }
