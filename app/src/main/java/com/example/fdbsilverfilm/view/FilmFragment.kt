@@ -2,7 +2,6 @@ package com.example.fdbsilverfilm.view
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.viewmodel.FilmViewModel
@@ -47,6 +47,7 @@ class FilmFragment : Fragment() {
 
         takePictureButton.setOnClickListener {
             val intent = Intent(requireContext(), AddPictureActivity::class.java)
+            intent.putExtra(Globals.FILM_EXTRA_TAG, model.getFilm().value)
             startActivity(intent)
         }
 

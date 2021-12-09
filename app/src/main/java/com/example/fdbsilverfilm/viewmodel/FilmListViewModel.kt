@@ -1,24 +1,21 @@
 package com.example.fdbsilverfilm.viewmodel
 
-import android.location.Location
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.fdbsilverfilm.manager.DatabaseManager
 import com.example.fdbsilverfilm.model.Film
-import com.example.fdbsilverfilm.model.Meta
-import com.example.fdbsilverfilm.model.Picture
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class FilmListViewModel : ViewModel() {
     private val films: MutableLiveData<List<Film>> = MutableLiveData<List<Film>>()
 
     private val filmsNotFull: MutableLiveData<List<Film>> = MutableLiveData<List<Film>>()
 
-    private val filmList: ArrayList<Film> = ArrayList()
-
-    init {
-        loadFilms()
-    }
-
+    private var filmList: ArrayList<Film> = ArrayList()
 
     fun getFilms(): LiveData<List<Film>> {
         return films
@@ -29,32 +26,27 @@ class FilmListViewModel : ViewModel() {
     }
 
     fun loadFilms() {
-        //TODO import films from database
+        viewModelScope.launch(Dispatchers.IO) {
 
-        val pictures = ArrayList<Picture>()
+            filmList.addAll(DatabaseManager.repository.getAllFilm())
 
-        filmList.add(Film(null, "Romaric la pute1", "kodak", 400, "Color", 20))
-        filmList.add(Film(null, "Romaric la pute2", "kodak", 400, "Color", 20, pictures))
-        filmList.add(Film(null, "Romaric la pute3", "kodak", 400, "Color", 20))
-        filmList.add(Film(null, "Romaric la pute4", "kodak", 400, "Color", 5, pictures))
-        filmList.add(Film(null, "Romaric la pute5", "kodak", 400, "Color", 20))
-
-        var tempList = List(filmList.size) {
-            filmList[it]
-        }
-
-        films.postValue(tempList)
-
-        val tempNotFull = ArrayList<Film>()
-        filmList.forEach { film ->
-            if (film.pictures.count() < film.nbPoses){
-                tempNotFull.add(film)
+            var tempList = List(filmList.size) {
+                filmList[it]
             }
-        }
-        tempList = List(tempNotFull.size){
-            tempNotFull[it]
-        }
 
-        filmsNotFull.postValue(tempList)
+            films.postValue(tempList)
+
+            val tempNotFull = ArrayList<Film>()
+            filmList.forEach { film ->
+                if (film.pictures.count() < film.nbPoses) {
+                    tempNotFull.add(film)
+                }
+            }
+            tempList = List(tempNotFull.size) {
+                tempNotFull[it]
+            }
+
+            filmsNotFull.postValue(tempList)
+        }
     }
 }
