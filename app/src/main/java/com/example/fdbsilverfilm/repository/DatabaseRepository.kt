@@ -10,6 +10,7 @@ class DatabaseRepository(private val databaseDAO: DatabaseDAO) {
     fun insertFilm(film: Film) = databaseDAO.addFilm(film)
     fun modifyFilm(film: Film) = databaseDAO.addFilm(film)
     fun deleteFilm(film: Film) = databaseDAO.deleteFilm(film)
+    fun getLastFilmId() = databaseDAO.getLastFilmId()
 
     // passer en live data
     fun getFilmByID(id: Int): Film = databaseDAO.getFilmByID(id)

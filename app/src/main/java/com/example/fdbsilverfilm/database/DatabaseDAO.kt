@@ -22,4 +22,7 @@ interface DatabaseDAO {
 
     @Update
     fun updatePictureOfFilm(film: Film)
+
+    @Query("SELECT MAX(id) FROM Films")
+    fun getLastFilmId(): Int
 }

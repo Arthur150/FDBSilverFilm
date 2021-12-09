@@ -12,9 +12,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FilmViewModel(private val context: Context) : ViewModel() {
-    private val film = MutableLiveData<Film>()
+    private val ld_film = MutableLiveData<Film>()
+    private var film : Film? = null
 
-    fun getFilm(): LiveData<Film> {
+    fun getFilm(): LiveData<Film?> {
+        return ld_film
+    }
+
+    fun getFilmValue(): Film?{
         return film
     }
 
@@ -22,7 +27,8 @@ class FilmViewModel(private val context: Context) : ViewModel() {
         val filmId = SharedPreferencesManager.loadCurrentFilm(context)
         if (filmId != -1) {
             viewModelScope.launch(Dispatchers.IO) {
-                film.postValue(DatabaseManager.repository.getFilmByID(filmId))
+                film = DatabaseManager.repository.getFilmByID(filmId)
+                ld_film.postValue(DatabaseManager.repository.getFilmByID(filmId))
             }
         }
     }
