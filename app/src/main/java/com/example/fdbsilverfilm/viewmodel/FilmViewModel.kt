@@ -4,8 +4,12 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.fdbsilverfilm.manager.DatabaseManager
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Film
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class FilmViewModel(private val context: Context) : ViewModel() {
     private val film = MutableLiveData<Film>()
@@ -17,7 +21,9 @@ class FilmViewModel(private val context: Context) : ViewModel() {
     fun loadFilm() {
         val filmId = SharedPreferencesManager.loadCurrentFilm(context)
         if (filmId != -1) {
-            //TODO get currentFilm and set film in viewModel
+            viewModelScope.launch(Dispatchers.IO) {
+                film.postValue(DatabaseManager.repository.getFilmByID(filmId))
+            }
         }
     }
 }
