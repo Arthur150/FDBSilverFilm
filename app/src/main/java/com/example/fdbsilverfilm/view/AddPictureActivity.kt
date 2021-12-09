@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
@@ -16,6 +17,9 @@ import com.example.fdbsilverfilm.model.Film
 import com.example.fdbsilverfilm.model.Meta
 import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
 import com.google.android.gms.location.LocationServices
+import android.location.Criteria
+import com.example.fdbsilverfilm.model.Globals
+
 
 class AddPictureActivity : AppCompatActivity() {
     @SuppressLint("MissingPermission")
@@ -36,7 +40,7 @@ class AddPictureActivity : AppCompatActivity() {
 
         val vm = PictureAddViewModel()
 
-        val film = intent.getSerializableExtra("filmToEdit") as Film
+        val film = intent.getSerializableExtra(Globals.FILM_EXTRA_TAG) as Film
 
 
         ArrayAdapter.createFromResource(
@@ -54,9 +58,15 @@ class AddPictureActivity : AppCompatActivity() {
                 if (!PermissionsManager.checkPermissions(this)){
                     PermissionsManager.requestPermissions(this)
                 }
-                lateinit var location : Location
-                val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-                fusedLocationClient.lastLocation.addOnSuccessListener { location = it }
+
+                val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
+
+                val location = locationManager?.getLastKnownLocation(
+                    locationManager.getBestProvider(
+                        Criteria(),
+                        true
+                    )!!)
+
 
 
                 vm.addPicture(
