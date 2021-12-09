@@ -1,7 +1,9 @@
 package com.example.fdbsilverfilm.view
 
 import android.annotation.SuppressLint
-import android.location.Criteria
+import android.app.AlertDialog
+import android.content.pm.PackageManager
+import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.widget.*
@@ -13,6 +15,8 @@ import com.example.fdbsilverfilm.model.Film
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Meta
 import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
+import com.google.android.gms.location.LocationServices
+import android.location.Criteria
 
 class AddPictureActivity : AppCompatActivity() {
     @SuppressLint("MissingPermission")
