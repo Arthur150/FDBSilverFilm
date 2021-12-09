@@ -3,25 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="175dp">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:contentDescription="@string/film_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/ic_film_roll_svgrepo_com"
+        tools:ignore="ImageContrastCheck"
+        tools:srcCompat="@drawable/ic_film_roll_svgrepo_com"
+        app:tint="@color/primary_grey" />
 
     <TextView
         android:id="@+id/filmItemIso"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.091"
@@ -30,9 +36,11 @@
 
     <TextView
         android:id="@+id/filmItemName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/name"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,9 +50,9 @@
 
     <TextView
         android:id="@+id/filmItemIsoLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/iso2"
         android:textSize="16sp"
@@ -53,10 +61,10 @@
 
     <TextView
         android:id="@+id/filmItemCountPictureLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/number_of_pictures2"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -64,12 +72,14 @@
 
     <TextView
         android:id="@+id/filmItemCountPictures"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toEndOf="@+id/filmItemCountPictureLabel"
-        app:layout_constraintTop_toBottomOf="@+id/filmItemName" />
+        app:layout_constraintTop_toBottomOf="@+id/filmItemIso" />
 </androidx.constraintlayout.widget.ConstraintLayout>

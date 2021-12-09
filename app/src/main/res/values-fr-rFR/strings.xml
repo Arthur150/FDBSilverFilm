@@ -18,4 +18,16 @@
     <string name="number_of_poses">Nombre de poses</string>
     <string name="create_a_film">Créer une pellicule</string>
     <string name="MyFilm">Ma pellicule</string>
+    <string name="create_a_picture">Prendre une photo</string>
+    <string name="title_of_your_picture">Titre de la photo</string>
+    <string name="camera_configuration">Configuration de la caméra</string>
+    <string name="slut">S*lope</string>
+    <string name="not_implemented_yet">Non disponible</string>
+    <string name="mode_picture_p">"P - Programme "</string>
+    <string name="mode_picture_a">A - Priorité à l\'ouverture</string>
+    <string name="mode_picture_s">S - Priorité à la vitesse</string>
+    <string name="mode_picture_m">M - Mode manuel</string>
+    <string name="checkForm">Veuillez remplir tous les champs</string>
+    <string name="number_of_poses2">Nombre de poses :</string>
+    <string name="number_of_pictures2">Nombre d\'images :</string>
 </resources>
