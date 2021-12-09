@@ -17,7 +17,7 @@ import com.example.fdbsilverfilm.model.Film
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun silverFilmDAO(): DatabaseDAO
+    abstract fun dao(): DatabaseDAO
 
     companion object {
         @Volatile
