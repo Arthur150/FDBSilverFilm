@@ -16,11 +16,11 @@ class PictureAddViewModel {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 film.pictures.add(
                     Picture(
-                        idPicture,
-                        film.id,
-                        pictureName,
-                        LocalDateTime.now().toString(),
-                        meta
+                        id= idPicture,
+                        id_film = film.id,
+                        title = pictureName,
+                        date = LocalDateTime.now().toString(),
+                        meta = meta
                     )
                 )
             }
