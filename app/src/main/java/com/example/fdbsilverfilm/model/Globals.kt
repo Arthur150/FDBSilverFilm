@@ -5,4 +5,5 @@ object Globals {
     val FILM_EXTRA_TAG = "film"
     val NOT_FULL_FILTER = 1
     val ALL_FILTER = 0
+    val CHANGE_ENABLE = true
 }

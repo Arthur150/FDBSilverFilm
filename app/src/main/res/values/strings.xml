@@ -53,6 +53,8 @@
     <string name="please_create_a_new_film">Please create a new film</string>
     <string name="change_film">Change film</string>
     <string name="brand2">Brand :</string>
+    <string name="no_name">No name</string>
+    <string name="can_not_take_picture_alert">The film is full. Please change the film</string>
     <string name="remaining_poses">remaining poses</string>
     <string name="zero" translatable="false">0</string>
     <string name="Loading">Loading...</string>

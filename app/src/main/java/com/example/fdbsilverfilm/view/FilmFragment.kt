@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.model.Globals
@@ -28,13 +30,27 @@ class FilmFragment : Fragment() {
         val pictureCountTextView = view.findViewById<TextView>(R.id.filmFragmentCountPicture)
 
         val takePictureButton = view.findViewById<Button>(R.id.filmFragmentTakePictureButton)
+        val changeFilmButton = view.findViewById<Button>(R.id.filmFragmentChangeFilmButton)
+
+        model.getFilm().observe(viewLifecycleOwner, { film ->
+            nameTextView.text = film.name
+            isoTextView.text = film.iso.toString()
+            brandTextView.text = film.brand
+            pictureCountTextView.text = "${film.pictures.count()}/${film.nbPoses}"
+            if (film.pictures.count() < film.nbPoses) {
+                takePictureButton.isEnabled = true
+            } else {
+                takePictureButton.isEnabled = false
+                AlertDialog.Builder(requireContext()).setTitle(R.string.can_not_take_picture_alert).create()
+            }
+        })
+
         takePictureButton.setOnClickListener {
-            val intent = Intent(context, AddPictureActivity::class.java)
+            val intent = Intent(requireContext(), AddPictureActivity::class.java)
             intent.putExtra(Globals.FILM_EXTRA_TAG, model.getFilm().value)
             startActivity(intent)
         }
 
-        val changeFilmButton = view.findViewById<Button>(R.id.filmFragmentChangeFilmButton)
         changeFilmButton.setOnClickListener {
             val intent = Intent(requireContext(), FilmListActivity::class.java)
             intent.putExtra("filter", Globals.NOT_FULL_FILTER)
