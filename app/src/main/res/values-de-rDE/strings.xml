@@ -20,7 +20,7 @@
     <string name="MyFilm">Mein Film</string>
     <string name="slut">Schlampe</string>
     <string name="not_implemented_yet">Noch nicht umgesetzt</string>
-    <string name="create_a_picture">Machen Sie ein Foto</string>
+    <string name="take_a_picture">Machen Sie ein Foto</string>
     <string name="title_of_your_picture">Titel des Fotos</string>
     <string name="camera_configuration">Konfiguration der Kamera</string>
     <string name="mode_picture_p">P - Programm</string>
@@ -30,4 +30,12 @@
     <string name="checkForm">Bitte füllen Sie alle Felder aus</string>
     <string name="number_of_poses2">Anzahl der Posen :</string>
     <string name="number_of_pictures2">Anzahl der Bilder :</string>
+    <string name="select_a_film">Wählen Sie einen Film</string>
+    <string name="no_film_selected">Kein Film ausgewählt</string>
+    <string name="no_existing_film">Kein vorhandener Film</string>
+    <string name="please_create_a_new_film">Bitte erstellen Sie einen neuen Film</string>
+    <string name="change_film">Den Film wechseln</string>
+    <string name="brand2">Marke :</string>
+    <string name="remaining_poses">übrige Posen</string>
+    <string name="Loading">Laden...</string>
 </resources>

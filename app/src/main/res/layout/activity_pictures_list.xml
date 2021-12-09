@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/secondary_variant_grey"
     tools:context=".view.PicturesListActivity">
 
     <TextView
@@ -30,4 +31,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pictures_list_title"
         tools:listitem="@layout/picture_item" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/pictures_list_recycler_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

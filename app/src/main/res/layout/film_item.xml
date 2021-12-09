@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/secondary_variant_grey">
 
     <ImageView
         android:id="@+id/imageView"
@@ -17,9 +18,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_film_roll_svgrepo_com"
+        app:tint="@color/primary_grey"
         tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@drawable/ic_film_roll_svgrepo_com"
-        app:tint="@color/primary_grey" />
+        tools:srcCompat="@drawable/ic_film_roll_svgrepo_com" />
 
     <TextView
         android:id="@+id/filmItemIso"
