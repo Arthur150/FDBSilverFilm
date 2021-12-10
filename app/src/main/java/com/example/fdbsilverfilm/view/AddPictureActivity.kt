@@ -8,7 +8,10 @@ import android.location.Criteria
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Spinner
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -21,11 +24,11 @@ import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
 class AddPictureActivity : AppCompatActivity() {
     private var location: Location? = null
 
-    lateinit var focal: EditText
-    lateinit var lens: EditText
-    lateinit var opening: EditText
-    lateinit var time: EditText
-    lateinit var title: EditText
+    private lateinit var focal: EditText
+    private lateinit var lens: EditText
+    private lateinit var opening: EditText
+    private lateinit var time: EditText
+    private lateinit var title: EditText
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -111,7 +114,6 @@ class AddPictureActivity : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
-
                 }
             }
         })
@@ -130,7 +132,6 @@ class AddPictureActivity : AppCompatActivity() {
 
     private fun checkForm(): Boolean {
         var isOk = true
-
 
         if (focal.text.isEmpty() || focal.text.isBlank()) {
             focal.error = getString(R.string.check_form_field)
