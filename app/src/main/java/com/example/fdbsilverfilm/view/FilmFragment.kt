@@ -30,6 +30,23 @@ class FilmFragment : Fragment() {
 
         val takePictureButton = view.findViewById<Button>(R.id.filmFragmentTakePictureButton)
         val changeFilmButton = view.findViewById<Button>(R.id.filmFragmentChangeFilmButton)
+        val showPicturesButton = view.findViewById<Button>(R.id.filmFragmentShowPictureButton)
+
+        model.getFilmValue()?.let { film ->
+            if (film.pictures.size < film.nbPoses) {
+                takePictureButton.isEnabled = true
+            }
+            if (film.pictures.size > 0) {
+                showPicturesButton.isEnabled = true
+            }
+
+        }
+
+        showPicturesButton.setOnClickListener {
+            val intent = Intent(requireContext(), PicturesListActivity::class.java)
+            intent.putExtra(Globals.FILM_EXTRA_TAG, model.getFilmValue()?.id)
+            startActivity(intent)
+        }
 
         model.getFilm().observe(viewLifecycleOwner, { film ->
             if (film != null) {
@@ -37,12 +54,25 @@ class FilmFragment : Fragment() {
                 isoTextView.text = film.iso.toString()
                 brandTextView.text = film.brand
                 pictureCountTextView.text = "${film.pictures.count()}/${film.nbPoses}"
-                if (film.pictures.count() < film.nbPoses) {
+                showPicturesButton.isEnabled = film.pictures.size > 0
+
+                if (film.pictures.size < film.nbPoses) {
                     takePictureButton.isEnabled = true
                 } else {
                     takePictureButton.isEnabled = false
                     AlertDialog.Builder(requireContext())
-                        .setTitle(R.string.can_not_take_picture_alert).create()
+
+                        .setIcon(R.drawable.ic_film_roll_svgrepo_com)
+                        .setTitle(R.string.can_not_take_picture_alert_title)
+                        .setMessage(R.string.can_not_take_picture_alert)
+                        .setPositiveButton(R.string.change_film) { dialog, which ->
+                            startFilmListActivity()
+                        }
+                        .setNeutralButton(R.string.ok) { dialog, which ->
+                            dialog.dismiss()
+                        }
+                        .create().show()
+
                 }
             }
 
@@ -57,14 +87,18 @@ class FilmFragment : Fragment() {
         }
 
         changeFilmButton.setOnClickListener {
-            val intent = Intent(requireContext(), FilmListActivity::class.java)
-            intent.putExtra("filter", Globals.NOT_FULL_FILTER)
-            startActivity(intent)
+            startFilmListActivity()
         }
 
 
 
         return view
+    }
+
+    fun startFilmListActivity() {
+        val intent = Intent(requireContext(), FilmListActivity::class.java)
+        //intent.putExtra("filter", Globals.NOT_FULL_FILTER)
+        startActivity(intent)
     }
 
 }

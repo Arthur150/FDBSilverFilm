@@ -12,7 +12,7 @@ object PermissionsManager {
         Manifest.permission.ACCESS_COARSE_LOCATION,
         Manifest.permission.ACCESS_FINE_LOCATION
     )
-    private var request_code = 0
+    private var request_code = 34
 
     /**
      * Check all permissions of the application.

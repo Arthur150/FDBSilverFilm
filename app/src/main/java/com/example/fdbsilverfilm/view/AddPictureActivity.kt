@@ -1,13 +1,12 @@
 package com.example.fdbsilverfilm.view
 
-import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.location.Criteria
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
+import android.widget.*
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -20,9 +19,16 @@ import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Meta
 import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import android.location.Criteria
+import android.util.Log
+import java.lang.Exception
+
 
 class AddPictureActivity : AppCompatActivity() {
     private var location: Location? = null
+
 
     private lateinit var focal: EditText
     private lateinit var lens: EditText
@@ -30,19 +36,26 @@ class AddPictureActivity : AppCompatActivity() {
     private lateinit var time: EditText
     private lateinit var title: EditText
 
+
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_picture)
 
+        if (!PermissionsManager.checkPermissions(this)) {
+            PermissionsManager.requestPermissions(this)
+        } else {
+            loadCoordinates()
+        }
+
+       
         focal = findViewById(R.id.addPictureFocal)
         lens = findViewById(R.id.addPictureLens)
         opening = findViewById(R.id.addPictureOpening)
         time = findViewById(R.id.addPictureTime)
         title = findViewById(R.id.addPictureTitle)
+
         val modeSpinner = findViewById<Spinner>(R.id.addPictureMode)
-
-
         val button = findViewById<Button>(R.id.addPictureButton)
 
 
@@ -94,13 +107,15 @@ class AddPictureActivity : AppCompatActivity() {
             button.setOnClickListener {
                 if (checkForm()) {
 
+
                     val meta = Meta(
                         focal = focal.text.toString().toFloat(),
                         opening = opening.text.toString().toFloat(),
                         time = time.text.toString().toDouble(),
                         mode = modeSpinner.selectedItem.toString(),
                         lens = lens.text.toString(),
-                        coordinates = location
+                        latitude = location?.latitude ?: 0.0,
+                        longitude = location?.longitude ?: 0.0
                     )
 
                     vm.addPicture(
@@ -121,14 +136,12 @@ class AddPictureActivity : AppCompatActivity() {
 
     @SuppressLint("MissingPermission")
     private fun loadCoordinates() {
-        val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
-        location = locationManager?.getLastKnownLocation(
-            locationManager.getBestProvider(
-                Criteria(),
-                true
-            )!!
-        )
+        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        fusedLocationClient.lastLocation.addOnSuccessListener { location = it }
     }
+
+
+        
 
 
 
@@ -188,3 +201,4 @@ class AddPictureActivity : AppCompatActivity() {
         return isOk
     }
 }
+

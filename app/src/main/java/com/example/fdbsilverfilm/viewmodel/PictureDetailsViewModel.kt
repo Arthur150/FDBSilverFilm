@@ -16,7 +16,7 @@ class PictureDetailsViewModel(var picture: Picture) : ViewModel() {
         arrayList.add(picture.meta.mode)
         arrayList.add(picture.meta.lens)
         arrayList.add(picture.date)
-        arrayList.add("${picture.meta.coordinates?.latitude} , ${picture.meta.coordinates?.longitude}")
+        arrayList.add("${picture.meta.latitude} , ${picture.meta.longitude}")
         data = arrayList.toList()
     }
 

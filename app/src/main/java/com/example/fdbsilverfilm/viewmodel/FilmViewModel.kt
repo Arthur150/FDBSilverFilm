@@ -12,11 +12,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FilmViewModel(private val context: Context) : ViewModel() {
-    private val ld_film = MutableLiveData<Film>()
-    private var film: Film? = null
+    private val ldFilm = MutableLiveData<Film>()
+    private var film : Film? = null
+
 
     fun getFilm(): LiveData<Film?> {
-        return ld_film
+        return ldFilm
     }
 
     fun getFilmValue(): Film? {
@@ -28,7 +29,7 @@ class FilmViewModel(private val context: Context) : ViewModel() {
         if (filmId != -1) {
             viewModelScope.launch(Dispatchers.IO) {
                 film = DatabaseManager.repository.getFilmByID(filmId)
-                ld_film.postValue(DatabaseManager.repository.getFilmByID(filmId))
+                ldFilm.postValue(DatabaseManager.repository.getFilmByID(filmId))
             }
         }
     }
