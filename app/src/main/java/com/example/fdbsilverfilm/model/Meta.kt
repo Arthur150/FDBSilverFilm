@@ -8,6 +8,7 @@ data class Meta(
     val opening: Float = 0.0f,
     val time: Double = 0.0,
     val mode: String,
-    val coordinates : Location?,
+    val longitude : Double,
+    val latitude : Double,
     val lens: String
 ) : Serializable
