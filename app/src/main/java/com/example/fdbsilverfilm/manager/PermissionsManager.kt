@@ -19,9 +19,13 @@ object PermissionsManager {
      * @param context Context of the activity.
      * @return true if all permissions are granted, false else.
      */
-    fun checkPermissions(context: Context) : Boolean {
-        for (permission in PERMISSIONS){
-            if (ActivityCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_DENIED)
+    fun checkPermissions(context: Context): Boolean {
+        for (permission in PERMISSIONS) {
+            if (ActivityCompat.checkSelfPermission(
+                    context,
+                    permission
+                ) == PackageManager.PERMISSION_DENIED
+            )
                 return false
         }
         return true

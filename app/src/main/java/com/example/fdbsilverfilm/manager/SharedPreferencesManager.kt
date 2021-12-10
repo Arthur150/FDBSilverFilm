@@ -47,6 +47,5 @@ object SharedPreferencesManager {
         val sharedPreferences: SharedPreferences = context.getSharedPreferences(CURRENT_FILM, 0)
 
         return sharedPreferences.getInt(CURRENT_FILM, -1)
-
     }
 }

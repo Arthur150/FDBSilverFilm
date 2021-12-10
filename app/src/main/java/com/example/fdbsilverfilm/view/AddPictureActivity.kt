@@ -7,10 +7,14 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Spinner
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.fdbsilverfilm.R
-import com.example.fdbsilverfilm.manager.PermissionsManager
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Meta
@@ -25,6 +29,14 @@ import java.lang.Exception
 class AddPictureActivity : AppCompatActivity() {
     private var location: Location? = null
 
+
+    private lateinit var focal: EditText
+    private lateinit var lens: EditText
+    private lateinit var opening: EditText
+    private lateinit var time: EditText
+    private lateinit var title: EditText
+
+
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +48,14 @@ class AddPictureActivity : AppCompatActivity() {
             loadCoordinates()
         }
 
-        val focal = findViewById<EditText>(R.id.addPictureFocal)
-        val lens = findViewById<EditText>(R.id.addPictureLens)
-        val modeSpinner = findViewById<Spinner>(R.id.addPictureMode)
-        val opening = findViewById<EditText>(R.id.addPictureOpening)
-        val time = findViewById<EditText>(R.id.addPictureTime)
-        val title = findViewById<EditText>(R.id.addPictureTitle)
+       
+        focal = findViewById(R.id.addPictureFocal)
+        lens = findViewById(R.id.addPictureLens)
+        opening = findViewById(R.id.addPictureOpening)
+        time = findViewById(R.id.addPictureTime)
+        title = findViewById(R.id.addPictureTitle)
 
+        val modeSpinner = findViewById<Spinner>(R.id.addPictureMode)
         val button = findViewById<Button>(R.id.addPictureButton)
 
 
@@ -70,10 +83,31 @@ class AddPictureActivity : AppCompatActivity() {
             }
         }
 
-        vm.getFilm().observe(this, { film ->
+        val requestPermissionLauncher =
+            registerForActivityResult(
+                ActivityResultContracts.RequestPermission()
+            ) { isGranted: Boolean ->
+                if (isGranted) {
+                    loadCoordinates()
+                } else {
+                    finish()
+                }
+            }
+
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_DENIED
+        ) {
+            requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
+        }
+
+        vm.getFilm().observe(this, {
             button.isEnabled = true
             button.setOnClickListener {
-                if (focal.text.isNotEmpty() && lens.text.isNotEmpty() && opening.text.isNotEmpty() && time.text.isNotEmpty() && title.text.isNotEmpty()) {
+                if (checkForm()) {
+
+
                     val meta = Meta(
                         focal = focal.text.toString().toFloat(),
                         opening = opening.text.toString().toFloat(),
@@ -95,9 +129,6 @@ class AddPictureActivity : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
-
-                } else {
-                    Toast.makeText(this, getString(R.string.checkForm), Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -108,4 +139,66 @@ class AddPictureActivity : AppCompatActivity() {
         val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         fusedLocationClient.lastLocation.addOnSuccessListener { location = it }
     }
+
+
+        
+
+
+
+    private fun checkForm(): Boolean {
+        var isOk = true
+
+        if (focal.text.isEmpty() || focal.text.isBlank()) {
+            focal.error = getString(R.string.check_form_field)
+            isOk = false
+        } else {
+            if (!Globals.regexDecimal(focal.text.toString())) {
+                focal.error = getString(R.string.check_form_regex_decimal)
+                isOk = false
+            } else {
+                focal.error = null
+            }
+        }
+
+        if (opening.text.isEmpty() || opening.text.isBlank()) {
+            opening.error = getString(R.string.check_form_field)
+            isOk = false
+        } else {
+            if (!Globals.regexDecimal(opening.text.toString())) {
+                opening.error = getString(R.string.check_form_regex_decimal)
+                isOk = false
+            } else {
+                opening.error = null
+            }
+        }
+
+        if (time.text.isEmpty() || time.text.isBlank()) {
+            time.error = getString(R.string.check_form_field)
+            isOk = false
+        } else {
+            if (!Globals.regexDecimal(time.text.toString())) {
+                time.error = getString(R.string.check_form_regex_decimal)
+                isOk = false
+            } else {
+                time.error = null
+            }
+        }
+
+        if (lens.text.isEmpty() || lens.text.isBlank()) {
+            lens.error = getString(R.string.check_form_field)
+            isOk = false
+        } else {
+            lens.error = null
+        }
+
+        if (title.text.isEmpty() || title.text.isBlank()) {
+            title.error = getString(R.string.check_form_field)
+            isOk = false
+        } else {
+            title.error = null
+        }
+
+        return isOk
+    }
 }
+

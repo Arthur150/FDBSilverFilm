@@ -61,6 +61,7 @@ class FilmFragment : Fragment() {
                 } else {
                     takePictureButton.isEnabled = false
                     AlertDialog.Builder(requireContext())
+
                         .setIcon(R.drawable.ic_film_roll_svgrepo_com)
                         .setTitle(R.string.can_not_take_picture_alert_title)
                         .setMessage(R.string.can_not_take_picture_alert)
@@ -71,6 +72,7 @@ class FilmFragment : Fragment() {
                             dialog.dismiss()
                         }
                         .create().show()
+
                 }
             }
 

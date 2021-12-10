@@ -15,11 +15,12 @@ class FilmViewModel(private val context: Context) : ViewModel() {
     private val ldFilm = MutableLiveData<Film>()
     private var film : Film? = null
 
+
     fun getFilm(): LiveData<Film?> {
         return ldFilm
     }
 
-    fun getFilmValue(): Film?{
+    fun getFilmValue(): Film? {
         return film
     }
 

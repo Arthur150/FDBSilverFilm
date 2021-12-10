@@ -12,10 +12,11 @@ import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Picture
 import com.example.fdbsilverfilm.view.PictureDetailsActivity
 
-class PicturesListAdapter(private val list : List<Picture>?, private val context: Context) : RecyclerView.Adapter<PicturesListAdapter.PicturesListViewHolder>() {
+class PicturesListAdapter(private val list: List<Picture>?, private val context: Context) :
+    RecyclerView.Adapter<PicturesListAdapter.PicturesListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PicturesListViewHolder {
-        val root = LayoutInflater.from(parent.context).inflate(R.layout.picture_item,parent,false)
+        val root = LayoutInflater.from(parent.context).inflate(R.layout.picture_item, parent, false)
         return PicturesListViewHolder(root)
     }
 
@@ -33,11 +34,12 @@ class PicturesListAdapter(private val list : List<Picture>?, private val context
         return list?.size ?: 0
     }
 
-    inner class PicturesListViewHolder(private val binding: View) : RecyclerView.ViewHolder(binding) {
+    inner class PicturesListViewHolder(private val binding: View) :
+        RecyclerView.ViewHolder(binding) {
         private val title: TextView = binding.findViewById(R.id.title_picture_item)
         private val date: TextView = binding.findViewById(R.id.date_picture_item)
 
-        fun bind(picture : Picture?){
+        fun bind(picture: Picture?) {
             title.text = picture?.title
             date.text = picture?.date
         }

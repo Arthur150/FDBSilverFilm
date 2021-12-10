@@ -55,12 +55,10 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:contentDescription="@string/film_image"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_film_roll_svgrepo_com"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/filmFragmentFilmName"
-        app:srcCompat="@drawable/ic_film_roll_svgrepo_com"
-        app:tint="@color/primary_grey"
-        tools:srcCompat="@drawable/ic_film_roll_svgrepo_com" />
+        app:tint="@color/primary_grey" />
 
     <Button
         android:id="@+id/filmFragmentTakePictureButton"

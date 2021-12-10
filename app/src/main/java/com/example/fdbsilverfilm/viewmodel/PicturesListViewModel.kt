@@ -11,6 +11,7 @@ import com.example.fdbsilverfilm.model.Picture
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+
 class PicturesListViewModel(private val filmId : Int) : ViewModel() {
     private val film = MutableLiveData<Film>()
 
@@ -25,5 +26,4 @@ class PicturesListViewModel(private val filmId : Int) : ViewModel() {
             }
         }
     }
-
 }
