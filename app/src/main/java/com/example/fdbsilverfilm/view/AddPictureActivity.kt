@@ -1,40 +1,34 @@
 package com.example.fdbsilverfilm.view
 
-import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.location.Criteria
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
-import android.provider.Settings
-import android.util.Log
-import android.view.View
 import android.widget.*
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.manager.PermissionsManager
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
-import com.example.fdbsilverfilm.model.Film
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Meta
 import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import android.location.Criteria
+import android.util.Log
+import java.lang.Exception
+
 
 class AddPictureActivity : AppCompatActivity() {
     private var location: Location? = null
-    private var fusedLocationClient : FusedLocationProviderClient? = null
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_picture)
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         if (!PermissionsManager.checkPermissions(this)) {
             PermissionsManager.requestPermissions(this)
@@ -111,15 +105,7 @@ class AddPictureActivity : AppCompatActivity() {
 
     @SuppressLint("MissingPermission")
     private fun loadCoordinates() {
-        fusedLocationClient?.lastLocation
-            ?.addOnCompleteListener(this) { task ->
-                if (task.isSuccessful && task.result != null) {
-                    location = task.result
-                } else {
-                    Log.w("TAG", "getLastLocation:exception", task.exception)
-                    Toast.makeText(this, "getLastLocation:exception", Toast.LENGTH_LONG).show()
-                }
-            }
+        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        fusedLocationClient.lastLocation.addOnSuccessListener { location = it }
     }
-
 }
