@@ -32,4 +32,9 @@ class PictureDetailsActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.finish()
+    }
 }

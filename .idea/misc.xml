@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../Library/Android/sdk/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.42916666666666664" />
+        <entry key="..\:/.Perso/Dev/PTUT/FDBSilverFilm/app/src/main/res/layout/activity_add_picture.xml" value="0.3359375" />
+        <entry key="..\:/.Perso/Dev/PTUT/FDBSilverFilm/app/src/main/res/layout/activity_film_list.xml" value="0.3359375" />
+        <entry key="..\:/.Perso/Dev/PTUT/FDBSilverFilm/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_add_film.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_add_picture.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_film.xml" value="0.5" />

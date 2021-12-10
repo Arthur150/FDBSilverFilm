@@ -45,6 +45,10 @@ class FilmListActivity : AppCompatActivity() {
                 filmAdapter?.updateValue(films)
             })
         }
+    }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.finish()
     }
 }
