@@ -58,4 +58,6 @@
     <string name="remaining_poses">remaining poses</string>
     <string name="zero" translatable="false">0</string>
     <string name="Loading">Loading...</string>
+    <string name="checKformField">Please fill this field</string>
+    <string name="checkformIntRegex">Please enter a whole number</string>
 </resources>

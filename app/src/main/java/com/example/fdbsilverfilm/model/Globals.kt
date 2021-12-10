@@ -1,9 +1,14 @@
 package com.example.fdbsilverfilm.model
 
 object Globals {
-    val PICTURE_EXTRA_TAG = "picture"
-    val FILM_EXTRA_TAG = "film"
-    val NOT_FULL_FILTER = 1
-    val ALL_FILTER = 0
-    val CREATE_FIRST = true
+    const val PICTURE_EXTRA_TAG = "picture"
+    const val FILM_EXTRA_TAG = "film"
+    const val NOT_FULL_FILTER = 1
+    const val ALL_FILTER = 0
+    const val CREATE_FIRST = true
+
+
+    fun regexInt(string: String): Boolean {
+        return string.matches(Regex("^[1-9]\\d*\$"))
+    }
 }
