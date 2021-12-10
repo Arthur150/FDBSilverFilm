@@ -1,29 +1,21 @@
 package com.example.fdbsilverfilm.view
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.location.Location
-import android.location.LocationManager
 import android.os.Bundle
-import android.widget.*
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.example.fdbsilverfilm.R
+import com.example.fdbsilverfilm.manager.PermissionsManager
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Meta
 import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
-import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import android.location.Criteria
-import android.util.Log
-import java.lang.Exception
 
 
 class AddPictureActivity : AppCompatActivity() {
@@ -48,7 +40,7 @@ class AddPictureActivity : AppCompatActivity() {
             loadCoordinates()
         }
 
-       
+
         focal = findViewById(R.id.addPictureFocal)
         lens = findViewById(R.id.addPictureLens)
         opening = findViewById(R.id.addPictureOpening)
@@ -83,31 +75,10 @@ class AddPictureActivity : AppCompatActivity() {
             }
         }
 
-        val requestPermissionLauncher =
-            registerForActivityResult(
-                ActivityResultContracts.RequestPermission()
-            ) { isGranted: Boolean ->
-                if (isGranted) {
-                    loadCoordinates()
-                } else {
-                    finish()
-                }
-            }
-
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_DENIED
-        ) {
-            requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
-        }
-
         vm.getFilm().observe(this, {
             button.isEnabled = true
             button.setOnClickListener {
                 if (checkForm()) {
-
-
                     val meta = Meta(
                         focal = focal.text.toString().toFloat(),
                         opening = opening.text.toString().toFloat(),
@@ -136,13 +107,10 @@ class AddPictureActivity : AppCompatActivity() {
 
     @SuppressLint("MissingPermission")
     private fun loadCoordinates() {
+        //todo première photo pas les coord mais la deuxième c'est bon
         val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         fusedLocationClient.lastLocation.addOnSuccessListener { location = it }
     }
-
-
-        
-
 
 
     private fun checkForm(): Boolean {

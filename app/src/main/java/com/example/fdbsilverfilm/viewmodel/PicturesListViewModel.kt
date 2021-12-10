@@ -5,14 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fdbsilverfilm.manager.DatabaseManager
-import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Film
-import com.example.fdbsilverfilm.model.Picture
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class PicturesListViewModel(private val filmId : Int) : ViewModel() {
+class PicturesListViewModel(private val filmId: Int) : ViewModel() {
     private val film = MutableLiveData<Film>()
 
     fun getFilm(): LiveData<Film> {

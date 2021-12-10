@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class FilmViewModel(private val context: Context) : ViewModel() {
     private val ldFilm = MutableLiveData<Film>()
-    private var film : Film? = null
+    private var film: Film? = null
 
 
     fun getFilm(): LiveData<Film?> {
