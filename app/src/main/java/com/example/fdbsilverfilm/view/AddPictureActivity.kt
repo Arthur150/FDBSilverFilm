@@ -8,6 +8,7 @@ import android.location.Criteria
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
+import android.provider.Settings
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -21,7 +22,7 @@ import com.example.fdbsilverfilm.model.Meta
 import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
 
 class AddPictureActivity : AppCompatActivity() {
-    private var location : Location? = null
+    private var location: Location? = null
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,7 +74,11 @@ class AddPictureActivity : AppCompatActivity() {
                 }
             }
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_DENIED) {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_DENIED
+        ) {
             requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
         }
 
@@ -111,14 +116,20 @@ class AddPictureActivity : AppCompatActivity() {
     }
 
     @SuppressLint("MissingPermission")
-    private fun loadCoordinates(){
+    private fun loadCoordinates() {
         val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
-        location = locationManager?.getLastKnownLocation(
-            locationManager.getBestProvider(
-                Criteria(),
-                true
-            )!!
-        )
+        if (locationManager != null) {
+            if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+            } else {
+                location = locationManager.getLastKnownLocation(
+                    locationManager.getBestProvider(
+                        Criteria(),
+                        true
+                    )!!
+                )
+            }
+        }
     }
 
 }

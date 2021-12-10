@@ -11,17 +11,20 @@ import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.viewmodel.PicturesListViewModel
 
 class PicturesListActivity : AppCompatActivity() {
-    var vm : PicturesListViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pictures_list)
 
-        vm = PicturesListViewModel(intent.getSerializableExtra(Globals.FILM_EXTRA_TAG) as Film)
+        val vm = PicturesListViewModel(intent.getIntExtra(Globals.FILM_EXTRA_TAG,-1))
+        vm.loadFilm()
 
         val recyclerView : RecyclerView = findViewById(R.id.pictures_list_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = PicturesListAdapter(vm?.data, this)
+
+        vm.getFilm().observe(this,{ film ->
+            recyclerView.adapter = PicturesListAdapter(film.pictures,this)
+        })
 
     }
 

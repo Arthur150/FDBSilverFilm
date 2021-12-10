@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fdbsilverfilm.R
+import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Picture
 import com.example.fdbsilverfilm.view.PictureDetailsActivity
 
@@ -23,7 +24,7 @@ class PicturesListAdapter(private val list : List<Picture>?, private val context
         holder.itemView.setOnClickListener {
             val picture = list?.get(position)
             val intent = Intent(context, PictureDetailsActivity::class.java)
-            intent.putExtra("comic", picture)
+            intent.putExtra(Globals.PICTURE_EXTRA_TAG, picture)
             context.startActivity(intent)
         }
     }

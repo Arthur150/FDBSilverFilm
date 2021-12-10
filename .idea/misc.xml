@@ -9,7 +9,8 @@
         <entry key="..\:/.Perso/Dev/PTUT/FDBSilverFilm/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_add_film.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_add_picture.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/fragment_film.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_film.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/picture_item.xml" value="0.22916666666666666" />
       </map>
     </option>
   </component>
