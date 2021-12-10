@@ -24,7 +24,10 @@ class FilmAddViewModel(private val context: Context, var film: Film?) : ViewMode
 
         viewModelScope.launch(Dispatchers.IO) {
             film?.let { DatabaseManager.repository.insertFilm(it) }
-            SharedPreferencesManager.saveCurrentFilm(context,DatabaseManager.repository.getLastFilmId())
+            SharedPreferencesManager.saveCurrentFilm(
+                context,
+                DatabaseManager.repository.getLastFilmId()
+            )
         }
 
     }

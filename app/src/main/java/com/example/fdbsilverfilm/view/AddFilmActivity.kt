@@ -1,10 +1,10 @@
 package com.example.fdbsilverfilm.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.model.Film
 import com.example.fdbsilverfilm.viewmodel.FilmAddViewModel
@@ -22,7 +22,7 @@ class AddFilmActivity : AppCompatActivity() {
         val name = findViewById<EditText>(R.id.addFilmName)
         val button = findViewById<Button>(R.id.addFilmSaveButton)
 
-        val vm = FilmAddViewModel(this,intent.getSerializableExtra("filmToEdit") as Film?)
+        val vm = FilmAddViewModel(this, intent.getSerializableExtra("filmToEdit") as Film?)
 
         ArrayAdapter.createFromResource(
             this,
@@ -32,7 +32,7 @@ class AddFilmActivity : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
 
-            if(vm.film != null) {
+            if (vm.film != null) {
                 spinner.setSelection(adapter.getPosition(vm.film?.type))
                 iso.setText(vm.film?.iso.toString())
                 nbPoses.setText(vm.film?.nbPoses.toString())
@@ -41,33 +41,33 @@ class AddFilmActivity : AppCompatActivity() {
             }
         }
 
-            button.setOnClickListener {
+        button.setOnClickListener {
 
-                if (brand.text.isNotEmpty() && iso.text.isNotEmpty() && nbPoses.text.isNotEmpty()) {
+            if (brand.text.isNotEmpty() && iso.text.isNotEmpty() && nbPoses.text.isNotEmpty()) {
 
-                    vm.setFilm(
-                        iso.text.toString().toInt(),
-                        nbPoses.text.toString().toInt(),
-                        brand.text.toString(),
-                        spinner.selectedItem.toString(),
-                        name.text.toString()
-                    )
+                vm.setFilm(
+                    iso.text.toString().toInt(),
+                    nbPoses.text.toString().toInt(),
+                    brand.text.toString(),
+                    spinner.selectedItem.toString(),
+                    name.text.toString()
+                )
 
-                    Log.d("addFilm", "onCreate: ${vm.film}")
+                Log.d("addFilm", "onCreate: ${vm.film}")
 
-                    if (intent.getBooleanExtra("createFirst",false)){
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        val intent = Intent(this, FilmListActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    }
-
+                if (intent.getBooleanExtra("createFirst", false)) {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 } else {
-                    Toast.makeText(this, getString(R.string.checkForm), Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, FilmListActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
+
+            } else {
+                Toast.makeText(this, getString(R.string.checkForm), Toast.LENGTH_SHORT).show()
             }
+        }
     }
 }

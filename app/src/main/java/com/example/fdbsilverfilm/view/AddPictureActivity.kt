@@ -13,15 +13,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.fdbsilverfilm.R
-import com.example.fdbsilverfilm.manager.PermissionsManager
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
-import com.example.fdbsilverfilm.model.Film
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Meta
 import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
 
 class AddPictureActivity : AppCompatActivity() {
-    private var location : Location? = null
+    private var location: Location? = null
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,11 +71,15 @@ class AddPictureActivity : AppCompatActivity() {
                 }
             }
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_DENIED) {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_DENIED
+        ) {
             requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
         }
 
-        vm.getFilm().observe(this, { film ->
+        vm.getFilm().observe(this, {
             button.isEnabled = true
             button.setOnClickListener {
                 if (focal.text.isNotEmpty() && lens.text.isNotEmpty() && opening.text.isNotEmpty() && time.text.isNotEmpty() && title.text.isNotEmpty()) {
@@ -111,7 +113,7 @@ class AddPictureActivity : AppCompatActivity() {
     }
 
     @SuppressLint("MissingPermission")
-    private fun loadCoordinates(){
+    private fun loadCoordinates() {
         val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
         location = locationManager?.getLastKnownLocation(
             locationManager.getBestProvider(
