@@ -130,6 +130,8 @@ class AddPictureActivity : AppCompatActivity() {
         )
     }
 
+
+
     private fun checkForm(): Boolean {
         var isOk = true
 
@@ -173,14 +175,14 @@ class AddPictureActivity : AppCompatActivity() {
             lens.error = getString(R.string.check_form_field)
             isOk = false
         } else {
-            isOk = false
+            lens.error = null
         }
 
         if (title.text.isEmpty() || title.text.isBlank()) {
             title.error = getString(R.string.check_form_field)
             isOk = false
         } else {
-            isOk = false
+            title.error = null
         }
 
         return isOk
