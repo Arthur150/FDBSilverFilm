@@ -19,9 +19,6 @@ import com.google.android.gms.location.LocationServices
 
 
 class AddPictureActivity : AppCompatActivity() {
-    private var location: Location? = null
-
-
     private lateinit var focal: EditText
     private lateinit var lens: EditText
     private lateinit var opening: EditText
@@ -34,12 +31,6 @@ class AddPictureActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_picture)
 
-        if (!PermissionsManager.checkPermissions(this)) {
-            PermissionsManager.requestPermissions(this)
-        } else {
-            loadCoordinates()
-        }
-
 
         focal = findViewById(R.id.addPictureFocal)
         lens = findViewById(R.id.addPictureLens)
@@ -51,7 +42,7 @@ class AddPictureActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.addPictureButton)
 
 
-        val vm = PictureAddViewModel(intent.getIntExtra(Globals.FILM_EXTRA_TAG, -1))
+        val vm = PictureAddViewModel(intent.getIntExtra(Globals.FILM_EXTRA_TAG, -1), this)
         vm.loadFilm()
 
         ArrayAdapter.createFromResource(
@@ -85,8 +76,8 @@ class AddPictureActivity : AppCompatActivity() {
                         time = time.text.toString().toDouble(),
                         mode = modeSpinner.selectedItem.toString(),
                         lens = lens.text.toString(),
-                        latitude = location?.latitude ?: 0.0,
-                        longitude = location?.longitude ?: 0.0
+                        latitude = vm.location?.latitude?: 0.0,
+                        longitude = vm.location?.longitude ?: 0.0
                     )
 
                     vm.addPicture(
@@ -104,14 +95,6 @@ class AddPictureActivity : AppCompatActivity() {
             }
         })
     }
-
-    @SuppressLint("MissingPermission")
-    private fun loadCoordinates() {
-        //todo première photo pas les coord mais la deuxième c'est bon
-        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        fusedLocationClient.lastLocation.addOnSuccessListener { location = it }
-    }
-
 
     private fun checkForm(): Boolean {
         var isOk = true

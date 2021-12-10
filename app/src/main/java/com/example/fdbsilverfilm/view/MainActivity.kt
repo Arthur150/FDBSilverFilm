@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.manager.DatabaseManager
+import com.example.fdbsilverfilm.manager.PermissionsManager
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.viewmodel.MainActivityViewModel
 
@@ -16,6 +17,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (!PermissionsManager.checkPermissions(this)) {
+            PermissionsManager.requestPermissions(this)
+        }
 
         val loading = findViewById<ProgressBar>(R.id.mainActivityLoading)
         val textLoading = findViewById<TextView>(R.id.mainActivityLoadingTextView)

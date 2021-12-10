@@ -1,5 +1,8 @@
 package com.example.fdbsilverfilm.viewmodel
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.location.Location
 import android.os.Build
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,19 +12,26 @@ import com.example.fdbsilverfilm.manager.DatabaseManager
 import com.example.fdbsilverfilm.model.Film
 import com.example.fdbsilverfilm.model.Meta
 import com.example.fdbsilverfilm.model.Picture
+import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 
-class PictureAddViewModel(private val filmId: Int) : ViewModel() {
+class PictureAddViewModel(private val filmId: Int, private val context: Context) : ViewModel() {
     private val film = MutableLiveData<Film>()
+    var location: Location? = null
 
     fun getFilm(): LiveData<Film> {
         return film
     }
 
+
+    @SuppressLint("MissingPermission")
     fun loadFilm() {
         viewModelScope.launch(Dispatchers.IO) {
+            val fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
+            fusedLocationClient.lastLocation.addOnSuccessListener { location = it }
+            
             film.postValue(DatabaseManager.repository.getFilmByID(filmId))
         }
     }
