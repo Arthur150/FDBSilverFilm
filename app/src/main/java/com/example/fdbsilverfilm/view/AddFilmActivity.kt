@@ -83,18 +83,18 @@ class AddFilmActivity : AppCompatActivity() {
         var isOk = true
 
         if (brand.text.isEmpty() || brand.text.isBlank()) {
-            brand.error = getString(R.string.checKformField)
+            brand.error = getString(R.string.check_form_field)
             isOk = false
         } else {
             brand.error = null
         }
 
         if (iso.text.isEmpty() || iso.text.isBlank()) {
-            iso.error = getString(R.string.checKformField)
+            iso.error = getString(R.string.check_form_field)
             isOk = false
         } else {
             if (!Globals.regexInt(iso.text.toString())) {
-                iso.error = getString(R.string.checkformIntRegex)
+                iso.error = getString(R.string.check_form_int_regex)
                 isOk = false
             } else {
                 iso.error = null
@@ -102,11 +102,11 @@ class AddFilmActivity : AppCompatActivity() {
         }
 
         if (nbPoses.text.isEmpty() || nbPoses.text.isBlank()) {
-            nbPoses.error = getString(R.string.checKformField)
+            nbPoses.error = getString(R.string.check_form_field)
             isOk = false
         } else {
             if (!Globals.regexInt(nbPoses.text.toString())) {
-                nbPoses.error = getString(R.string.checkformIntRegex)
+                nbPoses.error = getString(R.string.check_form_int_regex)
                 isOk = false
             } else {
                 nbPoses.error = null

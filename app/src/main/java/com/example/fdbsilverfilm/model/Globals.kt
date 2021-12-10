@@ -11,4 +11,8 @@ object Globals {
     fun regexInt(string: String): Boolean {
         return string.matches(Regex("^[1-9]\\d*\$"))
     }
+
+    fun regexDecimal(string: String): Boolean {
+        return string.matches(Regex("^[+-]?([0-9]+\\.?[0-9]*|\\.[0-9]+)\$"))
+    }
 }
