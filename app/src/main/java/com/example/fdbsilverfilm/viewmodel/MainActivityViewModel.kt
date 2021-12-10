@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fdbsilverfilm.manager.DatabaseManager
 import com.example.fdbsilverfilm.model.Film
-import com.example.fdbsilverfilm.repository.DatabaseRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

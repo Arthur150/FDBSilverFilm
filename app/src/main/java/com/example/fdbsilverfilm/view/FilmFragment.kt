@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.fdbsilverfilm.R
@@ -42,7 +41,8 @@ class FilmFragment : Fragment() {
                     takePictureButton.isEnabled = true
                 } else {
                     takePictureButton.isEnabled = false
-                    AlertDialog.Builder(requireContext()).setTitle(R.string.can_not_take_picture_alert).create()
+                    AlertDialog.Builder(requireContext())
+                        .setTitle(R.string.can_not_take_picture_alert).create()
                 }
             }
 

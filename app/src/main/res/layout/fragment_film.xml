@@ -58,8 +58,7 @@
         android:src="@drawable/ic_film_roll_svgrepo_com"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/filmFragmentFilmName"
-        app:tint="@color/primary_grey"
-         />
+        app:tint="@color/primary_grey" />
 
     <Button
         android:id="@+id/filmFragmentTakePictureButton"

@@ -1,7 +1,6 @@
 package com.example.fdbsilverfilm.view
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity

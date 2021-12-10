@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Film
-import com.example.fdbsilverfilm.view.FilmListActivity
 import com.example.fdbsilverfilm.view.MainActivity
 
 class FilmAdapter(
