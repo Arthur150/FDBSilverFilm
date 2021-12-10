@@ -25,6 +25,7 @@ class AddPictureActivity : AppCompatActivity() {
     lateinit var lens: EditText
     lateinit var opening: EditText
     lateinit var time: EditText
+    lateinit var title: EditText
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +36,9 @@ class AddPictureActivity : AppCompatActivity() {
         lens = findViewById(R.id.addPictureLens)
         opening = findViewById(R.id.addPictureOpening)
         time = findViewById(R.id.addPictureTime)
+        title = findViewById(R.id.addPictureTitle)
         val modeSpinner = findViewById<Spinner>(R.id.addPictureMode)
-        val title = findViewById<EditText>(R.id.addPictureTitle)
+
 
         val button = findViewById<Button>(R.id.addPictureButton)
 
@@ -110,8 +112,6 @@ class AddPictureActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
 
-                } else {
-                    Toast.makeText(this, getString(R.string.checkForm), Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -169,7 +169,14 @@ class AddPictureActivity : AppCompatActivity() {
         }
 
         if (lens.text.isEmpty() || lens.text.isBlank()) {
-            lens.error = getString(R.string.check_form_regex_decimal)
+            lens.error = getString(R.string.check_form_field)
+            isOk = false
+        } else {
+            isOk = false
+        }
+
+        if (title.text.isEmpty() || title.text.isBlank()) {
+            title.error = getString(R.string.check_form_field)
             isOk = false
         } else {
             isOk = false
