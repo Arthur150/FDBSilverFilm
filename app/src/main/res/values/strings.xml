@@ -58,4 +58,7 @@
     <string name="remaining_poses">remaining poses</string>
     <string name="zero" translatable="false">0</string>
     <string name="Loading">Loading...</string>
+    <string name="check_form_field">Please fill this field</string>
+    <string name="check_form_int_regex">Please enter a whole number</string>
+    <string name="check_form_regex_decimal">Please enter a decimal number with . and not ,</string>
 </resources>
