@@ -21,5 +21,4 @@ class MainActivityViewModel : ViewModel() {
             films.postValue(DatabaseManager.repository.getAllFilm())
         }
     }
-
 }
