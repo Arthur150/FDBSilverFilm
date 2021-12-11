@@ -14,7 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class FilmListActivity : AppCompatActivity() {
 
     private var filmAdapter: FilmAdapter? = null
-    private val model = FilmListViewModel()
+    private val model = FilmListViewModel(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class FilmListActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.filmListRecyclerView)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        filmAdapter = FilmAdapter(this, emptyList())
+        filmAdapter = FilmAdapter(this, emptyList(), model)
         recyclerView.adapter = filmAdapter
 
         if (filter == Globals.NOT_FULL_FILTER) {
