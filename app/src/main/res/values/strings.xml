@@ -67,4 +67,5 @@
     <string name="check_form_regex_decimal">Please enter a decimal number with . and not ,</string>
     <string name="delete_film">Deleting a film</string>
     <string name="ask_delete_film">Do you want to remove this film?</string>
+    <string name="edit_film">Edit Film</string>
 </resources>

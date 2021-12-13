@@ -2,7 +2,6 @@ package com.example.fdbsilverfilm.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.location.Location
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -10,12 +9,10 @@ import android.widget.EditText
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fdbsilverfilm.R
-import com.example.fdbsilverfilm.manager.PermissionsManager
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Meta
 import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
-import com.google.android.gms.location.LocationServices
 
 
 class AddPictureActivity : AppCompatActivity() {

@@ -6,6 +6,7 @@ object Globals {
     const val NOT_FULL_FILTER = 1
     const val ALL_FILTER = 0
     const val CREATE_FIRST = true
+    const val FILM_ID_EXTRA_TAG = "filmId"
 
 
     fun regexInt(string: String): Boolean {
