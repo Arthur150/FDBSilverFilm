@@ -3,10 +3,7 @@ package com.example.fdbsilverfilm.view
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.model.Film
@@ -20,12 +17,14 @@ class AddFilmActivity : AppCompatActivity() {
     private lateinit var brand: EditText
     private lateinit var name: EditText
     private lateinit var cameraName: EditText
+    private lateinit var title: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_film)
 
+        title = findViewById(R.id.addFilmTextView)
         iso = findViewById(R.id.addFilmIso)
         nbPoses = findViewById(R.id.addFilmNbPoses)
         brand = findViewById(R.id.addFilmBrand)
@@ -35,7 +34,9 @@ class AddFilmActivity : AppCompatActivity() {
 
         cameraName = findViewById(R.id.addFilmCameraName)
 
-        val vm = FilmAddViewModel(this, intent.getSerializableExtra("filmToEdit") as Film?)
+       
+        val vm = FilmAddViewModel(this, intent.getSerializableExtra(Globals.FILM_ID_EXTRA_TAG) as Int?)
+        vm.loadFilm()
 
         ArrayAdapter.createFromResource(
             this,
@@ -45,14 +46,17 @@ class AddFilmActivity : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
 
-            if (vm.film != null) {
-                spinner.setSelection(adapter.getPosition(vm.film?.type))
-                iso.setText(vm.film?.iso.toString())
-                nbPoses.setText(vm.film?.nbPoses.toString())
-                brand.setText(vm.film?.brand)
-                name.setText(vm.film?.name.toString())
+            vm.getFilm().observe(this,{ film ->
+                title.setText(R.string.edit_film)
+                spinner.setSelection(adapter.getPosition(film.type))
+                iso.setText(film.iso.toString())
+                nbPoses.setText(film.nbPoses.toString())
+                brand.setText(film.brand)
+                name.setText(film.name.toString())
                 cameraName.setText(vm.film?.cameraName.toString())
-            }
+
+            })
+
         }
 
         button.setOnClickListener {
@@ -67,9 +71,7 @@ class AddFilmActivity : AppCompatActivity() {
                     cameraName.text.toString()
                 )
 
-                Log.d("addFilm", "onCreate: ${vm.film}")
-
-                if (intent.getBooleanExtra("createFirst", false)) {
+                if (intent.getBooleanExtra(Globals.MAIN_EXTRA_TAG, false)) {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()

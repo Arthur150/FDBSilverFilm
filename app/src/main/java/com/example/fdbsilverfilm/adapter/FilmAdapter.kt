@@ -6,12 +6,15 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Film
+import com.example.fdbsilverfilm.model.Globals
+import com.example.fdbsilverfilm.view.AddFilmActivity
 import com.example.fdbsilverfilm.view.MainActivity
 import com.example.fdbsilverfilm.viewmodel.FilmListViewModel
 
@@ -27,6 +30,7 @@ class FilmAdapter(
         val countPictures = view.findViewById<TextView>(R.id.filmItemCountPictures)
         val deleteButton = view.findViewById<ImageButton>(R.id.filmItemDelete)
         val cameraName = view.findViewById<TextView>(R.id.filmItemCameraName)
+        val editButton = view.findViewById<ImageButton>(R.id.filmItemEdit)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -66,6 +70,12 @@ class FilmAdapter(
 
                 builder.show()
             }
+        }
+
+        holder.editButton.setOnClickListener {
+            val intent = Intent(context, AddFilmActivity::class.java)
+            intent.putExtra(Globals.FILM_ID_EXTRA_TAG, films[position].id)
+            context.startActivity(intent)
         }
     }
 

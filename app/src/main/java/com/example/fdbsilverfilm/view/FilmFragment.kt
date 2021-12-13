@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.viewmodel.FilmViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class FilmFragment : Fragment() {
 
@@ -32,6 +33,8 @@ class FilmFragment : Fragment() {
         val takePictureButton = view.findViewById<Button>(R.id.filmFragmentTakePictureButton)
         val changeFilmButton = view.findViewById<Button>(R.id.filmFragmentChangeFilmButton)
         val showPicturesButton = view.findViewById<Button>(R.id.filmFragmentShowPictureButton)
+
+        val editButton = view.findViewById<FloatingActionButton>(R.id.fragmentFilmEditButton)
 
         model.getFilmValue()?.let { film ->
             if (film.pictures.size < film.nbPoses) {
@@ -56,6 +59,12 @@ class FilmFragment : Fragment() {
                 nameCameraTextView.text = film.cameraName
                 pictureCountTextView.text = "${film.pictures.count()}/${film.nbPoses}"
                 showPicturesButton.isEnabled = film.pictures.size > 0
+                editButton.setOnClickListener {
+                    val intent = Intent(context, AddFilmActivity::class.java)
+                    intent.putExtra(Globals.FILM_ID_EXTRA_TAG, film.id)
+                        .putExtra(Globals.MAIN_EXTRA_TAG,true)
+                    startActivity(intent)
+                }
 
                 if (film.pictures.size < film.nbPoses) {
                     takePictureButton.isEnabled = true
