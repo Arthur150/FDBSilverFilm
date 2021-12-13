@@ -24,6 +24,7 @@ class FilmFragment : Fragment() {
         model.loadFilm()
 
         val nameTextView = view.findViewById<TextView>(R.id.filmFragmentFilmName)
+        val nameCameraTextView = view.findViewById<TextView>(R.id.filmFragmentFilmCameraName)
         val isoTextView = view.findViewById<TextView>(R.id.filmFragmentFilmISO)
         val brandTextView = view.findViewById<TextView>(R.id.filmFragmentFilmBrand)
         val pictureCountTextView = view.findViewById<TextView>(R.id.filmFragmentCountPicture)
@@ -39,7 +40,6 @@ class FilmFragment : Fragment() {
             if (film.pictures.size > 0) {
                 showPicturesButton.isEnabled = true
             }
-
         }
 
         showPicturesButton.setOnClickListener {
@@ -53,6 +53,7 @@ class FilmFragment : Fragment() {
                 nameTextView.text = film.name
                 isoTextView.text = film.iso.toString()
                 brandTextView.text = film.brand
+                nameCameraTextView.text = film.cameraName
                 pictureCountTextView.text = "${film.pictures.count()}/${film.nbPoses}"
                 showPicturesButton.isEnabled = film.pictures.size > 0
 
@@ -65,14 +66,13 @@ class FilmFragment : Fragment() {
                         .setIcon(R.drawable.ic_film_roll_svgrepo_com)
                         .setTitle(R.string.can_not_take_picture_alert_title)
                         .setMessage(R.string.can_not_take_picture_alert)
-                        .setPositiveButton(R.string.change_film) { dialog, which ->
+                        .setPositiveButton(R.string.change_film) { _, _ ->
                             startFilmListActivity()
                         }
-                        .setNeutralButton(R.string.ok) { dialog, which ->
+                        .setNeutralButton(R.string.ok) { dialog, _ ->
                             dialog.dismiss()
                         }
                         .create().show()
-
                 }
             }
 
@@ -95,7 +95,7 @@ class FilmFragment : Fragment() {
         return view
     }
 
-    fun startFilmListActivity() {
+    private fun startFilmListActivity() {
         val intent = Intent(requireContext(), FilmListActivity::class.java)
         //intent.putExtra("filter", Globals.NOT_FULL_FILTER)
         startActivity(intent)

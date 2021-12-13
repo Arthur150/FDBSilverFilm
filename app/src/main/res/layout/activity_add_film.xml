@@ -39,12 +39,11 @@
             android:id="@+id/addFilmIsoLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
             android:layout_marginTop="16dp"
             android:labelFor="@id/addFilmIso"
             android:text="@string/iso"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/addFilmIso"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
@@ -52,7 +51,7 @@
             android:layout_width="121dp"
             android:layout_height="48dp"
             android:layout_marginStart="28dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:importantForAutofill="no"
             android:inputType="number"
@@ -67,16 +66,14 @@
             android:labelFor="@id/addFilmNbPoses"
             android:text="@string/number_of_poses"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.686"
-            app:layout_constraintStart_toEndOf="@+id/addFilmIsoLabel"
+            app:layout_constraintStart_toStartOf="@+id/addFilmNbPoses"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/addFilmNbPoses"
             android:layout_width="147dp"
             android:layout_height="48dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:importantForAutofill="no"
             android:inputType="number"
@@ -93,16 +90,14 @@
             android:labelFor="@id/addFilmBrand"
             android:text="@string/brand"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/addFilmBrand"
             app:layout_constraintTop_toBottomOf="@+id/addFilmIso" />
 
         <EditText
             android:id="@+id/addFilmBrand"
             android:layout_width="297dp"
             android:layout_height="48dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
@@ -115,20 +110,18 @@
             android:id="@+id/addFilmTypeLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:labelFor="@id/addFilmSpinnerType"
             android:text="@string/film_type"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/addFilmSpinnerType"
             app:layout_constraintTop_toBottomOf="@+id/addFilmBrand" />
 
         <Spinner
             android:id="@+id/addFilmSpinnerType"
             android:layout_width="293dp"
             android:layout_height="48dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.507"
             app:layout_constraintStart_toStartOf="parent"
@@ -142,16 +135,14 @@
             android:labelFor="@id/addFilmName"
             android:text="@string/name"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/addFilmName"
             app:layout_constraintTop_toBottomOf="@+id/addFilmSpinnerType" />
 
         <EditText
             android:id="@+id/addFilmName"
             android:layout_width="287dp"
             android:layout_height="48dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
@@ -160,17 +151,40 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addFilmNameLabel" />
 
+        <TextView
+            android:id="@+id/addFilmCameraNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:labelFor="@id/addFilmName"
+            android:text="@string/name_of_camera"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/addFilmCameraName"
+            app:layout_constraintTop_toBottomOf="@+id/addFilmName" />
+
+        <EditText
+            android:id="@+id/addFilmCameraName"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/addFilmName"
+            app:layout_constraintStart_toStartOf="@+id/addFilmName"
+            app:layout_constraintTop_toBottomOf="@+id/addFilmCameraNameLabel" />
+
         <Button
             android:id="@+id/addFilmSaveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="1dp"
             android:text="@string/save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addFilmName" />
+            app:layout_constraintTop_toBottomOf="@+id/addFilmCameraName" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,6 +19,7 @@ class AddFilmActivity : AppCompatActivity() {
     private lateinit var nbPoses: EditText
     private lateinit var brand: EditText
     private lateinit var name: EditText
+    private lateinit var cameraName: EditText
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +32,8 @@ class AddFilmActivity : AppCompatActivity() {
         val spinner = findViewById<Spinner>(R.id.addFilmSpinnerType)
         name = findViewById(R.id.addFilmName)
         val button = findViewById<Button>(R.id.addFilmSaveButton)
+
+        cameraName = findViewById(R.id.addFilmCameraName)
 
         val vm = FilmAddViewModel(this, intent.getSerializableExtra("filmToEdit") as Film?)
 
@@ -48,6 +51,7 @@ class AddFilmActivity : AppCompatActivity() {
                 nbPoses.setText(vm.film?.nbPoses.toString())
                 brand.setText(vm.film?.brand)
                 name.setText(vm.film?.name.toString())
+                cameraName.setText(vm.film?.cameraName.toString())
             }
         }
 
@@ -59,7 +63,8 @@ class AddFilmActivity : AppCompatActivity() {
                     nbPoses.text.toString().toInt(),
                     brand.text.toString(),
                     spinner.selectedItem.toString(),
-                    name.text.toString()
+                    name.text.toString(),
+                    cameraName.text.toString()
                 )
 
                 Log.d("addFilm", "onCreate: ${vm.film}")
@@ -111,6 +116,13 @@ class AddFilmActivity : AppCompatActivity() {
             } else {
                 nbPoses.error = null
             }
+        }
+
+        if (cameraName.text.isEmpty() || cameraName.text.isBlank()) {
+            cameraName.error = getString(R.string.check_form_field)
+            isOk = false
+        } else {
+            cameraName.error = null
         }
 
         return isOk
