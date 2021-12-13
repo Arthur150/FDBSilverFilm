@@ -142,13 +142,6 @@ class AddPictureActivity : AppCompatActivity() {
             lens.error = null
         }
 
-        if (title.text.isEmpty() || title.text.isBlank()) {
-            title.error = getString(R.string.check_form_field)
-            isOk = false
-        } else {
-            title.error = null
-        }
-
         return isOk
     }
 }
