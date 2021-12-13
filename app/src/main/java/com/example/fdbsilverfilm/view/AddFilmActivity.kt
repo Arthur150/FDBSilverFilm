@@ -65,7 +65,7 @@ class AddFilmActivity : AppCompatActivity() {
                     name.text.toString()
                 )
 
-                if (intent.getBooleanExtra("createFirst", false)) {
+                if (intent.getBooleanExtra(Globals.MAIN_EXTRA_TAG, false)) {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
