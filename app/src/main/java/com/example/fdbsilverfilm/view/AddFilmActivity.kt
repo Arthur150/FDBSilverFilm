@@ -16,6 +16,7 @@ class AddFilmActivity : AppCompatActivity() {
     private lateinit var nbPoses: EditText
     private lateinit var brand: EditText
     private lateinit var name: EditText
+    private lateinit var cameraName: EditText
     private lateinit var title: TextView
 
 
@@ -31,6 +32,9 @@ class AddFilmActivity : AppCompatActivity() {
         name = findViewById(R.id.addFilmName)
         val button = findViewById<Button>(R.id.addFilmSaveButton)
 
+        cameraName = findViewById(R.id.addFilmCameraName)
+
+       
         val vm = FilmAddViewModel(this, intent.getSerializableExtra(Globals.FILM_ID_EXTRA_TAG) as Int?)
         vm.loadFilm()
 
@@ -49,9 +53,10 @@ class AddFilmActivity : AppCompatActivity() {
                 nbPoses.setText(film.nbPoses.toString())
                 brand.setText(film.brand)
                 name.setText(film.name.toString())
-
+                cameraName.setText(vm.film?.cameraName.toString())
 
             })
+
         }
 
         button.setOnClickListener {
@@ -62,7 +67,8 @@ class AddFilmActivity : AppCompatActivity() {
                     nbPoses.text.toString().toInt(),
                     brand.text.toString(),
                     spinner.selectedItem.toString(),
-                    name.text.toString()
+                    name.text.toString(),
+                    cameraName.text.toString()
                 )
 
                 if (intent.getBooleanExtra(Globals.MAIN_EXTRA_TAG, false)) {
@@ -112,6 +118,13 @@ class AddFilmActivity : AppCompatActivity() {
             } else {
                 nbPoses.error = null
             }
+        }
+
+        if (cameraName.text.isEmpty() || cameraName.text.isBlank()) {
+            cameraName.error = getString(R.string.check_form_field)
+            isOk = false
+        } else {
+            cameraName.error = null
         }
 
         return isOk

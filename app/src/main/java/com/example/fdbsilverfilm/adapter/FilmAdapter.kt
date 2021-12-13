@@ -29,6 +29,7 @@ class FilmAdapter(
         val iso = view.findViewById<TextView>(R.id.filmItemIso)
         val countPictures = view.findViewById<TextView>(R.id.filmItemCountPictures)
         val deleteButton = view.findViewById<ImageButton>(R.id.filmItemDelete)
+        val cameraName = view.findViewById<TextView>(R.id.filmItemCameraName)
         val editButton = view.findViewById<ImageButton>(R.id.filmItemEdit)
     }
 
@@ -41,6 +42,7 @@ class FilmAdapter(
         holder.name.text = films[position].name
         holder.iso.text = films[position].iso.toString()
         holder.countPictures.text = "${films[position].pictures.count()}/${films[position].nbPoses}"
+        holder.cameraName.text = films[position].cameraName
 
         holder.itemView.setOnClickListener {
             films[position].id?.let {
