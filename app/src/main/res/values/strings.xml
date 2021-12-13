@@ -1,3 +1,70 @@
 <resources>
     <string name="app_name">FDB SilverFilm</string>
+    <string name="create_a_film">Create a film</string>
+    <string name="iso" translatable="false">ISO</string>
+    <string name="number_of_poses">Number of poses</string>
+    <string name="brand">Brand</string>
+    <string name="film_type">Film type</string>
+    <string name="name">Name</string>
+    <string name="color">Color</string>
+    <string name="black_and_white">Black and white</string>
+    <string name="save">Save</string>
+
+    <string-array name="film_types">
+        <item>@string/color</item>
+        <item>@string/black_and_white</item>
+    </string-array>
+    <string name="NR">Not filled in</string>
+    <string name="Opening">Opening :</string>
+    <string name="LayingTime">Laying time :</string>
+    <string name="Mode">Mode :</string>
+    <string name="Date">Date :</string>
+    <string name="Focal">Focal :</string>
+    <string name="Coordinates">Coordinates :</string>
+    <string name="Lens">Lens :</string>
+    <string name="take_a_picture">Take a picture</string>
+    <string name="title_of_your_picture">Title of your picture</string>
+    <string name="camera_configuration">Camera configuration</string>
+    <string name="mode_picture_p">P - Programme </string>
+    <string name="mode_picture_a">A - Priority to Opening</string>
+    <string name="mode_picture_s">S - Speed priority</string>
+    <string name="mode_picture_m">M - Manual mode</string>
+    <string name="checkForm">Please fill in all fields</string>
+
+    <string-array name="picture_mode">
+        <item>@string/mode_picture_p</item>
+        <item>@string/mode_picture_a</item>
+        <item>@string/mode_picture_s</item>
+        <item>@string/mode_picture_m</item>
+    </string-array>
+
+    <string name="number_of_poses2">Number of poses :</string>
+    <string name="number_of_pictures2">Number of pictures :</string>
+    <string name="iso2" translatable="false">ISO :</string>
+    <string name="film_image" translatable="false">film image</string>
+    <string name="not_implemented_yet">Not implemented yet</string>
+    <string name="slut">Slut</string>
+    <string name="add_button" translatable="false">Add button</string>
+    <string name="MyFilm">My film</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="select_a_film">Select a film</string>
+    <string name="no_film_selected">No film selected</string>
+    <string name="no_existing_film">No existing film</string>
+    <string name="please_create_a_new_film">Please create a new film</string>
+    <string name="change_film">Change film</string>
+    <string name="brand2">Brand :</string>
+    <string name="no_name">No name</string>
+    <string name="can_not_take_picture_alert">Please change the film</string>
+    <string name="can_not_take_picture_alert_title">The film is full.</string>
+    <string name="remaining_poses">remaining poses</string>
+    <string name="zero" translatable="false">0</string>
+    <string name="Loading">Loading...</string>
+    <string name="ok">Ok</string>
+    <string name="show_pictures">Show pictures</string>
+    <string name="picture_preview">picture preview</string>
+    <string name="check_form_field">Please fill this field</string>
+    <string name="check_form_int_regex">Please enter a whole number</string>
+    <string name="check_form_regex_decimal">Please enter a decimal number with . and not ,</string>
+    <string name="delete_film">Deleting a film</string>
+    <string name="ask_delete_film">Do you want to remove this film?</string>
 </resources>

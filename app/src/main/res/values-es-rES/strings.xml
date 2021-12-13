@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FDB SilverFilm</string>
+    <string name="NR">No rellenado(s)</string>
+    <string name="Opening">Abertura :</string>
+    <string name="LayingTime">Tiempo de instalación :</string>
+    <string name="Mode">Moda :</string>
+    <string name="Date">Fecha :</string>
+    <string name="Focal">Focal :</string>
+    <string name="Coordinates">Coordenadas :</string>
+    <string name="Lens">Lente :</string>
+    <string name="create_a_film">Creación de una película</string>
+    <string name="number_of_poses">Número de poses</string>
+    <string name="brand">Marca</string>
+    <string name="film_type">Tipo de película</string>
+    <string name="name">Nombre</string>
+    <string name="color">Color</string>
+    <string name="black_and_white">Blanco y negro</string>
+    <string name="save">Registrar</string>
+    <string name="MyFilm">Mi película</string>
+    <string name="slut">Perra</string>
+    <string name="not_implemented_yet">Todavía no se ha aplicado</string>
+    <string name="take_a_picture">Toma una foto</string>
+    <string name="title_of_your_picture">Título de la foto</string>
+    <string name="camera_configuration">Configuración de la cámara</string>
+    <string name="mode_picture_p">P - Programa</string>
+    <string name="mode_picture_a">A - Prioridad a la apertura</string>
+    <string name="mode_picture_s">S - Prioridad a la velocidad</string>
+    <string name="mode_picture_m">M - Modo manual</string>
+    <string name="checkForm">Por favor, rellene todos los campos</string>
+    <string name="number_of_poses2">Número de posturas :</string>
+    <string name="number_of_pictures2">Número de imágenes :</string>
+    <string name="select_a_film">Seleccione una película</string>
+    <string name="no_film_selected">Ninguna película seleccionada</string>
+    <string name="no_existing_film">Ninguna película existente</string>
+    <string name="please_create_a_new_film">Por favor, cree una nueva película</string>
+    <string name="change_film">Cambio de película</string>
+    <string name="brand2">Marca :</string>
+    <string name="remaining_poses">poses restantes</string>
+    <string name="Loading">Cargando...</string>
+</resources>

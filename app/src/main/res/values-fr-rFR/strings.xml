@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FDB SilverFilm</string>
+    <string name="NR">Non renseigné(es)</string>
+    <string name="Opening">Ouverture :</string>
+    <string name="LayingTime">Temps de pose :</string>
+    <string name="Mode">Mode :</string>
+    <string name="Date">Date :</string>
+    <string name="Focal">Focal :</string>
+    <string name="Coordinates">Coordonnées :</string>
+    <string name="Lens">Objectif :</string>
+    <string name="save">Sauvegarder</string>
+    <string name="color">Couleur</string>
+    <string name="black_and_white">Noir et blanc</string>
+    <string name="name">Nom</string>
+    <string name="film_type">Type de pellicule</string>
+    <string name="brand">Marque</string>
+    <string name="number_of_poses">Nombre de poses</string>
+    <string name="create_a_film">Créer une pellicule</string>
+    <string name="MyFilm">Ma pellicule</string>
+    <string name="take_a_picture">Prendre une photo</string>
+    <string name="title_of_your_picture">Titre de la photo</string>
+    <string name="camera_configuration">Configuration de la caméra</string>
+    <string name="slut">S*lope</string>
+    <string name="not_implemented_yet">Non disponible</string>
+    <string name="mode_picture_p">"P - Programme "</string>
+    <string name="mode_picture_a">A - Priorité à l\'ouverture</string>
+    <string name="mode_picture_s">S - Priorité à la vitesse</string>
+    <string name="mode_picture_m">M - Mode manuel</string>
+    <string name="checkForm">Veuillez remplir tous les champs</string>
+    <string name="number_of_poses2">Nombre de poses :</string>
+    <string name="number_of_pictures2">Nombre d\'images :</string>
+    <string name="remaining_poses">poses restantes</string>
+    <string name="select_a_film">Sélectionnez une pellicule</string>
+    <string name="no_film_selected">Aucune pellicule sélectionnée</string>
+    <string name="no_existing_film">Aucune pellicule existante</string>
+    <string name="please_create_a_new_film">Créez votre première pellicule</string>
+    <string name="brand2">Marque :</string>
+    <string name="change_film">Changer de pellicule</string>
+    <string name="Loading">Chargement...</string>
+</resources>

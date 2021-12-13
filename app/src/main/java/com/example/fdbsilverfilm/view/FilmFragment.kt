@@ -1,0 +1,104 @@
+package com.example.fdbsilverfilm.view
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
+import com.example.fdbsilverfilm.R
+import com.example.fdbsilverfilm.model.Globals
+import com.example.fdbsilverfilm.viewmodel.FilmViewModel
+
+class FilmFragment : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_film, container, false)
+        val model = FilmViewModel(requireContext())
+        model.loadFilm()
+
+        val nameTextView = view.findViewById<TextView>(R.id.filmFragmentFilmName)
+        val isoTextView = view.findViewById<TextView>(R.id.filmFragmentFilmISO)
+        val brandTextView = view.findViewById<TextView>(R.id.filmFragmentFilmBrand)
+        val pictureCountTextView = view.findViewById<TextView>(R.id.filmFragmentCountPicture)
+
+        val takePictureButton = view.findViewById<Button>(R.id.filmFragmentTakePictureButton)
+        val changeFilmButton = view.findViewById<Button>(R.id.filmFragmentChangeFilmButton)
+        val showPicturesButton = view.findViewById<Button>(R.id.filmFragmentShowPictureButton)
+
+        model.getFilmValue()?.let { film ->
+            if (film.pictures.size < film.nbPoses) {
+                takePictureButton.isEnabled = true
+            }
+            if (film.pictures.size > 0) {
+                showPicturesButton.isEnabled = true
+            }
+
+        }
+
+        showPicturesButton.setOnClickListener {
+            val intent = Intent(requireContext(), PicturesListActivity::class.java)
+            intent.putExtra(Globals.FILM_EXTRA_TAG, model.getFilmValue()?.id)
+            startActivity(intent)
+        }
+
+        model.getFilm().observe(viewLifecycleOwner, { film ->
+            if (film != null) {
+                nameTextView.text = film.name
+                isoTextView.text = film.iso.toString()
+                brandTextView.text = film.brand
+                pictureCountTextView.text = "${film.pictures.count()}/${film.nbPoses}"
+                showPicturesButton.isEnabled = film.pictures.size > 0
+
+                if (film.pictures.size < film.nbPoses) {
+                    takePictureButton.isEnabled = true
+                } else {
+                    takePictureButton.isEnabled = false
+                    AlertDialog.Builder(requireContext())
+
+                        .setIcon(R.drawable.ic_film_roll_svgrepo_com)
+                        .setTitle(R.string.can_not_take_picture_alert_title)
+                        .setMessage(R.string.can_not_take_picture_alert)
+                        .setPositiveButton(R.string.change_film) { dialog, which ->
+                            startFilmListActivity()
+                        }
+                        .setNeutralButton(R.string.ok) { dialog, which ->
+                            dialog.dismiss()
+                        }
+                        .create().show()
+
+                }
+            }
+
+        })
+
+        takePictureButton.setOnClickListener {
+            model.getFilmValue()?.let {
+                val intent = Intent(requireContext(), AddPictureActivity::class.java)
+                intent.putExtra(Globals.FILM_EXTRA_TAG, it.id)
+                startActivity(intent)
+            }
+        }
+
+        changeFilmButton.setOnClickListener {
+            startFilmListActivity()
+        }
+
+
+
+        return view
+    }
+
+    fun startFilmListActivity() {
+        val intent = Intent(requireContext(), FilmListActivity::class.java)
+        //intent.putExtra("filter", Globals.NOT_FULL_FILTER)
+        startActivity(intent)
+    }
+
+}
