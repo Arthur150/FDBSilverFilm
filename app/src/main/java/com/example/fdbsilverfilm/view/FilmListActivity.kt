@@ -23,7 +23,6 @@ class FilmListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_film_list)
 
-
         model.loadFilms()
 
         val addButton = findViewById<FloatingActionButton>(R.id.filmListAddButton)
@@ -46,8 +45,8 @@ class FilmListActivity : AppCompatActivity() {
         val chipShowAll = findViewById<Chip>(R.id.show_all_films_chip)
         val chipShowFull = findViewById<Chip>(R.id.show_full_films_chip)
 
-        checkedChip = chipShowNotFull.id
-        chipShowNotFull.setChipBackgroundColorResource(R.color.orange)
+        checkedChip = chipShowAll.id
+        chipShowAll.setChipBackgroundColorResource(R.color.orange)
 
         chipShowNotFull.setOnClickListener {
             if (checkedChip != chipShowNotFull.id){
@@ -61,7 +60,7 @@ class FilmListActivity : AppCompatActivity() {
         }
 
         chipShowAll.setOnClickListener {
-            if ( chipShowAll.id != checkedChip) {
+            if (chipShowAll.id != checkedChip) {
                 chipShowFull.setChipBackgroundColorResource(R.color.secondary_variant_grey)
                 chipShowNotFull.setChipBackgroundColorResource(R.color.secondary_variant_grey)
                 chipShowAll.setChipBackgroundColorResource(R.color.orange)
