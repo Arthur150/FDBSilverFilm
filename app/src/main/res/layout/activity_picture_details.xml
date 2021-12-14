@@ -194,4 +194,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lens_label"
         app:layout_constraintTop_toBottomOf="@+id/mode_value_label" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/pictureDetailMapView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coordinates_value_label" />
 </androidx.constraintlayout.widget.ConstraintLayout>
