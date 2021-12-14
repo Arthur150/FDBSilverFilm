@@ -43,11 +43,16 @@ class FilmListActivity : AppCompatActivity() {
         })
 
         val chipShowNotFull = findViewById<Chip>(R.id.show_not_full_films_chip)
+        val chipShowAll = findViewById<Chip>(R.id.show_all_films_chip)
+        val chipShowFull = findViewById<Chip>(R.id.show_full_films_chip)
+
         checkedChip = chipShowNotFull.id
         chipShowNotFull.setChipBackgroundColorResource(R.color.orange)
 
         chipShowNotFull.setOnClickListener {
             if (checkedChip != chipShowNotFull.id){
+                chipShowAll.setChipBackgroundColorResource(R.color.secondary_variant_grey)
+                chipShowFull.setChipBackgroundColorResource(R.color.secondary_variant_grey)
                 chipShowNotFull.setChipBackgroundColorResource(R.color.orange)
                 chipShowNotFull.isCloseIconVisible = false
                 recyclerView.adapter = FilmAdapter(this, model.getNotFullFilms() , model)
@@ -55,22 +60,26 @@ class FilmListActivity : AppCompatActivity() {
             }
         }
 
-        val chipShowAll = findViewById<Chip>(R.id.show_all_films_chip)
         chipShowAll.setOnClickListener {
-            if ( chipShowAll.id != checkedChip)
-            chipShowAll.setChipBackgroundColorResource(R.color.orange)
-            chipShowAll.isCloseIconVisible = false
-            recyclerView.adapter = FilmAdapter(this, model.getAllFilms(), model)
-            checkedChip = chipShowAll.id
+            if ( chipShowAll.id != checkedChip) {
+                chipShowFull.setChipBackgroundColorResource(R.color.secondary_variant_grey)
+                chipShowNotFull.setChipBackgroundColorResource(R.color.secondary_variant_grey)
+                chipShowAll.setChipBackgroundColorResource(R.color.orange)
+                chipShowAll.isCloseIconVisible = false
+                recyclerView.adapter = FilmAdapter(this, model.getAllFilms(), model)
+                checkedChip = chipShowAll.id
+            }
         }
 
-        val chipShowFull = findViewById<Chip>(R.id.show_full_films_chip)
         chipShowFull.setOnClickListener {
-            if ( chipShowFull.id != checkedChip)
+            if ( chipShowFull.id != checkedChip) {
+                chipShowAll.setChipBackgroundColorResource(R.color.secondary_variant_grey)
+                chipShowNotFull.setChipBackgroundColorResource(R.color.secondary_variant_grey)
                 chipShowFull.setChipBackgroundColorResource(R.color.orange)
-            chipShowFull.isCloseIconVisible = false
-            recyclerView.adapter = FilmAdapter(this, model.getFullFilms(), model)
-            checkedChip = chipShowFull.id
+                chipShowFull.isCloseIconVisible = false
+                recyclerView.adapter = FilmAdapter(this, model.getFullFilms(), model)
+                checkedChip = chipShowFull.id
+            }
         }
 
     }
@@ -79,4 +88,5 @@ class FilmListActivity : AppCompatActivity() {
         super.onBackPressed()
         this.finish()
     }
+
 }
