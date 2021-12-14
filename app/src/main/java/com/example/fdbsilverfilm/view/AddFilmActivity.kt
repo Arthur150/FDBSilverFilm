@@ -2,11 +2,9 @@ package com.example.fdbsilverfilm.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fdbsilverfilm.R
-import com.example.fdbsilverfilm.model.Film
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.viewmodel.FilmAddViewModel
 

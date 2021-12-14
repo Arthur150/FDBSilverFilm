@@ -9,7 +9,7 @@ import com.example.fdbsilverfilm.model.Picture
 import com.example.fdbsilverfilm.viewmodel.PictureDetailsViewModel
 
 class PictureDetailsActivity : AppCompatActivity() {
-    var vm: PictureDetailsViewModel? = null;
+    private var vm: PictureDetailsViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -28,7 +28,7 @@ class FilmListViewModel(private val context: Context) : ViewModel() {
 
             filmList.addAll(DatabaseManager.repository.getAllFilm())
 
-            var tempList = List(filmList.size) {
+            val tempList = List(filmList.size) {
                 filmList[it]
             }
 
@@ -37,18 +37,18 @@ class FilmListViewModel(private val context: Context) : ViewModel() {
     }
 
     fun getAllFilms(): List<Film> {
-        return ArrayList<Film>(films.value).toList()
+        return ArrayList<Film>(films.value ?: emptyList()).toList()
     }
 
     fun getNotFullFilms() : List<Film> {
         val suppList = ArrayList<Film>()
-        val tmp = ArrayList<Film>(films.value)
+        val tmp = ArrayList<Film>(films.value ?: emptyList())
         for (film in tmp){
             if (film.isClose){
                 suppList.add(film)
             }
         }
-        tmp.removeAll(suppList)
+        tmp.removeAll(suppList.toSet())
 
         return tmp.toList()
     }
@@ -56,13 +56,13 @@ class FilmListViewModel(private val context: Context) : ViewModel() {
     fun getFullFilms() : List<Film> {
         if (films.value != null){
             val suppList = ArrayList<Film>()
-            val tmp = ArrayList<Film>(films.value)
+            val tmp = ArrayList<Film>(films.value ?: emptyList())
             for (film in tmp){
                 if (!film.isClose){
                     suppList.add(film)
                 }
             }
-            tmp.removeAll(suppList)
+            tmp.removeAll(suppList.toSet())
             return tmp.toList()
         }
         return emptyList()

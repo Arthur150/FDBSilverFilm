@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.adapter.FilmAdapter
-import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.viewmodel.FilmListViewModel
 import com.google.android.material.chip.Chip
 import com.google.android.material.floatingactionbutton.FloatingActionButton
