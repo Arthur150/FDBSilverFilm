@@ -29,7 +29,7 @@ data class Film(
     var cameraName: String,
 
     @ColumnInfo(name = "isClose")
-    var isclose: Boolean,
+    var isClose: Boolean,
 
     @ColumnInfo(name = "pictures")
     val pictures: ArrayList<Picture> = ArrayList()

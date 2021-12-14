@@ -45,7 +45,7 @@ class FilmFragment : Fragment() {
                 countPictureLabel.setTextColor(Color.parseColor("#ff0000"))
             }
 
-            if (!film.isclose) {
+            if (!film.isClose) {
                 takePictureButton.isEnabled = true
                 closeFilmButton.isEnabled = true
             } else {
@@ -104,7 +104,7 @@ class FilmFragment : Fragment() {
                     countPictureLabel.setTextColor(Color.parseColor("#ff0000"))
                 }
 
-                if (!film.isclose) {
+                if (!film.isClose) {
                     takePictureButton.isEnabled = true
                     closeFilmButton.isEnabled = true
                 } else {
