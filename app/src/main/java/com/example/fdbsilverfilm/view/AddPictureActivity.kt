@@ -14,6 +14,7 @@ import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Meta
 import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class AddPictureActivity : AppCompatActivity() {
@@ -43,6 +44,7 @@ class AddPictureActivity : AppCompatActivity() {
 
         val modeSpinner = findViewById<Spinner>(R.id.addPictureMode)
         val button = findViewById<Button>(R.id.addPictureButton)
+        val buttonPreview = findViewById<FloatingActionButton>(R.id.pictureAddPreviewButton)
 
         picture = findViewById(R.id.imageView4)
         picture2 = findViewById(R.id.imageView5)
@@ -75,16 +77,7 @@ class AddPictureActivity : AppCompatActivity() {
         vm.getFilm().observe(this, {
             button.isEnabled = true
             button.setOnClickListener {
-
-                val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                try {
-                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-                } catch (e: android.content.ActivityNotFoundException) {
-                    // display error state to the user
-                }
-
-
-               /* if (checkForm()) {
+              if (checkForm()) {
                     val meta = Meta(
                         focal = focal.text.toString().toFloat(),
                         opening = opening.text.toString().toFloat(),
@@ -107,11 +100,19 @@ class AddPictureActivity : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
-                }*/
-
-
+                }
             }
         })
+
+
+        buttonPreview.setOnClickListener {
+            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            try {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            } catch (e: android.content.ActivityNotFoundException) {
+                // display error state to the user
+            }
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

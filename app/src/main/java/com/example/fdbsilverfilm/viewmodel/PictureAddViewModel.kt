@@ -21,6 +21,8 @@ class PictureAddViewModel(private val filmId: Int, private val context: Context)
     private val film = MutableLiveData<Film>()
     var location: Location? = null
 
+
+
     fun getFilm(): LiveData<Film> {
         return film
     }
