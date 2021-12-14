@@ -11,7 +11,7 @@ import com.example.fdbsilverfilm.model.Film
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FilmAddViewModel(private val context: Context, val filmId: Int?) : ViewModel() {
+class FilmAddViewModel(private val context: Context, private val filmId: Int?) : ViewModel() {
 
     private val film = MutableLiveData<Film>()
 
@@ -22,15 +22,16 @@ class FilmAddViewModel(private val context: Context, val filmId: Int?) : ViewMod
     }
 
     //call loadFilm before this function
-    fun setFilm(iso: Int, nbPoses: Int, brand: String, type: String, name: String = "") {
+    fun setFilm(iso: Int, nbPoses: Int, brand: String, type: String, name: String = "",  cameraName: String) {
         if (filmId == null || filmToSave == null) {
-            filmToSave = Film(null, name, brand, iso, type, nbPoses)
+            filmToSave = Film(null, name, brand, iso, type, nbPoses, cameraName, false)
         } else {
             filmToSave?.name = name
             filmToSave?.brand = brand
             filmToSave?.iso = iso
             filmToSave?.type = type
             filmToSave?.nbPoses = nbPoses
+            filmToSave?.cameraName = cameraName
         }
 
         viewModelScope.launch(Dispatchers.IO) {
@@ -53,7 +54,7 @@ class FilmAddViewModel(private val context: Context, val filmId: Int?) : ViewMod
     fun loadFilm() {
         if (filmId != null) {
             viewModelScope.launch(Dispatchers.IO) {
-                filmToSave = filmId?.let { DatabaseManager.repository.getFilmByID(it) }
+                filmToSave = filmId.let { DatabaseManager.repository.getFilmByID(it) }
                 film.postValue(filmToSave?.let { filmToSave })
             }
         }

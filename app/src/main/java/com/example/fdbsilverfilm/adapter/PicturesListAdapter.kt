@@ -34,7 +34,7 @@ class PicturesListAdapter(private val list: List<Picture>?, private val context:
         return list?.size ?: 0
     }
 
-    inner class PicturesListViewHolder(private val binding: View) :
+    inner class PicturesListViewHolder(binding: View) :
         RecyclerView.ViewHolder(binding) {
         private val title: TextView = binding.findViewById(R.id.title_picture_item)
         private val date: TextView = binding.findViewById(R.id.date_picture_item)

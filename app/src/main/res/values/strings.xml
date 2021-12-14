@@ -63,10 +63,24 @@
     <string name="show_pictures">Show pictures</string>
     <string name="picture_preview">picture preview</string>
     <string name="check_form_field">Please fill this field</string>
-    <string name="check_form_int_regex">Please enter a whole number</string>
+    <string name="check_form_int_regex">Please enter a integer</string>
     <string name="check_form_regex_decimal">Please enter a decimal number with . and not ,</string>
     <string name="delete_film">Deleting a film</string>
     <string name="ask_delete_film">Do you want to remove this film?</string>
+    <string name="name_of_camera">Name of camera</string>
+    <string name="camera">Camera :</string>
+
     <string name="edit_film">Edit Film</string>
-    <string name="title_activity_maps">MapsActivity</string>
+
+    <string name="close_button">Close button</string>
+    <string name="cancel">Cancel</string>
+    <string name="archiving_film">Archiving film</string>
+    <string name="archiving_film_ask">Do you want to archive the film?</string>
+    <string name="archiving_film_title">Archiving film</string>
+    <string name="film_already_archived">The film is already archived</string>
+
+    <string name="full">Full</string>
+    <string name="not_full">Not full</string>
+    <string name="all">All</string>
+
 </resources>

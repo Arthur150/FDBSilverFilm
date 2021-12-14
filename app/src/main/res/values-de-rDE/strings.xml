@@ -38,4 +38,27 @@
     <string name="brand2">Marke :</string>
     <string name="remaining_poses">übrige Posen</string>
     <string name="Loading">Laden...</string>
+    <string name="all">Alle</string>
+    <string name="not_full">Nicht voll</string>
+    <string name="full">Vollständig</string>
+    <string name="film_already_archived">Der Film ist bereits archiviert</string>
+    <string name="archiving_film_title">Film archivieren</string>
+    <string name="archiving_film_ask">Möchten Sie den Film archivieren?</string>
+    <string name="archiving_film">Film archivieren</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="close_button">Schaltfläche Schließen</string>
+    <string name="edit_film">Film bearbeiten</string>
+    <string name="camera">Kamera :</string>
+    <string name="name_of_camera">Name der Kamera</string>
+    <string name="ask_delete_film">Möchten Sie diese Folie entfernen?</string>
+    <string name="delete_film">Löschen eines Films</string>
+    <string name="check_form_regex_decimal">Bitte geben Sie eine Dezimalzahl mit . und nicht ,</string>
+    <string name="check_form_int_regex">Bitte geben Sie eine ganze Zahl ein</string>
+    <string name="check_form_field">Bitte füllen Sie dieses Feld aus</string>
+    <string name="picture_preview">Bildvorschau</string>
+    <string name="show_pictures">Bilder anzeigen</string>
+    <string name="ok">Ok</string>
+    <string name="can_not_take_picture_alert_title">Der Film ist voll.</string>
+    <string name="can_not_take_picture_alert">Bitte ändern Sie den Film</string>
+    <string name="no_name">Kein Name</string>
 </resources>

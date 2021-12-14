@@ -16,41 +16,56 @@ import kotlinx.coroutines.launch
 class FilmListViewModel(private val context: Context) : ViewModel() {
     private val films: MutableLiveData<List<Film>> = MutableLiveData<List<Film>>()
 
-    private val filmsNotFull: MutableLiveData<List<Film>> = MutableLiveData<List<Film>>()
-
     private var filmList: ArrayList<Film> = ArrayList()
 
     fun getFilms(): LiveData<List<Film>> {
         return films
     }
-
-    fun getFilmsNotFull(): LiveData<List<Film>> {
-        return filmsNotFull
-    }
+    
 
     fun loadFilms() {
         viewModelScope.launch(Dispatchers.IO) {
 
             filmList.addAll(DatabaseManager.repository.getAllFilm())
 
-            var tempList = List(filmList.size) {
+            val tempList = List(filmList.size) {
                 filmList[it]
             }
 
             films.postValue(tempList)
+        }
+    }
 
-            val tempNotFull = ArrayList<Film>()
-            filmList.forEach { film ->
-                if (film.pictures.count() < film.nbPoses) {
-                    tempNotFull.add(film)
+    fun getAllFilms(): List<Film> {
+        return ArrayList<Film>(films.value ?: emptyList()).toList()
+    }
+
+    fun getNotFullFilms() : List<Film> {
+        val suppList = ArrayList<Film>()
+        val tmp = ArrayList<Film>(films.value ?: emptyList())
+        for (film in tmp){
+            if (film.isClose){
+                suppList.add(film)
+            }
+        }
+        tmp.removeAll(suppList.toSet())
+
+        return tmp.toList()
+    }
+
+    fun getFullFilms() : List<Film> {
+        if (films.value != null){
+            val suppList = ArrayList<Film>()
+            val tmp = ArrayList<Film>(films.value ?: emptyList())
+            for (film in tmp){
+                if (!film.isClose){
+                    suppList.add(film)
                 }
             }
-            tempList = List(tempNotFull.size) {
-                tempNotFull[it]
-            }
-
-            filmsNotFull.postValue(tempList)
+            tmp.removeAll(suppList.toSet())
+            return tmp.toList()
         }
+        return emptyList()
     }
 
     fun deleteFilm(film : Film){
