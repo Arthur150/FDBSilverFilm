@@ -1,10 +1,13 @@
 package com.example.fdbsilverfilm.viewmodel
 
+import android.app.AlertDialog
 import android.content.Context
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.manager.DatabaseManager
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Film
@@ -33,4 +36,12 @@ class FilmViewModel(private val context: Context) : ViewModel() {
             }
         }
     }
+
+    fun setIsClose(film: Film){
+        film.isclose = true
+        viewModelScope.launch(Dispatchers.IO) {
+            DatabaseManager.repository.insertFilm(film)
+        }
+    }
+
 }
