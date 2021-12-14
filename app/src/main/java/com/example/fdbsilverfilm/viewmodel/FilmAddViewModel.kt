@@ -8,11 +8,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.fdbsilverfilm.manager.DatabaseManager
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Film
-import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FilmAddViewModel(private val context: Context, val filmId: Int?) : ViewModel() {
+class FilmAddViewModel(private val context: Context, private val filmId: Int?) : ViewModel() {
 
     private val film = MutableLiveData<Film>()
 
@@ -55,7 +54,7 @@ class FilmAddViewModel(private val context: Context, val filmId: Int?) : ViewMod
     fun loadFilm() {
         if (filmId != null) {
             viewModelScope.launch(Dispatchers.IO) {
-                filmToSave = filmId?.let { DatabaseManager.repository.getFilmByID(it) }
+                filmToSave = filmId.let { DatabaseManager.repository.getFilmByID(it) }
                 film.postValue(filmToSave?.let { filmToSave })
             }
         }

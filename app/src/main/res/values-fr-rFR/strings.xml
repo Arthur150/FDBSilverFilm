@@ -38,4 +38,27 @@
     <string name="brand2">Marque :</string>
     <string name="change_film">Changer de pellicule</string>
     <string name="Loading">Chargement...</string>
+    <string name="ok">Ok</string>
+    <string name="no_name">Aucun nom</string>
+    <string name="can_not_take_picture_alert">Changez la pellicule</string>
+    <string name="can_not_take_picture_alert_title">La pellicule est pleine</string>
+    <string name="show_pictures">Voir les photos</string>
+    <string name="picture_preview">Aperçu de la photo</string>
+    <string name="check_form_field">Renseignez ce champ</string>
+    <string name="check_form_int_regex">Entrez un mobre entier</string>
+    <string name="check_form_regex_decimal">Les nombres décimaux contiennent des . et non des ,</string>
+    <string name="delete_film">Supprimer la pellicule</string>
+    <string name="ask_delete_film">Voulez-vous supprimer cette pellicule</string>
+    <string name="name_of_camera">Nom de l\'appareil</string>
+    <string name="camera">Appareil :</string>
+    <string name="edit_film">Modifier la photo</string>
+    <string name="close_button">Bouton de fermeture</string>
+    <string name="cancel">Annuler</string>
+    <string name="archiving_film">Archiver la pellicule</string>
+    <string name="archiving_film_ask">Voulez-vous archiver la pellicule</string>
+    <string name="archiving_film_title">Archivage de la pellicule</string>
+    <string name="film_already_archived">La pellicule est archivée</string>
+    <string name="full">Pleines</string>
+    <string name="not_full">Incomplètes</string>
+    <string name="all">Toutes</string>
 </resources>

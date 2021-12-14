@@ -38,4 +38,27 @@
     <string name="brand2">ブランド :</string>
     <string name="remaining_poses">残りのポーズ</string>
     <string name="Loading">ローディング...</string>
+    <string name="ok">オッケー</string>
+    <string name="can_not_take_picture_alert_title">充実した内容となっています。</string>
+    <string name="can_not_take_picture_alert">フィルムの交換をお願いします</string>
+    <string name="no_name">名無しさん</string>
+    <string name="show_pictures">写真を表示</string>
+    <string name="picture_preview">ピクチャープレビュー</string>
+    <string name="check_form_field">このフィールドに入力してください</string>
+    <string name="check_form_int_regex">整数を入力してください</string>
+    <string name="check_form_regex_decimal">10進数には、.ではなく、,をつけてください。</string>
+    <string name="delete_film">フィルムの削除</string>
+    <string name="ask_delete_film">このフィルムを除去したいですか？</string>
+    <string name="name_of_camera">カメラ名</string>
+    <string name="camera">カメラ:</string>
+    <string name="edit_film">編集フィルム</string>
+    <string name="close_button">閉じるボタン</string>
+    <string name="cancel">キャンセル</string>
+    <string name="archiving_film">フィルムのアーカイブ</string>
+    <string name="archiving_film_ask">アーカイブ化しますか？</string>
+    <string name="archiving_film_title">フィルムのアーカイブ</string>
+    <string name="film_already_archived">この映画はすでにアーカイブされている</string>
+    <string name="full">フル</string>
+    <string name="not_full">満杯ではない</string>
+    <string name="all">すべて</string>
 </resources>

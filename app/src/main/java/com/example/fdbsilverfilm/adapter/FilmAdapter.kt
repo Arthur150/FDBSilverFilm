@@ -1,12 +1,12 @@
 package com.example.fdbsilverfilm.adapter
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -25,12 +25,12 @@ class FilmAdapter(
 ) : RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val name = view.findViewById<TextView>(R.id.filmItemName)
-        val iso = view.findViewById<TextView>(R.id.filmItemIso)
-        val countPictures = view.findViewById<TextView>(R.id.filmItemCountPictures)
-        val deleteButton = view.findViewById<ImageButton>(R.id.filmItemDelete)
-        val cameraName = view.findViewById<TextView>(R.id.filmItemCameraName)
-        val editButton = view.findViewById<ImageButton>(R.id.filmItemEdit)
+        val name : TextView = view.findViewById(R.id.filmItemName)
+        val iso: TextView = view.findViewById(R.id.filmItemIso)
+        val countPictures : TextView = view.findViewById(R.id.filmItemCountPictures)
+        val deleteButton: ImageButton = view.findViewById(R.id.filmItemDelete)
+        val cameraName: TextView = view.findViewById(R.id.filmItemCameraName)
+        val editButton: ImageButton = view.findViewById(R.id.filmItemEdit)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -38,6 +38,7 @@ class FilmAdapter(
         return ViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.name.text = films[position].name
         holder.iso.text = films[position].iso.toString()
@@ -60,11 +61,11 @@ class FilmAdapter(
                 builder.setTitle(context.getString(R.string.delete_film))
                 builder.setMessage(context.getString(R.string.ask_delete_film))
 
-                builder.setPositiveButton(android.R.string.yes) { _, _ ->
+                builder.setPositiveButton(R.string.ok) { _, _ ->
                     filmViewModel.deleteFilm(it)
                 }
 
-                builder.setNegativeButton(android.R.string.no) { dialog, _ ->
+                builder.setNegativeButton(R.string.cancel) { dialog, _ ->
                     dialog.dismiss()
                 }
 
@@ -81,6 +82,7 @@ class FilmAdapter(
 
     override fun getItemCount() = films.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateValue(list: List<Film>) {
         films = list
         notifyDataSetChanged()
