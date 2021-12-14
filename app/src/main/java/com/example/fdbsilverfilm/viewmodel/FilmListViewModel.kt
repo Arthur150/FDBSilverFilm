@@ -16,17 +16,12 @@ import kotlinx.coroutines.launch
 class FilmListViewModel(private val context: Context) : ViewModel() {
     private val films: MutableLiveData<List<Film>> = MutableLiveData<List<Film>>()
 
-    private val filmsNotFull: MutableLiveData<List<Film>> = MutableLiveData<List<Film>>()
-
     private var filmList: ArrayList<Film> = ArrayList()
 
     fun getFilms(): LiveData<List<Film>> {
         return films
     }
-
-    fun getFilmsNotFull(): LiveData<List<Film>> {
-        return filmsNotFull
-    }
+    
 
     fun loadFilms() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -38,19 +33,31 @@ class FilmListViewModel(private val context: Context) : ViewModel() {
             }
 
             films.postValue(tempList)
-
-            val tempNotFull = ArrayList<Film>()
-            filmList.forEach { film ->
-                if (film.pictures.count() < film.nbPoses) {
-                    tempNotFull.add(film)
-                }
-            }
-            tempList = List(tempNotFull.size) {
-                tempNotFull[it]
-            }
-
-            filmsNotFull.postValue(tempList)
         }
+    }
+
+    fun getAllFilms(): List<Film> {
+        return ArrayList<Film>(films.value).toList()
+    }
+
+    fun getNotFullFilms() : List<Film> {
+        val tmp = ArrayList<Film>(films.value)
+        for (film in tmp){
+            if (film.isClose){
+                tmp.remove(film)
+            }
+        }
+        return tmp.toList()
+    }
+
+    fun getFullFilms() : List<Film> {
+        val tmp = ArrayList<Film>(films.value)
+        for (film in tmp){
+            if (!film.isClose){
+                tmp.remove(film)
+            }
+        }
+        return tmp.toList()
     }
 
     fun deleteFilm(film : Film){
