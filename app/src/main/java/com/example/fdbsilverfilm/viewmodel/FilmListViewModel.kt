@@ -51,13 +51,18 @@ class FilmListViewModel(private val context: Context) : ViewModel() {
     }
 
     fun getFullFilms() : List<Film> {
-        val tmp = ArrayList<Film>(films.value)
-        for (film in tmp){
-            if (!film.isClose){
-                tmp.remove(film)
+        if (films.value != null){
+            val suppList = ArrayList<Film>()
+            val tmp = ArrayList<Film>(films.value)
+            for (film in tmp){
+                if (!film.isClose){
+                    suppList.add(film)
+                }
             }
+            tmp.removeAll(suppList)
+            return tmp.toList()
         }
-        return tmp.toList()
+        return emptyList()
     }
 
     fun deleteFilm(film : Film){
