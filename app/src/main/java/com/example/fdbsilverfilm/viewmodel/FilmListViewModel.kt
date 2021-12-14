@@ -41,12 +41,15 @@ class FilmListViewModel(private val context: Context) : ViewModel() {
     }
 
     fun getNotFullFilms() : List<Film> {
+        val suppList = ArrayList<Film>()
         val tmp = ArrayList<Film>(films.value)
         for (film in tmp){
             if (film.isClose){
-                tmp.remove(film)
+                suppList.add(film)
             }
         }
+        tmp.removeAll(suppList)
+
         return tmp.toList()
     }
 
