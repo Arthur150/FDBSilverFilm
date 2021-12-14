@@ -23,6 +23,7 @@ class PicturesListAdapter(private val list: List<Picture>?, private val context:
         return PicturesListViewHolder(root)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: PicturesListViewHolder, position: Int) {
         holder.bind(list?.get(position))
         holder.itemView.setOnClickListener {
@@ -47,7 +48,7 @@ class PicturesListAdapter(private val list: List<Picture>?, private val context:
         fun bind(picture: Picture?) {
             title.text = picture?.title
             date.text = picture?.date
-            
+
             if (picture != null) {
                 if (picture.preview.isNotEmpty()) {
                     preview.setImageBitmap(Globals.stringToBitmap(picture.preview))
