@@ -68,4 +68,5 @@
     <string name="delete_film">Deleting a film</string>
     <string name="ask_delete_film">Do you want to remove this film?</string>
     <string name="edit_film">Edit Film</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

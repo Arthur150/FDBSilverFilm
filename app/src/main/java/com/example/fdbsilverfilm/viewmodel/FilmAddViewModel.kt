@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.fdbsilverfilm.manager.DatabaseManager
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Film
-import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

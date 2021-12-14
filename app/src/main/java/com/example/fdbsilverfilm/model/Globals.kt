@@ -7,6 +7,7 @@ object Globals {
     const val ALL_FILTER = 0
     const val MAIN_EXTRA_TAG = "main"
     const val FILM_ID_EXTRA_TAG = "filmId"
+    const val MAPVIEW_BUNDLE_KEY = "MapViewBundleKey"
 
 
     fun regexInt(string: String): Boolean {
