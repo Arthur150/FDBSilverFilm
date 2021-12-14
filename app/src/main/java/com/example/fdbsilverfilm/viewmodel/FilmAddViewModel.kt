@@ -25,7 +25,7 @@ class FilmAddViewModel(private val context: Context, val filmId: Int?) : ViewMod
     //call loadFilm before this function
     fun setFilm(iso: Int, nbPoses: Int, brand: String, type: String, name: String = "",  cameraName: String) {
         if (filmId == null || filmToSave == null) {
-            filmToSave = Film(null, name, brand, iso, type, nbPoses, cameraName)
+            filmToSave = Film(null, name, brand, iso, type, nbPoses, cameraName, false)
         } else {
             filmToSave?.name = name
             filmToSave?.brand = brand

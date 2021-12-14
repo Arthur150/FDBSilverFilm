@@ -1,6 +1,7 @@
 package com.example.fdbsilverfilm.view
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,17 +30,29 @@ class FilmFragment : Fragment() {
         val isoTextView = view.findViewById<TextView>(R.id.filmFragmentFilmISO)
         val brandTextView = view.findViewById<TextView>(R.id.filmFragmentFilmBrand)
         val pictureCountTextView = view.findViewById<TextView>(R.id.filmFragmentCountPicture)
+        val countPictureLabel = view.findViewById<TextView>(R.id.filmFragmentFilmCountPictureLabel)
 
         val takePictureButton = view.findViewById<Button>(R.id.filmFragmentTakePictureButton)
         val changeFilmButton = view.findViewById<Button>(R.id.filmFragmentChangeFilmButton)
         val showPicturesButton = view.findViewById<Button>(R.id.filmFragmentShowPictureButton)
 
+        val closeFilmButton = view.findViewById<Button>(R.id.fragmentFilmCloseButton)
         val editButton = view.findViewById<FloatingActionButton>(R.id.fragmentFilmEditButton)
 
         model.getFilmValue()?.let { film ->
-            if (film.pictures.size < film.nbPoses) {
-                takePictureButton.isEnabled = true
+            if (film.pictures.size > film.nbPoses) {
+                pictureCountTextView.setTextColor(Color.parseColor("#ff0000"))
+                countPictureLabel.setTextColor(Color.parseColor("#ff0000"))
             }
+
+            if (!film.isclose) {
+                takePictureButton.isEnabled = true
+                closeFilmButton.isEnabled = true
+            } else {
+                closeFilmButton.text = getString(R.string.film_already_archived)
+            }
+
+
             if (film.pictures.size > 0) {
                 showPicturesButton.isEnabled = true
             }
@@ -51,6 +64,7 @@ class FilmFragment : Fragment() {
             startActivity(intent)
         }
 
+
         model.getFilm().observe(viewLifecycleOwner, { film ->
             if (film != null) {
                 nameTextView.text = film.name
@@ -59,29 +73,43 @@ class FilmFragment : Fragment() {
                 nameCameraTextView.text = film.cameraName
                 pictureCountTextView.text = "${film.pictures.count()}/${film.nbPoses}"
                 showPicturesButton.isEnabled = film.pictures.size > 0
+
+
                 editButton.setOnClickListener {
                     val intent = Intent(context, AddFilmActivity::class.java)
                     intent.putExtra(Globals.FILM_ID_EXTRA_TAG, film.id)
-                        .putExtra(Globals.MAIN_EXTRA_TAG,true)
+                        .putExtra(Globals.MAIN_EXTRA_TAG, true)
                     startActivity(intent)
                 }
 
-                if (film.pictures.size < film.nbPoses) {
-                    takePictureButton.isEnabled = true
-                } else {
-                    takePictureButton.isEnabled = false
-                    AlertDialog.Builder(requireContext())
+                closeFilmButton.setOnClickListener {
 
+                    AlertDialog.Builder(requireContext())
                         .setIcon(R.drawable.ic_film_roll_svgrepo_com)
-                        .setTitle(R.string.can_not_take_picture_alert_title)
-                        .setMessage(R.string.can_not_take_picture_alert)
-                        .setPositiveButton(R.string.change_film) { _, _ ->
+                        .setTitle(getString(R.string.archiving_film_title))
+                        .setMessage(getString(R.string.archiving_film_ask))
+                        .setPositiveButton(getString(R.string.archiving_film)) { _, _ ->
+                            model.setIsClose(film)
                             startFilmListActivity()
                         }
-                        .setNeutralButton(R.string.ok) { dialog, _ ->
+                        .setNeutralButton(getString(R.string.cancel)) { dialog, _ ->
                             dialog.dismiss()
                         }
                         .create().show()
+                }
+
+
+                if (film.pictures.size > film.nbPoses) {
+                    pictureCountTextView.setTextColor(Color.parseColor("#ff0000"))
+                    countPictureLabel.setTextColor(Color.parseColor("#ff0000"))
+                }
+
+                if (!film.isclose) {
+                    takePictureButton.isEnabled = true
+                    closeFilmButton.isEnabled = true
+                } else {
+
+                    closeFilmButton.text = getString(R.string.film_already_archived)
                 }
             }
 
@@ -98,8 +126,6 @@ class FilmFragment : Fragment() {
         changeFilmButton.setOnClickListener {
             startFilmListActivity()
         }
-
-
 
         return view
     }
