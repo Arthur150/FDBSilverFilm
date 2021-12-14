@@ -18,6 +18,7 @@ class AddFilmActivity : AppCompatActivity() {
     private lateinit var title: TextView
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_film)

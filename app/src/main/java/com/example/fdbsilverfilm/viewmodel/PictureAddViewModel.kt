@@ -36,7 +36,7 @@ class PictureAddViewModel(private val filmId: Int, private val context: Context)
         }
     }
 
-    fun addPicture(pictureName: String, meta: Meta) {
+    fun addPicture(pictureName: String, imageString: String, meta: Meta) {
 
         val idPicture = film.value?.pictures?.size
 
@@ -48,6 +48,7 @@ class PictureAddViewModel(private val filmId: Int, private val context: Context)
                         id_film = filmId,
                         title = pictureName,
                         date = LocalDateTime.now().toString(),
+                        preview = imageString,
                         meta = meta
                     )
                 }?.let {
