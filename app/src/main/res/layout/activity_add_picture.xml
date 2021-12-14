@@ -179,6 +179,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
+        android:backgroundTint="@color/orange"
         android:id="@+id/addPictureButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
