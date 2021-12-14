@@ -32,7 +32,7 @@ class FilmAddViewModel(private val context: Context, val filmId: Int?) : ViewMod
             filmToSave?.iso = iso
             filmToSave?.type = type
             filmToSave?.nbPoses = nbPoses
-            film?.cameraName = cameraName
+            filmToSave?.cameraName = cameraName
         }
 
         viewModelScope.launch(Dispatchers.IO) {

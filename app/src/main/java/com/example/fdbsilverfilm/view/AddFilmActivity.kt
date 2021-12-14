@@ -52,8 +52,8 @@ class AddFilmActivity : AppCompatActivity() {
                 iso.setText(film.iso.toString())
                 nbPoses.setText(film.nbPoses.toString())
                 brand.setText(film.brand)
-                name.setText(film.name.toString())
-                cameraName.setText(vm.film?.cameraName.toString())
+                name.setText(film.name)
+                cameraName.setText(film.cameraName)
 
             })
 
