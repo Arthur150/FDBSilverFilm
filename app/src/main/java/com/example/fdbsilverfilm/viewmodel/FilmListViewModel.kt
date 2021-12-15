@@ -25,14 +25,7 @@ class FilmListViewModel(private val context: Context) : ViewModel() {
 
     fun loadFilms() {
         viewModelScope.launch(Dispatchers.IO) {
-
-            filmList.addAll(DatabaseManager.repository.getAllFilm())
-
-            val tempList = List(filmList.size) {
-                filmList[it]
-            }
-
-            films.postValue(tempList)
+            films.postValue(DatabaseManager.repository.getAllFilm())
         }
     }
 
