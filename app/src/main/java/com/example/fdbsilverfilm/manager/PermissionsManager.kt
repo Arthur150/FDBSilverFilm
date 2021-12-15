@@ -10,7 +10,8 @@ import androidx.core.app.ActivityCompat
 object PermissionsManager {
     private val PERMISSIONS = arrayOf(
         Manifest.permission.ACCESS_COARSE_LOCATION,
-        Manifest.permission.ACCESS_FINE_LOCATION
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.CAMERA
     )
     private var request_code = 34
 
