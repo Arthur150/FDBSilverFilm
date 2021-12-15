@@ -44,10 +44,10 @@ class AddPictureActivity : AppCompatActivity() {
 
         val modeSpinner = findViewById<Spinner>(R.id.addPictureMode)
         val button = findViewById<Button>(R.id.addPictureButton)
-        val buttonPreview = findViewById<FloatingActionButton>(R.id.pictureAddPreviewButton)
+        val buttonPreview = findViewById<ImageButton>(R.id.pictureAddPreviewButton)
 
-        picture = findViewById(R.id.imageView4)
-        picture2 = findViewById(R.id.imageView5)
+        picture = findViewById(R.id.pictureAddPreviewImage)
+
 
 
         val vm = PictureAddViewModel(intent.getIntExtra(Globals.FILM_EXTRA_TAG, -1), this)
@@ -122,14 +122,8 @@ class AddPictureActivity : AppCompatActivity() {
             val imageBitmap = data?.extras?.get("data") as Bitmap
 
             picture.setImageBitmap(imageBitmap)
-
-
             //code
             imageString = Globals.bitmapToString(imageBitmap)
-            Toast.makeText(this, imageString, Toast.LENGTH_LONG).show()
-
-            //decode
-            picture2.setImageBitmap(Globals.stringToBitmap(imageString))
         }
     }
 
