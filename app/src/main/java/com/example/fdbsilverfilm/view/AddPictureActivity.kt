@@ -2,17 +2,19 @@ package com.example.fdbsilverfilm.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Bitmap
+import android.os.Build
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
+import android.provider.MediaStore
+import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Meta
 import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class AddPictureActivity : AppCompatActivity() {
@@ -22,12 +24,17 @@ class AddPictureActivity : AppCompatActivity() {
     private lateinit var time: EditText
     private lateinit var title: EditText
 
+    private lateinit var picture: ImageView
+    private lateinit var picture2: ImageView
+
+    private val REQUEST_IMAGE_CAPTURE = 1
+
+    private var imageString: String = ""
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_picture)
-
 
         focal = findViewById(R.id.addPictureFocal)
         lens = findViewById(R.id.addPictureLens)
@@ -37,6 +44,10 @@ class AddPictureActivity : AppCompatActivity() {
 
         val modeSpinner = findViewById<Spinner>(R.id.addPictureMode)
         val button = findViewById<Button>(R.id.addPictureButton)
+        val buttonPreview = findViewById<ImageButton>(R.id.pictureAddPreviewButton)
+
+        picture = findViewById(R.id.pictureAddPreviewImage)
+
 
 
         val vm = PictureAddViewModel(intent.getIntExtra(Globals.FILM_EXTRA_TAG, -1), this)
@@ -66,19 +77,20 @@ class AddPictureActivity : AppCompatActivity() {
         vm.getFilm().observe(this, {
             button.isEnabled = true
             button.setOnClickListener {
-                if (checkForm()) {
+              if (checkForm()) {
                     val meta = Meta(
                         focal = focal.text.toString().toFloat(),
                         opening = opening.text.toString().toFloat(),
                         time = time.text.toString().toDouble(),
                         mode = modeSpinner.selectedItem.toString(),
                         lens = lens.text.toString(),
-                        latitude = vm.location?.latitude?: 0.0,
+                        latitude = vm.location?.latitude ?: 0.0,
                         longitude = vm.location?.longitude ?: 0.0
                     )
 
                     vm.addPicture(
                         pictureName = title.text.toString(),
+                        imageString = imageString,
                         meta = meta
                     )
 
@@ -91,7 +103,30 @@ class AddPictureActivity : AppCompatActivity() {
                 }
             }
         })
+
+
+        buttonPreview.setOnClickListener {
+            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            try {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            } catch (e: android.content.ActivityNotFoundException) {
+                // display error state to the user
+            }
+        }
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            val imageBitmap = data?.extras?.get("data") as Bitmap
+
+            picture.setImageBitmap(imageBitmap)
+            //code
+            imageString = Globals.bitmapToString(imageBitmap)
+        }
+    }
+
 
     private fun checkForm(): Boolean {
         var isOk = true
