@@ -15,16 +15,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:text="@string/take_a_picture"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16000003" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,7 +54,6 @@
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:importantForAutofill="no"
             android:inputType="number"
             app:layout_constraintStart_toStartOf="@+id/addPictureLabelFocal"
             app:layout_constraintTop_toBottomOf="@+id/addPictureLabelFocal" />
@@ -81,7 +77,6 @@
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:importantForAutofill="no"
             android:inputType="number"
             app:layout_constraintStart_toStartOf="@+id/addPictureOpeningLabel"
             app:layout_constraintTop_toBottomOf="@+id/addPictureOpeningLabel" />
@@ -105,8 +100,7 @@
             android:inputType="number"
             android:minHeight="48dp"
             app:layout_constraintStart_toStartOf="@+id/addPictureTimeLabel"
-            app:layout_constraintTop_toBottomOf="@+id/addPictureTimeLabel"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@+id/addPictureTimeLabel" />
 
         <TextView
             android:id="@+id/textView3"
@@ -127,17 +121,14 @@
             android:inputType="text"
             android:minHeight="48dp"
             app:layout_constraintStart_toStartOf="@+id/textView3"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <Spinner
             android:id="@+id/addPictureMode"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:minHeight="48dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/addPictureLens"
             app:layout_constraintStart_toStartOf="@+id/addPictureModeLabel"
             app:layout_constraintTop_toBottomOf="@+id/addPictureModeLabel" />
@@ -169,11 +160,44 @@
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:importantForAutofill="no"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="@+id/addPictureOpening"
             app:layout_constraintStart_toStartOf="@+id/addPictureTitleLabel"
             app:layout_constraintTop_toBottomOf="@+id/addPictureTitleLabel" />
+
+        <ImageView
+            android:id="@+id/pictureAddPreviewImage"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:srcCompat="@drawable/preview" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/picture_preview_maj"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/addPictureMode"
+            app:layout_constraintTop_toBottomOf="@+id/addPictureMode" />
+
+        <ImageButton
+            android:id="@+id/pictureAddPreviewButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toBottomOf="@+id/pictureAddPreviewImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/pictureAddPreviewImage"
+            app:layout_constraintTop_toTopOf="@+id/pictureAddPreviewImage"
+            app:srcCompat="@drawable/ic_camera" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,5 +7,6 @@ data class Picture(
     val id_film: Int,
     var title: String,
     val date: String,
+    val preview: String,
     val meta: Meta
 ) : Serializable
