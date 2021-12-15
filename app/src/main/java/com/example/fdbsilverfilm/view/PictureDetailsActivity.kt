@@ -1,6 +1,7 @@
 package com.example.fdbsilverfilm.view
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.widget.TextView
@@ -51,11 +52,6 @@ class PictureDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mapView?.onCreate(mapViewBundle)
         mapView?.getMapAsync(this)
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        this.finish()
     }
 
     override fun onStart() {

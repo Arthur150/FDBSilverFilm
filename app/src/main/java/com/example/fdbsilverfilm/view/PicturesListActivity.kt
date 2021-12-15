@@ -26,9 +26,4 @@ class PicturesListActivity : AppCompatActivity() {
         })
 
     }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        this.finish()
-    }
 }

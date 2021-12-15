@@ -22,8 +22,6 @@ class FilmListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_film_list)
 
-        model.loadFilms()
-
         val addButton = findViewById<FloatingActionButton>(R.id.filmListAddButton)
         addButton.setOnClickListener {
             val intent = Intent(this, AddFilmActivity::class.java)
@@ -82,9 +80,10 @@ class FilmListActivity : AppCompatActivity() {
 
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        this.finish()
+    override fun onStart() {
+        super.onStart()
+        model.loadFilms()
     }
+
 
 }

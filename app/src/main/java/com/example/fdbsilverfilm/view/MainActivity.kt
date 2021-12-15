@@ -1,5 +1,6 @@
 package com.example.fdbsilverfilm.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -13,10 +14,13 @@ import com.example.fdbsilverfilm.viewmodel.MainActivityViewModel
 
 class MainActivity : AppCompatActivity() {
 
+    private var model: MainActivityViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        DatabaseManager.initDatabase(this)
 
         if (!PermissionsManager.checkPermissions(this)) {
             PermissionsManager.requestPermissions(this)
@@ -27,25 +31,24 @@ class MainActivity : AppCompatActivity() {
         loading.visibility = ProgressBar.VISIBLE
         textLoading.visibility = TextView.VISIBLE
 
-        DatabaseManager.initDatabase(this)
+        model = MainActivityViewModel()
 
-        val model = MainActivityViewModel()
+        model?.apply {
 
-        model.loadFilms()
-
-        model.getFilms().observe(this, { films ->
-            if (films.count() > 0) {
-                if (SharedPreferencesManager.loadCurrentFilm(this) == -1) {
-                    showFragment(NoFilmFragment())
+            getFilms().observe(this@MainActivity, { films ->
+                if (films.count() > 0) {
+                    if (SharedPreferencesManager.loadCurrentFilm(this@MainActivity) == -1) {
+                        showFragment(NoFilmFragment())
+                    } else {
+                        showFragment(FilmFragment())
+                    }
                 } else {
-                    showFragment(FilmFragment())
+                    showFragment(NoFilmListFragment())
                 }
-            } else {
-                showFragment(NoFilmListFragment())
-            }
-            loading.visibility = ProgressBar.GONE
-            textLoading.visibility = TextView.GONE
-        })
+                loading.visibility = ProgressBar.GONE
+                textLoading.visibility = TextView.GONE
+            })
+        }
     }
 
     private fun showFragment(fragment: Fragment) {
@@ -54,8 +57,8 @@ class MainActivity : AppCompatActivity() {
         fragmentManager.commit()
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        this.finish()
+    override fun onStart() {
+        super.onStart()
+        model?.loadFilms()
     }
 }
