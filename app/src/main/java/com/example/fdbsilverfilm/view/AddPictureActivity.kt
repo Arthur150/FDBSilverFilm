@@ -10,6 +10,7 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fdbsilverfilm.R
+import com.example.fdbsilverfilm.manager.PermissionsManager
 import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Meta
@@ -106,6 +107,9 @@ class AddPictureActivity : AppCompatActivity() {
 
 
         buttonPreview.setOnClickListener {
+            if (!PermissionsManager.checkPermissions(this)){
+                PermissionsManager.requestPermissions(this)
+            }
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             try {
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
