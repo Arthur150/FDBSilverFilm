@@ -1,10 +1,15 @@
+
+
 package com.example.fdbsilverfilm.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.model.Globals
@@ -20,11 +25,13 @@ class PictureDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private var mapView: MapView? = null
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_picture_details)
-        vm =
-            PictureDetailsViewModel(intent.getSerializableExtra(Globals.PICTURE_EXTRA_TAG) as Picture)
+
+        val picture = intent.getSerializableExtra(Globals.PICTURE_EXTRA_TAG) as Picture
+        vm = PictureDetailsViewModel(picture)
 
         // [ title, focal, opening, laying time, mode, lens, date, coordinates ]
         val textViews = ArrayList<TextView>()
@@ -44,6 +51,9 @@ class PictureDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mapView = findViewById(R.id.pictureDetailMapView)
         initGoogleMap(savedInstanceState)
+
+        val picturePreview = findViewById<ImageView>(R.id.picture_details_preview)
+        picturePreview.setImageBitmap(Globals.stringToBitmap(picture.preview))
 
     }
 
@@ -116,3 +126,5 @@ class PictureDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     }
 }
+
+
