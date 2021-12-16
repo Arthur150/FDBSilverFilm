@@ -42,9 +42,9 @@
     <string name="not_full">Nicht voll</string>
     <string name="full">Vollständig</string>
     <string name="film_already_archived">Der Film ist bereits archiviert</string>
-    <string name="archiving_film_title">Film archivieren</string>
-    <string name="archiving_film_ask">Möchten Sie den Film archivieren?</string>
-    <string name="archiving_film">Film archivieren</string>
+    <string name="archive_film_title">Film archivieren</string>
+    <string name="archive_film_ask">Möchten Sie den Film archivieren?</string>
+    <string name="archive_film">Film archivieren</string>
     <string name="cancel">Abbrechen</string>
     <string name="close_button">Schaltfläche Schließen</string>
     <string name="edit_film">Film bearbeiten</string>

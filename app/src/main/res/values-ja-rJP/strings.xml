@@ -54,9 +54,9 @@
     <string name="edit_film">編集フィルム</string>
     <string name="close_button">閉じるボタン</string>
     <string name="cancel">キャンセル</string>
-    <string name="archiving_film">フィルムのアーカイブ</string>
-    <string name="archiving_film_ask">アーカイブ化しますか？</string>
-    <string name="archiving_film_title">フィルムのアーカイブ</string>
+    <string name="archive_film">フィルムのアーカイブ</string>
+    <string name="archive_film_ask">アーカイブ化しますか？</string>
+    <string name="archive_film_title">フィルムのアーカイブ</string>
     <string name="film_already_archived">この映画はすでにアーカイブされている</string>
     <string name="full">フル</string>
     <string name="not_full">満杯ではない</string>

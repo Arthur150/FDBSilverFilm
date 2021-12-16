@@ -18,7 +18,6 @@ class AddFilmActivity : AppCompatActivity() {
     private lateinit var title: TextView
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_film)
@@ -33,8 +32,9 @@ class AddFilmActivity : AppCompatActivity() {
 
         cameraName = findViewById(R.id.addFilmCameraName)
 
-       
-        val vm = FilmAddViewModel(this, intent.getSerializableExtra(Globals.FILM_ID_EXTRA_TAG) as Int?)
+
+        val vm =
+            FilmAddViewModel(this, intent.getSerializableExtra(Globals.FILM_ID_EXTRA_TAG) as Int?)
         vm.loadFilm()
 
         ArrayAdapter.createFromResource(
@@ -45,7 +45,7 @@ class AddFilmActivity : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
 
-            vm.getFilm().observe(this,{ film ->
+            vm.getFilm().observe(this, { film ->
                 title.setText(R.string.edit_film)
                 spinner.setSelection(adapter.getPosition(film.type))
                 iso.setText(film.iso.toString())

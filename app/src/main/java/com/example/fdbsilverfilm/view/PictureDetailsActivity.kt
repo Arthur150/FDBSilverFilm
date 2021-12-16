@@ -1,6 +1,5 @@
 package com.example.fdbsilverfilm.view
 
-import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.widget.ImageView

@@ -197,7 +197,7 @@
         android:layout_marginTop="32dp"
         android:backgroundTint="@color/secondary_variant_grey"
         android:enabled="false"
-        android:text="@string/archiving_film"
+        android:text="@string/archive_film"
         android:textColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
