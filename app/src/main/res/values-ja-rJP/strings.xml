@@ -61,4 +61,6 @@
     <string name="full">フル</string>
     <string name="not_full">満杯ではない</string>
     <string name="all">すべて</string>
+    <string name="lens_size">レンズ径</string>
+    <string name="picture_preview_maj">画像プレビュー</string>
 </resources>

@@ -44,6 +44,13 @@ class FilmFragment : Fragment() {
             ColorStateList.valueOf(getColor(requireContext(), R.color.secondary_variant_grey))
 
         model.getFilmValue()?.let { film ->
+
+            if (film.pictures.size > 0) {
+                showPicturesButton.isEnabled = true
+                showPicturesButton.setTextColor(getColor(requireContext(), R.color.white))
+                showPicturesButton.setBackgroundColor(getColor(requireContext(), R.color.orange))
+            }
+
             if (film.pictures.size >= film.nbPoses) {
                 pictureCountTextView.setTextColor(
                     ContextCompat.getColor(
@@ -68,12 +75,6 @@ class FilmFragment : Fragment() {
                 closeFilmButton.text = getString(R.string.film_already_archived)
             }
 
-
-            if (film.pictures.size > 0) {
-                showPicturesButton.isEnabled = true
-                showPicturesButton.setTextColor(getColor(requireContext(), R.color.white))
-                showPicturesButton.setBackgroundColor(getColor(requireContext(), R.color.orange))
-            }
         }
 
         showPicturesButton.setOnClickListener {
@@ -130,6 +131,12 @@ class FilmFragment : Fragment() {
                             R.color.red
                         )
                     )
+                }
+
+                if (film.pictures.size > 0) {
+                    showPicturesButton.isEnabled = true
+                    showPicturesButton.setTextColor(getColor(requireContext(), R.color.white))
+                    showPicturesButton.setBackgroundColor(getColor(requireContext(), R.color.orange))
                 }
 
                 if (!film.isClose) {

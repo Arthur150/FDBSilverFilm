@@ -83,9 +83,12 @@
     <string name="not_full">Not full</string>
     <string name="all">All</string>
     <string name="picture_preview_maj">Picture preview</string>
-    <string name="camera_icon">camera icon</string>
-    <string name="edit_button">edit button</string>
-    <string name="delete_button">delete button</string>
+    <string name="camera_icon" translatable="false">camera icon</string>
+    <string name="edit_button" translatable="false">edit button</string>
+    <string name="delete_button" translatable="false">delete button</string>
     <string name="lens_size">Lens size</string>
+    <string name="f1" translatable="false">f1/</string>
+    <string name="_1" translatable="false">1/</string>
+    <string name="s" translatable="false">s</string>
 
 </resources>

@@ -51,11 +51,13 @@
 
         <EditText
             android:id="@+id/addPictureFocal"
-            android:layout_width="125dp"
+            android:layout_width="100dp"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.11"
             app:layout_constraintStart_toStartOf="@+id/addPictureLabelFocal"
             app:layout_constraintTop_toBottomOf="@+id/addPictureLabelFocal" />
 
@@ -74,11 +76,14 @@
 
         <EditText
             android:id="@+id/addPictureOpening"
-            android:layout_width="125dp"
+            android:layout_width="100dp"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:ems="10"
             android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.41"
             app:layout_constraintStart_toStartOf="@+id/addPictureOpeningLabel"
             app:layout_constraintTop_toBottomOf="@+id/addPictureOpeningLabel" />
 
@@ -89,7 +94,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/LayingTime"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/addPictureFocal"
+            app:layout_constraintStart_toStartOf="@+id/addPictureLabelFocal"
             app:layout_constraintTop_toBottomOf="@+id/addPictureFocal" />
 
         <EditText
@@ -110,7 +115,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/Lens"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/addPictureOpening"
+            app:layout_constraintStart_toStartOf="@+id/addPictureOpeningLabel"
             app:layout_constraintTop_toBottomOf="@+id/addPictureOpening" />
 
         <EditText
@@ -220,6 +225,35 @@
             app:layout_constraintStart_toEndOf="@+id/pictureAddPreviewImage"
             app:layout_constraintTop_toTopOf="@+id/pictureAddPreviewImage"
             app:srcCompat="@drawable/ic_camera" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_1"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintEnd_toStartOf="@+id/addPictureOpening"
+            app:layout_constraintTop_toBottomOf="@+id/addPictureOpeningLabel" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/s"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/addPictureTime"
+            tools:layout_editor_absoluteY="242dp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/f1"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintEnd_toStartOf="@+id/addPictureFocal"
+            app:layout_constraintTop_toBottomOf="@+id/addPictureOpeningLabel" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
