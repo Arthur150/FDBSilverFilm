@@ -242,8 +242,9 @@
             android:layout_height="wrap_content"
             android:text="@string/s"
             android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/addPictureTime"
             app:layout_constraintStart_toEndOf="@+id/addPictureTime"
-            tools:layout_editor_absoluteY="242dp" />
+            app:layout_constraintTop_toTopOf="@+id/addPictureTime" />
 
         <TextView
             android:id="@+id/textView5"
