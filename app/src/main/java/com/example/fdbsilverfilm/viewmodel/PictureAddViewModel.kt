@@ -42,7 +42,7 @@ class PictureAddViewModel(private val filmId: Int, private val context: Context)
 
         val idPicture = film.value?.pictures?.size
 
-        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
+        val sdf = SimpleDateFormat("dd/M/yyyy HH:mm")
         val currentDate = sdf.format(Date())
 
         if (filmId != -1) {
