@@ -15,7 +15,9 @@ import com.example.fdbsilverfilm.model.Picture
 import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
+import java.util.*
 
 class PictureAddViewModel(private val filmId: Int, private val context: Context) : ViewModel() {
     private val film = MutableLiveData<Film>()
@@ -42,6 +44,9 @@ class PictureAddViewModel(private val filmId: Int, private val context: Context)
 
         val idPicture = film.value?.pictures?.size
 
+        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
+        val currentDate = sdf.format(Date())
+
         if (filmId != -1) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 idPicture?.let {
@@ -49,7 +54,7 @@ class PictureAddViewModel(private val filmId: Int, private val context: Context)
                         id = it,
                         id_film = filmId,
                         title = pictureName,
-                        date = LocalDateTime.now().toString(),
+                        date = currentDate,
                         preview = imageString,
                         meta = meta
                     )
