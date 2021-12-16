@@ -15,8 +15,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class FilmListActivity : AppCompatActivity() {
 
-    private var filmAdapter: FilmAdapter? = null
     private val model = FilmListViewModel(this)
+    private var allFilmAdapter = FilmAdapter(this, emptyList(), model)
+    private var notFullFilmAdapter = FilmAdapter(this, emptyList(), model)
+    private var fullFilmAdapter = FilmAdapter(this, emptyList(), model)
 
     private var checkedChip: Int = -1
 
@@ -34,11 +36,13 @@ class FilmListActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.filmListRecyclerView)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        filmAdapter = FilmAdapter(this, emptyList(), model)
-        recyclerView.adapter = filmAdapter
+        allFilmAdapter = FilmAdapter(this, emptyList(), model)
+        recyclerView.adapter = allFilmAdapter
 
-        model.getFilms().observe(this, { films ->
-            filmAdapter?.updateValue(films)
+        model.getFilms().observe(this, {
+            allFilmAdapter.updateValue(model.getAllFilms())
+            notFullFilmAdapter.updateValue(model.getNotFullFilms())
+            fullFilmAdapter.updateValue(model.getFullFilms())
         })
 
         val chipShowNotFull = findViewById<Chip>(R.id.show_not_full_films_chip)
@@ -58,7 +62,7 @@ class FilmListActivity : AppCompatActivity() {
                 chipShowAll.setTextColor(ContextCompat.getColor(this, R.color.black))
                 chipShowFull.setTextColor(ContextCompat.getColor(this, R.color.black))
                 chipShowNotFull.isCloseIconVisible = false
-                recyclerView.adapter = FilmAdapter(this, model.getNotFullFilms(), model)
+                recyclerView.adapter = notFullFilmAdapter
                 checkedChip = chipShowNotFull.id
             }
         }
@@ -72,7 +76,7 @@ class FilmListActivity : AppCompatActivity() {
                 chipShowAll.setTextColor(ContextCompat.getColor(this, R.color.white))
                 chipShowFull.setTextColor(ContextCompat.getColor(this, R.color.black))
                 chipShowAll.isCloseIconVisible = false
-                recyclerView.adapter = FilmAdapter(this, model.getAllFilms(), model)
+                recyclerView.adapter = allFilmAdapter
                 checkedChip = chipShowAll.id
             }
         }
@@ -86,7 +90,7 @@ class FilmListActivity : AppCompatActivity() {
                 chipShowAll.setTextColor(ContextCompat.getColor(this, R.color.black))
                 chipShowFull.setTextColor(ContextCompat.getColor(this, R.color.white))
                 chipShowFull.isCloseIconVisible = false
-                recyclerView.adapter = FilmAdapter(this, model.getFullFilms(), model)
+                recyclerView.adapter = fullFilmAdapter
                 checkedChip = chipShowFull.id
             }
         }
