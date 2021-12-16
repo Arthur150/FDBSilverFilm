@@ -23,9 +23,9 @@ class AddPictureActivity : AppCompatActivity() {
     private lateinit var opening: EditText
     private lateinit var time: EditText
     private lateinit var title: EditText
+    private lateinit var lensSize: EditText
 
     private lateinit var picture: ImageView
-    private lateinit var picture2: ImageView
 
     private val REQUEST_IMAGE_CAPTURE = 1
 
@@ -41,6 +41,7 @@ class AddPictureActivity : AppCompatActivity() {
         opening = findViewById(R.id.addPictureOpening)
         time = findViewById(R.id.addPictureTime)
         title = findViewById(R.id.addPictureTitle)
+        lensSize = findViewById(R.id.addPictureLensSize)
 
         val modeSpinner = findViewById<Spinner>(R.id.addPictureMode)
         val button = findViewById<Button>(R.id.addPictureButton)
@@ -68,6 +69,7 @@ class AddPictureActivity : AppCompatActivity() {
                 lens.setText(metaSharedPreferences.lens)
                 opening.setText(metaSharedPreferences.opening.toString())
                 time.setText(metaSharedPreferences.time.toString())
+                lensSize.setText(metaSharedPreferences.lensSize.toString())
 
                 modeSpinner.setSelection(adapter.getPosition(metaSharedPreferences.mode))
             }
@@ -84,7 +86,8 @@ class AddPictureActivity : AppCompatActivity() {
                         mode = modeSpinner.selectedItem.toString(),
                         lens = lens.text.toString(),
                         latitude = vm.location?.latitude ?: 0.0,
-                        longitude = vm.location?.longitude ?: 0.0
+                        longitude = vm.location?.longitude ?: 0.0,
+                        lensSize = lensSize.text.toString().toFloat()
                     )
 
                     vm.addPicture(
@@ -174,6 +177,19 @@ class AddPictureActivity : AppCompatActivity() {
             isOk = false
         } else {
             lens.error = null
+        }
+
+
+        if (lensSize.text.isEmpty() || lensSize.text.isBlank()) {
+            lensSize.error = getString(R.string.check_form_field)
+            isOk = false
+        } else {
+            if (!Globals.regexDecimal(lensSize.text.toString())) {
+                lensSize.error = getString(R.string.check_form_regex_decimal)
+                isOk = false
+            } else {
+                lensSize.error = null
+            }
         }
 
         return isOk

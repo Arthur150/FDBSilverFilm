@@ -32,6 +32,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addPictureTextView">
 
@@ -123,6 +124,27 @@
             app:layout_constraintStart_toStartOf="@+id/textView3"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
+
+        <TextView
+            android:id="@+id/addPictureSizeObjectiveLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/lens_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/addPictureTime"
+            app:layout_constraintTop_toBottomOf="@+id/addPictureTime" />
+
+        <EditText
+            android:id="@+id/addPictureLensSize"
+            android:layout_width="125dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="@+id/addPictureSizeObjectiveLabel"
+            app:layout_constraintTop_toBottomOf="@+id/addPictureSizeObjectiveLabel" />
+
         <Spinner
             android:id="@+id/addPictureMode"
             android:layout_width="0dp"
@@ -141,7 +163,7 @@
             android:text="@string/Mode"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/addPictureTime"
-            app:layout_constraintTop_toBottomOf="@+id/addPictureTime" />
+            app:layout_constraintTop_toBottomOf="@+id/addPictureLensSize" />
 
         <TextView
             android:id="@+id/addPictureTitleLabel"

@@ -86,5 +86,6 @@
     <string name="camera_icon">camera icon</string>
     <string name="edit_button">edit button</string>
     <string name="delete_button">delete button</string>
+    <string name="lens_size">Lens size</string>
 
 </resources>
