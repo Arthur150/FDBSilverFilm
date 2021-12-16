@@ -25,7 +25,7 @@ class FilmListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_film_list)
 
         val addButton = findViewById<FloatingActionButton>(R.id.filmListAddButton)
-        addButton.imageTintList =  ColorStateList.valueOf(getColor(R.color.secondary_variant_grey))
+        addButton.imageTintList = ColorStateList.valueOf(getColor(R.color.secondary_variant_grey))
         addButton.setOnClickListener {
             val intent = Intent(this, AddFilmActivity::class.java)
             startActivity(intent)
