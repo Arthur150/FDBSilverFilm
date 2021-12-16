@@ -15,7 +15,6 @@ import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Meta
 import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class AddPictureActivity : AppCompatActivity() {
@@ -24,9 +23,9 @@ class AddPictureActivity : AppCompatActivity() {
     private lateinit var opening: EditText
     private lateinit var time: EditText
     private lateinit var title: EditText
+    private lateinit var lensSize: EditText
 
     private lateinit var picture: ImageView
-    private lateinit var picture2: ImageView
 
     private val REQUEST_IMAGE_CAPTURE = 1
 
@@ -42,13 +41,13 @@ class AddPictureActivity : AppCompatActivity() {
         opening = findViewById(R.id.addPictureOpening)
         time = findViewById(R.id.addPictureTime)
         title = findViewById(R.id.addPictureTitle)
+        lensSize = findViewById(R.id.addPictureLensSize)
 
         val modeSpinner = findViewById<Spinner>(R.id.addPictureMode)
         val button = findViewById<Button>(R.id.addPictureButton)
         val buttonPreview = findViewById<ImageButton>(R.id.pictureAddPreviewButton)
 
         picture = findViewById(R.id.pictureAddPreviewImage)
-
 
 
         val vm = PictureAddViewModel(intent.getIntExtra(Globals.FILM_EXTRA_TAG, -1), this)
@@ -70,6 +69,7 @@ class AddPictureActivity : AppCompatActivity() {
                 lens.setText(metaSharedPreferences.lens)
                 opening.setText(metaSharedPreferences.opening.toString())
                 time.setText(metaSharedPreferences.time.toString())
+                lensSize.setText(metaSharedPreferences.lensSize.toString())
 
                 modeSpinner.setSelection(adapter.getPosition(metaSharedPreferences.mode))
             }
@@ -78,7 +78,7 @@ class AddPictureActivity : AppCompatActivity() {
         vm.getFilm().observe(this, {
             button.isEnabled = true
             button.setOnClickListener {
-              if (checkForm()) {
+                if (checkForm()) {
                     val meta = Meta(
                         focal = focal.text.toString().toFloat(),
                         opening = opening.text.toString().toFloat(),
@@ -86,7 +86,8 @@ class AddPictureActivity : AppCompatActivity() {
                         mode = modeSpinner.selectedItem.toString(),
                         lens = lens.text.toString(),
                         latitude = vm.location?.latitude ?: 0.0,
-                        longitude = vm.location?.longitude ?: 0.0
+                        longitude = vm.location?.longitude ?: 0.0,
+                        lensSize = lensSize.text.toString().toFloat()
                     )
 
                     vm.addPicture(
@@ -107,7 +108,7 @@ class AddPictureActivity : AppCompatActivity() {
 
 
         buttonPreview.setOnClickListener {
-            if (!PermissionsManager.checkPermissions(this)){
+            if (!PermissionsManager.checkPermissions(this)) {
                 PermissionsManager.requestPermissions(this)
             }
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -176,6 +177,19 @@ class AddPictureActivity : AppCompatActivity() {
             isOk = false
         } else {
             lens.error = null
+        }
+
+
+        if (lensSize.text.isEmpty() || lensSize.text.isBlank()) {
+            lensSize.error = getString(R.string.check_form_field)
+            isOk = false
+        } else {
+            if (!Globals.regexDecimal(lensSize.text.toString())) {
+                lensSize.error = getString(R.string.check_form_regex_decimal)
+                isOk = false
+            } else {
+                lensSize.error = null
+            }
         }
 
         return isOk

@@ -83,5 +83,6 @@
     <string name="not_full">Not full</string>
     <string name="all">All</string>
     <string name="picture_preview_maj">Picture preview</string>
+    <string name="lens_size">Lens size</string>
 
 </resources>
