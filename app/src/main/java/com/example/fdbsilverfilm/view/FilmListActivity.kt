@@ -1,6 +1,7 @@
 package com.example.fdbsilverfilm.view
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -24,6 +25,7 @@ class FilmListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_film_list)
 
         val addButton = findViewById<FloatingActionButton>(R.id.filmListAddButton)
+        addButton.imageTintList =  ColorStateList.valueOf(getColor(R.color.secondary_variant_grey))
         addButton.setOnClickListener {
             val intent = Intent(this, AddFilmActivity::class.java)
             startActivity(intent)

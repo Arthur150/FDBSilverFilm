@@ -1,6 +1,8 @@
 package com.example.fdbsilverfilm.view
 
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.getColor
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.fdbsilverfilm.R
@@ -38,6 +41,7 @@ class FilmFragment : Fragment() {
 
         val closeFilmButton = view.findViewById<Button>(R.id.fragmentFilmCloseButton)
         val editButton = view.findViewById<FloatingActionButton>(R.id.fragmentFilmEditButton)
+        editButton.imageTintList =  ColorStateList.valueOf(getColor(requireContext(),R.color.secondary_variant_grey))
 
         model.getFilmValue()?.let { film ->
             if (film.pictures.size >= film.nbPoses) {
@@ -57,6 +61,8 @@ class FilmFragment : Fragment() {
 
             if (!film.isClose) {
                 takePictureButton.isEnabled = true
+                takePictureButton.setTextColor(getColor(requireContext(), R.color.white))
+                takePictureButton.setBackgroundColor(getColor(requireContext(), R.color.orange))
                 closeFilmButton.isEnabled = true
             } else {
                 closeFilmButton.text = getString(R.string.film_already_archived)
@@ -65,6 +71,8 @@ class FilmFragment : Fragment() {
 
             if (film.pictures.size > 0) {
                 showPicturesButton.isEnabled = true
+                showPicturesButton.setTextColor(getColor(requireContext(), R.color.white))
+                showPicturesButton.setBackgroundColor(getColor(requireContext(), R.color.orange))
             }
         }
 
@@ -126,6 +134,8 @@ class FilmFragment : Fragment() {
 
                 if (!film.isClose) {
                     takePictureButton.isEnabled = true
+                    takePictureButton.setTextColor(getColor(requireContext(), R.color.white))
+                    takePictureButton.setBackgroundColor(getColor(requireContext(), R.color.orange))
                     closeFilmButton.isEnabled = true
                 } else {
 
