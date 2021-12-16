@@ -22,7 +22,14 @@ class FilmAddViewModel(private val context: Context, private val filmId: Int?) :
     }
 
     //call loadFilm before this function
-    fun setFilm(iso: Int, nbPoses: Int, brand: String, type: String, name: String = "",  cameraName: String) {
+    fun setFilm(
+        iso: Int,
+        nbPoses: Int,
+        brand: String,
+        type: String,
+        name: String = "",
+        cameraName: String
+    ) {
         if (filmId == null || filmToSave == null) {
             filmToSave = Film(null, name, brand, iso, type, nbPoses, cameraName, false)
         } else {

@@ -24,7 +24,6 @@ class PictureAddViewModel(private val filmId: Int, private val context: Context)
     var location: Location? = null
 
 
-
     fun getFilm(): LiveData<Film> {
         return film
     }
@@ -35,7 +34,7 @@ class PictureAddViewModel(private val filmId: Int, private val context: Context)
         viewModelScope.launch(Dispatchers.IO) {
             val fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
             fusedLocationClient.lastLocation.addOnSuccessListener { location = it }
-            
+
             film.postValue(DatabaseManager.repository.getFilmByID(filmId))
         }
     }

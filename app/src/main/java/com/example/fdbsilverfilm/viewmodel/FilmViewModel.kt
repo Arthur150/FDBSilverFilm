@@ -34,7 +34,7 @@ class FilmViewModel(private val context: Context) : ViewModel() {
         }
     }
 
-    fun setIsClose(film: Film){
+    fun setIsClose(film: Film) {
         film.isClose = true
         viewModelScope.launch(Dispatchers.IO) {
             DatabaseManager.repository.insertFilm(film)

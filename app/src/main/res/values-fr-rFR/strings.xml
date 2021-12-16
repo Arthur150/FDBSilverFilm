@@ -54,9 +54,9 @@
     <string name="edit_film">Modifier la photo</string>
     <string name="close_button">Bouton de fermeture</string>
     <string name="cancel">Annuler</string>
-    <string name="archiving_film">Archiver la pellicule</string>
-    <string name="archiving_film_ask">Voulez-vous archiver la pellicule</string>
-    <string name="archiving_film_title">Archivage de la pellicule</string>
+    <string name="archive_film">Archiver la pellicule</string>
+    <string name="archive_film_ask">Voulez-vous archiver la pellicule</string>
+    <string name="archive_film_title">Archiver la pellicule</string>
     <string name="film_already_archived">La pellicule est archivée</string>
     <string name="full">Pleines</string>
     <string name="not_full">Incomplètes</string>

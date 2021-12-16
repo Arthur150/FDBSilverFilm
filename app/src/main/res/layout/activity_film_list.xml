@@ -43,6 +43,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/show_all_films_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/all" />
+
+        <com.google.android.material.chip.Chip
             android:id="@+id/show_not_full_films_chip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,11 +60,15 @@
             android:layout_height="wrap_content"
             android:text="@string/full" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/show_all_films_chip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/all" />
     </com.google.android.material.chip.ChipGroup>
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/filmListRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
