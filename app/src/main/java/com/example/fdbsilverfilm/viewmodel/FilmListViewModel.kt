@@ -21,7 +21,7 @@ class FilmListViewModel(private val context: Context) : ViewModel() {
     fun getFilms(): LiveData<List<Film>> {
         return films
     }
-    
+
 
     fun loadFilms() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -33,11 +33,11 @@ class FilmListViewModel(private val context: Context) : ViewModel() {
         return ArrayList<Film>(films.value ?: emptyList()).toList()
     }
 
-    fun getNotFullFilms() : List<Film> {
+    fun getNotFullFilms(): List<Film> {
         val suppList = ArrayList<Film>()
         val tmp = ArrayList<Film>(films.value ?: emptyList())
-        for (film in tmp){
-            if (film.isClose){
+        for (film in tmp) {
+            if (film.isClose) {
                 suppList.add(film)
             }
         }
@@ -46,12 +46,12 @@ class FilmListViewModel(private val context: Context) : ViewModel() {
         return tmp.toList()
     }
 
-    fun getFullFilms() : List<Film> {
-        if (films.value != null){
+    fun getFullFilms(): List<Film> {
+        if (films.value != null) {
             val suppList = ArrayList<Film>()
             val tmp = ArrayList<Film>(films.value ?: emptyList())
-            for (film in tmp){
-                if (!film.isClose){
+            for (film in tmp) {
+                if (!film.isClose) {
                     suppList.add(film)
                 }
             }
@@ -61,13 +61,13 @@ class FilmListViewModel(private val context: Context) : ViewModel() {
         return emptyList()
     }
 
-    fun deleteFilm(film : Film){
+    fun deleteFilm(film: Film) {
         viewModelScope.launch(Dispatchers.IO) {
             DatabaseManager.repository.deleteFilm(film)
             filmList.clear()
             loadFilms()
 
-            if (SharedPreferencesManager.loadCurrentFilm(context) == film.id){
+            if (SharedPreferencesManager.loadCurrentFilm(context) == film.id) {
                 SharedPreferencesManager.saveCurrentFilm(context, -1)
 
                 val intent = Intent(context, MainActivity::class.java)

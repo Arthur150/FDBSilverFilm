@@ -1,6 +1,5 @@
 package com.example.fdbsilverfilm.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.TextView

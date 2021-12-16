@@ -54,9 +54,9 @@
     <string name="edit_film">Editar película</string>
     <string name="close_button">Botón de cierre</string>
     <string name="cancel">Cancelar</string>
-    <string name="archiving_film">Archivo de películas</string>
-    <string name="archiving_film_ask">¿Quieres archivar la película?</string>
-    <string name="archiving_film_title">Archivo de películas</string>
+    <string name="archive_film">Archivo de películas</string>
+    <string name="archive_film_ask">¿Quieres archivar la película?</string>
+    <string name="archive_film_title">Archivo de películas</string>
     <string name="film_already_archived">La película ya está archivada</string>
     <string name="full">Completo</string>
     <string name="not_full">No está lleno</string>

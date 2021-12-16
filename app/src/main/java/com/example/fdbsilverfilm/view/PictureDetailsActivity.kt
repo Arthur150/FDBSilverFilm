@@ -1,7 +1,5 @@
 package com.example.fdbsilverfilm.view
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.widget.TextView
@@ -10,8 +8,10 @@ import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Picture
 import com.example.fdbsilverfilm.viewmodel.PictureDetailsViewModel
-import com.google.android.gms.maps.*
-import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 

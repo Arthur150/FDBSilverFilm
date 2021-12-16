@@ -74,14 +74,17 @@
 
     <string name="close_button">Close button</string>
     <string name="cancel">Cancel</string>
-    <string name="archiving_film">Archiving film</string>
-    <string name="archiving_film_ask">Do you want to archive the film?</string>
-    <string name="archiving_film_title">Archiving film</string>
+    <string name="archive_film">Archive film</string>
+    <string name="archive_film_ask">Do you want to archive the film?</string>
+    <string name="archive_film_title">Archive film</string>
     <string name="film_already_archived">The film is already archived</string>
 
     <string name="full">Full</string>
     <string name="not_full">Not full</string>
     <string name="all">All</string>
     <string name="picture_preview_maj">Picture preview</string>
+    <string name="camera_icon">camera icon</string>
+    <string name="edit_button">edit button</string>
+    <string name="delete_button">delete button</string>
 
 </resources>

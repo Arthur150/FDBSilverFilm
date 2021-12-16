@@ -15,7 +15,6 @@ import com.example.fdbsilverfilm.manager.SharedPreferencesManager
 import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.model.Meta
 import com.example.fdbsilverfilm.viewmodel.PictureAddViewModel
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class AddPictureActivity : AppCompatActivity() {
@@ -50,7 +49,6 @@ class AddPictureActivity : AppCompatActivity() {
         picture = findViewById(R.id.pictureAddPreviewImage)
 
 
-
         val vm = PictureAddViewModel(intent.getIntExtra(Globals.FILM_EXTRA_TAG, -1), this)
         vm.loadFilm()
 
@@ -78,7 +76,7 @@ class AddPictureActivity : AppCompatActivity() {
         vm.getFilm().observe(this, {
             button.isEnabled = true
             button.setOnClickListener {
-              if (checkForm()) {
+                if (checkForm()) {
                     val meta = Meta(
                         focal = focal.text.toString().toFloat(),
                         opening = opening.text.toString().toFloat(),
@@ -107,7 +105,7 @@ class AddPictureActivity : AppCompatActivity() {
 
 
         buttonPreview.setOnClickListener {
-            if (!PermissionsManager.checkPermissions(this)){
+            if (!PermissionsManager.checkPermissions(this)) {
                 PermissionsManager.requestPermissions(this)
             }
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)

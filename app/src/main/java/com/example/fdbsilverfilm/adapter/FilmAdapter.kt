@@ -25,9 +25,9 @@ class FilmAdapter(
 ) : RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val name : TextView = view.findViewById(R.id.filmItemName)
+        val name: TextView = view.findViewById(R.id.filmItemName)
         val iso: TextView = view.findViewById(R.id.filmItemIso)
-        val countPictures : TextView = view.findViewById(R.id.filmItemCountPictures)
+        val countPictures: TextView = view.findViewById(R.id.filmItemCountPictures)
         val deleteButton: ImageButton = view.findViewById(R.id.filmItemDelete)
         val cameraName: TextView = view.findViewById(R.id.filmItemCameraName)
         val editButton: ImageButton = view.findViewById(R.id.filmItemEdit)

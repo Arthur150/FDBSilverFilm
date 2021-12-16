@@ -1,7 +1,6 @@
 package com.example.fdbsilverfilm.view
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.fdbsilverfilm.R
 import com.example.fdbsilverfilm.model.Globals
@@ -40,9 +40,19 @@ class FilmFragment : Fragment() {
         val editButton = view.findViewById<FloatingActionButton>(R.id.fragmentFilmEditButton)
 
         model.getFilmValue()?.let { film ->
-            if (film.pictures.size > film.nbPoses) {
-                pictureCountTextView.setTextColor(Color.parseColor("#ff0000"))
-                countPictureLabel.setTextColor(Color.parseColor("#ff0000"))
+            if (film.pictures.size >= film.nbPoses) {
+                pictureCountTextView.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.red
+                    )
+                )
+                countPictureLabel.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.red
+                    )
+                )
             }
 
             if (!film.isClose) {
@@ -86,9 +96,9 @@ class FilmFragment : Fragment() {
 
                     AlertDialog.Builder(requireContext())
                         .setIcon(R.drawable.ic_film_roll_svgrepo_com)
-                        .setTitle(getString(R.string.archiving_film_title))
-                        .setMessage(getString(R.string.archiving_film_ask))
-                        .setPositiveButton(getString(R.string.archiving_film)) { _, _ ->
+                        .setTitle(getString(R.string.archive_film_title))
+                        .setMessage(getString(R.string.archive_film_ask))
+                        .setPositiveButton(getString(R.string.archive_film)) { _, _ ->
                             model.setIsClose(film)
                             startFilmListActivity()
                         }
@@ -99,9 +109,19 @@ class FilmFragment : Fragment() {
                 }
 
 
-                if (film.pictures.size > film.nbPoses) {
-                    pictureCountTextView.setTextColor(Color.parseColor("#ff0000"))
-                    countPictureLabel.setTextColor(Color.parseColor("#ff0000"))
+                if (film.pictures.size >= film.nbPoses) {
+                    pictureCountTextView.setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.red
+                        )
+                    )
+                    countPictureLabel.setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.red
+                        )
+                    )
                 }
 
                 if (!film.isClose) {
