@@ -61,4 +61,6 @@
     <string name="can_not_take_picture_alert_title">Der Film ist voll.</string>
     <string name="can_not_take_picture_alert">Bitte ändern Sie den Film</string>
     <string name="no_name">Kein Name</string>
+    <string name="lens_size">Durchmesser des Objektivs</string>
+    <string name="picture_preview_maj">Bildvorschau</string>
 </resources>

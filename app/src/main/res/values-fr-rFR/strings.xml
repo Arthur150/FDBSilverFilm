@@ -61,4 +61,6 @@
     <string name="full">Pleines</string>
     <string name="not_full">Incomplètes</string>
     <string name="all">Toutes</string>
+    <string name="lens_size">Diamètre de l\'objectif</string>
+    <string name="picture_preview_maj">Aperçu de l\'image</string>
 </resources>

@@ -61,4 +61,6 @@
     <string name="full">Completo</string>
     <string name="not_full">No está lleno</string>
     <string name="all">Todo</string>
+    <string name="lens_size">Diámetro de la lente</string>
+    <string name="picture_preview_maj">Vista previa de la imagen</string>
 </resources>
