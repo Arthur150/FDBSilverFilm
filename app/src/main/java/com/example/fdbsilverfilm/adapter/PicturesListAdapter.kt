@@ -43,7 +43,7 @@ class PicturesListAdapter(private val list: List<Picture>?, private val context:
         private val title: TextView = binding.findViewById(R.id.title_picture_item)
         private val date: TextView = binding.findViewById(R.id.date_picture_item)
         private val preview: ImageView = binding.findViewById(R.id.preview_image_picture_item)
-        private val positionPicture : TextView = binding.findViewById(R.id.position_picture_item)
+        private val positionPicture: TextView = binding.findViewById(R.id.position_picture_item)
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(picture: Picture?) {
@@ -55,7 +55,7 @@ class PicturesListAdapter(private val list: List<Picture>?, private val context:
                     preview.setImageBitmap(Globals.stringToBitmap(picture.preview))
                 }
 
-                if (picture.title.isNotEmpty()){
+                if (picture.title.isNotEmpty()) {
                     title.text = picture.title
                 }
             }

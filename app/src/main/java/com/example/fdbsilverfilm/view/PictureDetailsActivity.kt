@@ -1,5 +1,6 @@
 package com.example.fdbsilverfilm.view
 
+import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.widget.ImageView
@@ -49,7 +50,7 @@ class PictureDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapView = findViewById(R.id.pictureDetailMapView)
         initGoogleMap(savedInstanceState)
 
-        if (picture.preview.isNotEmpty()){
+        if (picture.preview.isNotEmpty()) {
             val picturePreview = findViewById<ImageView>(R.id.picture_details_preview)
             picturePreview.setImageBitmap(Globals.stringToBitmap(picture.preview))
         }

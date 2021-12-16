@@ -16,7 +16,6 @@ import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
 
 class PictureAddViewModel(private val filmId: Int, private val context: Context) : ViewModel() {
