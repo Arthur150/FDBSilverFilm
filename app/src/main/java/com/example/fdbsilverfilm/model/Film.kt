@@ -25,6 +25,12 @@ data class Film(
     @ColumnInfo(name = "nbrPoses")
     var nbPoses: Int,
 
+    @ColumnInfo(name = "cameraName")
+    var cameraName: String,
+
+    @ColumnInfo(name = "isClose")
+    var isClose: Boolean,
+
     @ColumnInfo(name = "pictures")
     val pictures: ArrayList<Picture> = ArrayList()
 ) : Serializable

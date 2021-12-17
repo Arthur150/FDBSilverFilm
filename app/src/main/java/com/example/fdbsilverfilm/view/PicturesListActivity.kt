@@ -10,8 +10,6 @@ import com.example.fdbsilverfilm.model.Globals
 import com.example.fdbsilverfilm.viewmodel.PicturesListViewModel
 
 class PicturesListActivity : AppCompatActivity() {
-    var vm: PicturesListViewModel? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,10 +25,5 @@ class PicturesListActivity : AppCompatActivity() {
             recyclerView.adapter = PicturesListAdapter(film.pictures, this)
         })
 
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        this.finish()
     }
 }

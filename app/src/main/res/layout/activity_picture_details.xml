@@ -5,193 +5,212 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/secondary_variant_grey"
+    android:orientation="vertical"
     tools:context=".view.PictureDetailsActivity">
 
-    <TextView
-        android:id="@+id/picture_details_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/NR"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/focal_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/Focal"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/picture_details_title" />
-
-    <TextView
-        android:id="@+id/focal_value_label"
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/NR"
-        android:textSize="20sp"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/focal_label"
-        app:layout_constraintTop_toBottomOf="@+id/picture_details_title" />
-
-    <TextView
-        android:id="@+id/opening_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/Opening"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/focal_label" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:id="@+id/opening_value_label"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/NR"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/opening_label"
-        app:layout_constraintTop_toBottomOf="@+id/focal_value_label" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/laying_time_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/LayingTime"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/opening_label" />
+            <ImageView
+                android:id="@+id/picture_details_preview"
+                android:layout_width="250dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/preview" />
 
-    <TextView
-        android:id="@+id/laying_time_value_label"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/NR"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/laying_time_label"
-        app:layout_constraintTop_toBottomOf="@+id/opening_value_label" />
+            <TextView
+                android:id="@+id/opening_value_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/NR"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/opening_label"
+                app:layout_constraintTop_toTopOf="@+id/opening_label" />
 
-    <TextView
-        android:id="@+id/mode_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/Mode"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/laying_time_label" />
+            <TextView
+                android:id="@+id/laying_time_value_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/NR"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/laying_time_label"
+                app:layout_constraintTop_toTopOf="@+id/laying_time_label" />
 
-    <TextView
-        android:id="@+id/mode_value_label"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/NR"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/mode_label"
-        app:layout_constraintTop_toBottomOf="@+id/laying_time_value_label" />
+            <TextView
+                android:id="@+id/focal_value_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/NR"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/focal_label"
+                app:layout_constraintTop_toTopOf="@+id/focal_label" />
 
-    <TextView
-        android:id="@+id/date_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/Date"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lens_label" />
+            <TextView
+                android:id="@+id/mode_value_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/NR"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/mode_label"
+                app:layout_constraintTop_toTopOf="@+id/mode_label" />
 
-    <TextView
-        android:id="@+id/date_value_label"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/NR"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/date_label"
-        app:layout_constraintTop_toBottomOf="@+id/lens_value_label" />
+            <TextView
+                android:id="@+id/date_value_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/NR"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/date_label"
+                app:layout_constraintTop_toTopOf="@+id/date_label" />
 
-    <TextView
-        android:id="@+id/coordinates_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/Coordinates"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_label" />
+            <TextView
+                android:id="@+id/opening_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/Opening"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/focal_label"
+                app:layout_constraintTop_toBottomOf="@+id/focal_label" />
 
-    <TextView
-        android:id="@+id/coordinates_value_label"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/NR"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/coordinates_label"
-        app:layout_constraintTop_toBottomOf="@+id/date_value_label" />
+            <TextView
+                android:id="@+id/coordinates_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/Coordinates"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/date_label"
+                app:layout_constraintTop_toBottomOf="@+id/date_label" />
 
-    <TextView
-        android:id="@+id/lens_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/Lens"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mode_label" />
+            <TextView
+                android:id="@+id/focal_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/Focal"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/picture_details_title" />
 
-    <TextView
-        android:id="@+id/lens_value_label"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/NR"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lens_label"
-        app:layout_constraintTop_toBottomOf="@+id/mode_value_label" />
+            <TextView
+                android:id="@+id/mode_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/Mode"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/laying_time_label"
+                app:layout_constraintTop_toBottomOf="@+id/laying_time_label" />
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/pictureDetailMapView"
+                android:layout_width="0dp"
+                android:layout_height="350dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/coordinates_label"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/coordinates_value_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/NR"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/coordinates_label"
+                app:layout_constraintTop_toTopOf="@+id/coordinates_label" />
+
+            <TextView
+                android:id="@+id/picture_details_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/NR"
+                android:textSize="34sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/picture_details_preview" />
+
+            <TextView
+                android:id="@+id/lens_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/Lens"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/mode_label"
+                app:layout_constraintTop_toBottomOf="@+id/mode_label" />
+
+            <TextView
+                android:id="@+id/date_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/Date"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/lens_label"
+                app:layout_constraintTop_toBottomOf="@+id/lens_label" />
+
+            <TextView
+                android:id="@+id/lens_value_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/NR"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/lens_label"
+                app:layout_constraintTop_toTopOf="@+id/lens_label" />
+
+            <TextView
+                android:id="@+id/laying_time_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/LayingTime"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/opening_label"
+                app:layout_constraintTop_toBottomOf="@+id/opening_label" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

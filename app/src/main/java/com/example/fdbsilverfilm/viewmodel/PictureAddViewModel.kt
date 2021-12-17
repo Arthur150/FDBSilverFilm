@@ -15,11 +15,13 @@ import com.example.fdbsilverfilm.model.Picture
 import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.time.LocalDateTime
+import java.text.SimpleDateFormat
+import java.util.*
 
 class PictureAddViewModel(private val filmId: Int, private val context: Context) : ViewModel() {
     private val film = MutableLiveData<Film>()
     var location: Location? = null
+
 
     fun getFilm(): LiveData<Film> {
         return film
@@ -31,14 +33,17 @@ class PictureAddViewModel(private val filmId: Int, private val context: Context)
         viewModelScope.launch(Dispatchers.IO) {
             val fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
             fusedLocationClient.lastLocation.addOnSuccessListener { location = it }
-            
+
             film.postValue(DatabaseManager.repository.getFilmByID(filmId))
         }
     }
 
-    fun addPicture(pictureName: String, meta: Meta) {
+    fun addPicture(pictureName: String, imageString: String, meta: Meta) {
 
         val idPicture = film.value?.pictures?.size
+
+        val sdf = SimpleDateFormat("dd/M/yyyy HH:mm")
+        val currentDate = sdf.format(Date())
 
         if (filmId != -1) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -47,7 +52,8 @@ class PictureAddViewModel(private val filmId: Int, private val context: Context)
                         id = it,
                         id_film = filmId,
                         title = pictureName,
-                        date = LocalDateTime.now().toString(),
+                        date = currentDate,
+                        preview = imageString,
                         meta = meta
                     )
                 }?.let {

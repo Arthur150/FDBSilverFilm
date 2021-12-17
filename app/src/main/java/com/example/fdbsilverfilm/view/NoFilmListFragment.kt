@@ -21,7 +21,7 @@ class NoFilmListFragment : Fragment() {
         val button = view.findViewById<Button>(R.id.noFilmListFragmentButton)
         button.setOnClickListener {
             val intent = Intent(requireContext(), AddFilmActivity::class.java)
-            intent.putExtra("createFirst", Globals.CREATE_FIRST)
+            intent.putExtra(Globals.MAIN_EXTRA_TAG, true)
             startActivity(intent)
         }
 

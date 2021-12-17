@@ -9,5 +9,6 @@ data class Meta(
     val mode: String,
     val longitude: Double,
     val latitude: Double,
-    val lens: String
+    val lens: String,
+    val lensSize: Float,
 ) : Serializable
